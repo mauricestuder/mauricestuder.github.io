@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum & Datenschutz · Maurice Studer</title>
+<meta name="description" content="Impressum und Datenschutzerklärung der Website von Maurice Studer.">
+<meta name="theme-color" content="#eef2ff">
+<link rel="preload" href="schrift/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500 700; font-display: swap; src: url(schrift/space-grotesk.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 700; font-display: swap; src: url(schrift/archivo.woff2) format("woff2"); }
+:root { --papier: #eef2ff; --linie: #c7d2fe; --text: #312e81; --text-leise: #475569; --akzent-text: #4f46e5; --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --rand: clamp(16px, 5vw, 40px); }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--papier); color: var(--text); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--akzent-text); }
+.innen { width: min(100% - 2 * var(--rand), 760px); margin-inline: auto; }
+.kopf { border-bottom: 1px solid var(--linie); }
+.kopf .innen { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.kopf a { color: var(--text); text-decoration: none; font-weight: 600; }
+main { padding: clamp(48px, 8vw, 96px) 0; }
+h1, h2 { font-family: "Space Grotesk", system-ui, sans-serif; letter-spacing: -.02em; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(32px, 5vw, 46px); margin-bottom: 8px; }
+h2 { font-size: 22px; margin: 40px 0 10px; }
+p, li { color: var(--text-leise); }
+address { font-style: normal; color: var(--text); }
+footer { border-top: 1px solid var(--linie); padding: 28px 0; font-size: 14px; color: var(--text-leise); }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<header class="kopf">
+  <div class="innen">
+    <a href="./">Maurice Studer</a>
+    <a href="./">← Zur Startseite</a>
+  </div>
+</header>
+<main class="innen">
+  <h1>Impressum &amp; Datenschutz</h1>
+  <p>Stand: September 2026</p>
+
+  <h2 id="impressum">Impressum</h2>
+  <address>
+    Maurice Studer<br>
+    Liestal BL, Schweiz<br>
+    E-Mail: <a href="mailto:maurice.studer.contact@gmail.com">maurice.studer.contact@gmail.com</a>
+  </address>
+
+  <h2>Haftung</h2>
+  <p>Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für Richtigkeit und Vollständigkeit kann keine Gewähr übernommen werden. Für die Inhalte verlinkter Websites ist allein deren Betreiber verantwortlich.</p>
+
+  <h2>Beispielseiten</h2>
+  <p>Die Betriebe «Firestone» und «Klarblick» sind erfunden. Namen, Adressen, Preise und Personen auf diesen Beispielseiten sind ausgedacht.</p>
+
+  <h2 id="datenschutz">Datenschutz</h2>
+  <p>Diese Website verwendet keine Cookies, keine Analyse- oder Werbewerkzeuge und bindet keine Inhalte von Dritten ein. Auch die Schrift liegt auf dem eigenen Server. Es gibt kein Kontaktformular.</p>
+  <p>Beim Aufruf speichert der Hosting-Anbieter technisch notwendige Angaben (zum Beispiel IP-Adresse, Datum, Uhrzeit, aufgerufene Seite, Browser) in Protokolldateien. Die Website wird über GitHub Pages (GitHub Inc., USA) bereitgestellt; dabei können diese Angaben in die USA übermittelt werden. GitHub stützt sich dafür auf das Swiss-U.S. Data Privacy Framework.</p>
+  <p>Wenn Sie mir schreiben, verwende ich Ihre Angaben nur, um Ihre Anfrage zu beantworten. Ich gebe sie nicht weiter.</p>
+  <p>Sie können jederzeit Auskunft über Ihre Daten verlangen und deren Löschung beantragen — eine kurze Nachricht an die E-Mail-Adresse oben genügt.</p>
+</main>
+<footer>
+  <div class="innen">© 2026 Maurice Studer · <a href="./">Zur Startseite</a></div>
+</footer>
+</body>
+</html>
