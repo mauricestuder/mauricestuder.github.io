@@ -134,10 +134,9 @@ p { margin: 0 0 1em; }
 #angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.08), transparent 70%); }
 #ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(200,242,61,.07), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
 #fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.05), transparent 70%); }
-.kontakt { position: relative; isolation: isolate; overflow: hidden; background: #c8f23d; --text: #0e0f0b; --text-leise: #33400f; --akzent-text: #0e0f0b; --linie: rgba(14,15,11,.18); --akzent: #0e0f0b; --auf-akzent: #c8f23d; color: var(--text); }
-.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(14,15,11,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(14,15,11,.08) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
+.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(70% 70% at 50% 100%, rgba(200,242,61,.22), transparent 70%), linear-gradient(180deg, var(--grund) 0%, #141a0c 35%, #1d2911 100%); }
+.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
 .kontakt::after { display: none; }
-.kontakt .knopf-akzent:hover { background: #262a1d; box-shadow: 0 8px 22px rgba(14,15,11,.2); }
 
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
@@ -369,15 +368,23 @@ p { margin: 0 0 1em; }
 .fragen summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--akzent-text); border-bottom: 2px solid var(--akzent-text); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
 .fragen details[open] summary::after { transform: rotate(-135deg); }
 .fragen details p { color: var(--text-leise); margin: 0 0 24px; max-width: 62ch; }
+/* Antworten klappen weich auf */
+.fragen details[open] p { animation: aufklappen .4s cubic-bezier(.2,.8,.2,1); }
+@keyframes aufklappen { from { opacity: 0; transform: translateY(-8px); } }
+@supports (interpolate-size: allow-keywords) {
+  .fragen { interpolate-size: allow-keywords; }
+  .fragen details::details-content { block-size: 0; overflow: hidden; transition: block-size .4s cubic-bezier(.2,.8,.2,1), content-visibility .4s allow-discrete; }
+  .fragen details[open]::details-content { block-size: auto; }
+}
+.fragen summary::after { transition: transform .35s cubic-bezier(.3,1.4,.5,1) !important; }
 @media (max-width: 800px) { .fragen { grid-template-columns: 1fr; } }
 
 /* ---------- Kontakt ---------- */
 .kontakt { text-align: center; }
 .kontakt h2 { font-size: clamp(44px, 9vw, 120px); max-width: 12ch; margin-inline: auto; }
-.kontakt h2 em { font-style: italic; color: var(--text); }
+.kontakt h2 em { font-style: italic; color: var(--akzent); }
 .kontakt .einleitung { margin-inline: auto; }
 .kontakt .knoepfe { justify-content: center; margin-top: 36px; }
-.kontakt .knopf-linie:hover { background: rgba(14,15,11,.08); }
 .kontakt .kopier-knopf { min-width: 12em; justify-content: center; }
 .adresse-text { font-weight: 600; color: var(--text) !important; }
 .kontakt .knopf-akzent { min-height: 64px; padding: 0 34px; font-size: 18px; }
@@ -445,7 +452,7 @@ footer a:hover { color: var(--text); }
     <div class="wrap">
       <div class="start-oben">
         <div>
-          <span class="etikett">Websites, Onlineshops, Design und Social Media für kleine Betriebe</span>
+          <span class="etikett">Websites, Onlineshops, Design und Social Media für Ihren Betrieb</span>
           <h1 id="start-titel">Sie machen den Betrieb. <em>Ich mache ihn sichtbar.</em></h1>
           <div class="start-unten">
             <p class="einleitung">Ich bin Maurice, 15, aus dem Baselbiet. Website, Onlineshop, Google-Profil, Instagram, Logo oder Flyer: Ich sorge dafür, dass Ihre Kunden Sie finden und sofort sehen, was Sie anbieten.</p>
@@ -475,7 +482,7 @@ footer a:hover { color: var(--text); }
       </div>
       <ul class="fakten" aria-label="Das Wichtigste">
         <li><strong>200.–</strong>für die fertige Website, einmalig</li>
-        <li>Fertig in höchstens einer Woche</li>
+        <li>Fertig in spätestens einer Woche</li>
         <li>Entwurf gratis und unverbindlich</li>
         <li>Alles gehört Ihnen</li>
         <li>Keine Cookies, kein Abo</li>
@@ -654,7 +661,7 @@ footer a:hover { color: var(--text); }
       <div class="kopf-abschnitt">
         <span class="etikett">Ablauf</span>
         <h2 id="ablauf-titel">In vier Schritten fertig.</h2>
-        <p class="einleitung">Ob Website, Shop, Logo oder Instagram: von der ersten Mail bis zum fertigen Ergebnis in höchstens einer Woche.</p>
+        <p class="einleitung">Ob Website, Shop, Logo oder Instagram: von der ersten Mail bis zum fertigen Ergebnis in spätestens einer Woche.</p>
       </div>
       <ol class="schritte">
         <li>
@@ -711,7 +718,7 @@ footer a:hover { color: var(--text); }
       </div>
       <div>
         <p class="einleitung">Ich heisse <strong>Maurice Studer</strong> und gehe in Liestal in die 9. Klasse. In meiner Projektarbeit will ich in einem Schuljahr genug Geld für mein erstes Motorrad, den Führerausweis und die Ausrüstung verdienen — mit echter Arbeit für echte Kunden.</p>
-        <p>Viele kleine Betriebe sind online kaum zu finden: keine Website, ein leeres Instagram, ein Logo aus dem Jahr 2005. Genau da helfe ich: <strong>ein klarer Auftritt mit dem, was Ihre Kunden wirklich suchen</strong> — Website, Shop, Google-Profil, Instagram, Logo und Drucksachen, alles aus einer Hand. Ohne Schnickschnack, ohne Abo.</p>
+        <p>Viele kleine Betriebe sind online kaum zu finden: keine Website, ein leeres Instagram, ein Logo aus dem Jahr 2005. Genau da helfe ich: <strong>ein klarer Auftritt mit dem, was Ihre Kunden wirklich suchen</strong> — Website, Shop, Google-Profil, Instagram, Logo und Drucksachen, alles aus einer Hand. Ohne Schnickschnack oder Abo.</p>
       </div>
     </div>
   </section>
@@ -729,7 +736,7 @@ footer a:hover { color: var(--text); }
         </details>
         <details>
           <summary>Wie lange dauert es?</summary>
-          <p>Eine Website ist meist in höchstens einer Woche fertig, Logo, Flyer oder Instagram oft schon nach ein paar Tagen. Dafür brauche ich nur Ihre Angaben und rasche Rückmeldungen zum Entwurf.</p>
+          <p>Eine Website ist meist in spätestens einer Woche fertig, Logo, Flyer oder Instagram oft schon nach ein paar Tagen. Dafür brauche ich nur Ihre Angaben und rasche Rückmeldungen zum Entwurf.</p>
         </details>
         <details>
           <summary>Und wenn sich später etwas ändert?</summary>
