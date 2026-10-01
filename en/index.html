@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites for small businesses</title>
 <meta name="description" content="I build websites for small businesses in Switzerland: simple, fast, easy to read on a phone. A finished website from 200 francs, plus Google profiles and upkeep.">
-<meta name="theme-color" content="#eef2ff">
-<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#0c0c0d">
+<meta name="color-scheme" content="dark only">
 <meta property="og:title" content="Maurice Studer · Websites for small businesses">
 <meta property="og:description" content="A finished website from 200 francs. Simple, fast, great on a phone.">
 <meta property="og:type" content="website">
@@ -18,205 +18,293 @@
 <!-- Schriften liegen selbst auf dem Server: schneller, keine Daten an Google -->
 <link rel="preload" href="../schrift/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../schrift/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23ffffff' text-anchor='middle'%3EMS%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c8f23d'/%3E%3Cpath d='M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23' fill='none' stroke='%230c0c0d' stroke-width='3' stroke-linecap='round'/%3E%3Crect x='23.5' y='20.5' width='3.5' height='3' fill='%230c0c0d'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-/* Gestaltung nach UI/UX Pro Max (30.09.): Muster «Funnel, 3 Schritte», Stil Flat Design,
-   Farben «Creative indigo + hire green», Schriften Space Grotesk + Archivo.
-   Flat: keine Schatten, keine Verläufe, kleine Rundungen, Übergänge 150–200 ms. */
+/* Fassung 01.10.: dunkel, gross, eine Akzentfarbe. Die Fassung nach UI/UX Pro Max liegt in ../maurice-skill/ */
 
-/* ---------- Schriften (variabel, nur Latein) ---------- */
 @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500 700; font-display: swap; src: url(../schrift/space-grotesk.woff2) format("woff2"); }
 @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 700; font-display: swap; src: url(../schrift/archivo.woff2) format("woff2"); }
 
 /* ---------- Farben und Masse ---------- */
 :root {
-  --hintergrund: #eef2ff;
-  --karte: #ffffff;
-  --gedaempft: #e0e7ff;
-  --rand-farbe: #c7d2fe;
-  --text: #312e81;
-  --text-leise: #475569;
-  --primaer: #4f46e5;       /* Indigo, weisse Schrift 6.3:1 */
-  --primaer-dunkel: #4338ca;
-  --sekundaer: #818cf8;
-  --aktion: #15803d;        /* Grün nur für die eine Handlung: Anfrage. Weisse Schrift 5.0:1 */
-  --aktion-dunkel: #166534;
+  --grund: #0c0c0d;
+  --flaeche: #151517;
+  --flaeche-hell: #1d1d20;
+  --linie: #2a2a2e;
+  --text: #f3f2ee;
+  --text-leise: #a3a3a8;      /* 8:1 auf --grund */
+  --akzent: #c8f23d;          /* Limette: nur Anfrage-Knöpfe, Logo, Preise */
+  --auf-akzent: #0c0c0d;
+  --warn: #ff7a59;            /* nur für Probleme im Abschnitt Warum */
   --kopf: "Space Grotesk", system-ui, sans-serif;
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --breite: 1120px;
-  --rand: clamp(16px, 5vw, 40px);
-  --abschnitt: clamp(64px, 9vw, 120px);
-  --radius: 4px;
-  --tempo: 180ms ease;
+  --breite: 1200px;
+  --rand: clamp(16px, 5vw, 48px);
+  --abschnitt: clamp(80px, 11vw, 160px);
+  --radius: 14px;
 }
 
 /* ---------- Grundlagen ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: light only; scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--hintergrund); color: var(--text); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html { color-scheme: dark only; scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--grund); color: var(--text); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; height: auto; }
-a { color: var(--primaer); }
-h1, h2, h3 { font-family: var(--kopf); line-height: 1.1; margin: 0; letter-spacing: -.02em; text-wrap: balance; }
-h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 700; }
-h3 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--kopf); line-height: 1.02; margin: 0; letter-spacing: -.035em; font-weight: 700; text-wrap: balance; }
+h2 { font-size: clamp(38px, 6vw, 76px); }
+h3 { font-size: 22px; letter-spacing: -.015em; line-height: 1.2; font-weight: 600; }
 p { margin: 0 0 1em; }
-:focus-visible { outline: 3px solid var(--primaer); outline-offset: 3px; border-radius: 2px; }
-.skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--text); color: #fff; padding: 10px 16px; border-radius: var(--radius); text-decoration: none; }
+::selection { background: var(--akzent); color: var(--auf-akzent); }
+:focus-visible { outline: 2px solid var(--akzent); outline-offset: 4px; border-radius: 4px; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--akzent); color: var(--auf-akzent); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; }
 .skip:focus { top: 12px; }
-.icon { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 .wrap { width: min(100% - 2 * var(--rand), var(--breite)); margin-inline: auto; }
-.abschnitt { padding-block: var(--abschnitt); }
-.abschnitt.weiss { background: var(--karte); }
-.einleitung { max-width: 60ch; color: var(--text-leise); font-size: 18px; margin-top: 16px; }
-.kopf-abschnitt { margin-bottom: clamp(32px, 5vw, 56px); }
-
-/* Schritt-Marke: zeigt, wo im Ablauf man ist (1 Problem → 2 Lösung → 3 Anfrage) */
-.schritt { display: inline-flex; align-items: center; gap: 10px; font: 600 14px/1 var(--kopf); letter-spacing: .04em; text-transform: uppercase; color: var(--primaer); margin-bottom: 16px; }
-.schritt b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: var(--radius); background: var(--primaer); color: #fff; font-size: 14px; }
-.schritt.ohne-zahl::before { content: ""; width: 24px; height: 2px; background: var(--primaer); }
+.abschnitt { padding-block: var(--abschnitt); border-top: 1px solid var(--linie); }
+.etikett { display: block; font: 500 14px/1 var(--kopf); color: var(--text-leise); margin-bottom: 24px; }
+.etikett::before { content: "/ "; color: var(--akzent); }
+.einleitung { max-width: 54ch; color: var(--text-leise); font-size: clamp(17px, 1.6vw, 19px); margin-top: 24px; }
+.kopf-abschnitt { margin-bottom: clamp(40px, 6vw, 72px); }
 
 /* ---------- Knöpfe ---------- */
-.knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: var(--radius); border: 2px solid transparent; font: 600 16px/1 var(--kopf); text-decoration: none; cursor: pointer; transition: background-color var(--tempo), color var(--tempo), border-color var(--tempo); touch-action: manipulation; }
-.knopf .icon { width: 20px; height: 20px; }
-.knopf-aktion { background: var(--aktion); color: #fff; }
-.knopf-aktion:hover { background: var(--aktion-dunkel); }
-.knopf-linie { border-color: var(--primaer); color: var(--primaer); background: transparent; }
-.knopf-linie:hover { background: var(--primaer); color: #fff; }
-.knopf:active { opacity: .85; }
-.weiter { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font: 600 16px/1 var(--kopf); text-decoration: none; min-height: 44px; }
-.weiter .icon { width: 20px; height: 20px; transition: transform var(--tempo); }
-.weiter:hover .icon { transform: translateX(4px); }
+.knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--kopf); text-decoration: none; transition: background-color .2s, color .2s, transform .2s; touch-action: manipulation; }
+.knopf svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.knopf-akzent { background: var(--akzent); color: var(--auf-akzent); }
+.knopf-akzent:hover { background: #d8ff5c; }
+.knopf-akzent:hover svg { transform: translateX(3px); }
+.knopf-linie { border: 1px solid var(--linie); color: var(--text); }
+.knopf-linie:hover { background: var(--flaeche-hell); }
+.knopf:active { transform: scale(.98); }
+
+/* ---------- Logo ---------- */
+.marke { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; font: 700 18px/1 var(--kopf); letter-spacing: -.02em; }
+.marke svg { width: 36px; height: 36px; flex: none; }
 
 /* ---------- Navigation ---------- */
-.nav { position: sticky; top: 0; z-index: 50; background: var(--hintergrund); border-bottom: 2px solid var(--rand-farbe); }
-.nav-innen { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
-.marke { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: var(--text); font: 700 18px/1 var(--kopf); }
-.marke span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: var(--radius); background: var(--primaer); color: #fff; font-size: 14px; }
-.nav-links { display: flex; align-items: center; gap: clamp(8px, 2vw, 24px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
-.nav-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; color: var(--text); text-decoration: none; font-weight: 500; transition: color var(--tempo); }
-.nav-links a:hover { color: var(--primaer); }
-.nav-links .sprache { min-width: 44px; justify-content: center; border: 2px solid var(--rand-farbe); border-radius: var(--radius); font: 600 13px/1 var(--kopf); }
-.nav-links .knopf { min-height: 44px; padding: 0 16px; font-size: 15px; color: #fff; }
-@media (max-width: 760px) { .nav-links li.breit { display: none; } }
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(12,12,13,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
+.nav-innen { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.nav-links { display: flex; align-items: center; gap: clamp(6px, 2vw, 28px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav-links a:not(.knopf) { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; text-decoration: none; color: var(--text-leise); transition: color .2s; }
+.nav-links a:not(.knopf):hover { color: var(--text); }
+.nav-links .sprache { min-width: 44px; justify-content: center; font: 600 13px/1 var(--kopf); }
+.nav-links .knopf { min-height: 44px; padding: 0 20px; font-size: 15px; }
+@media (max-width: 800px) { .nav-links li.breit { display: none; } .marke .name { display: none; } }
 
 /* ---------- Start ---------- */
-.start { padding-block: clamp(48px, 9vw, 112px); }
-.start-raster { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
-.start h1 { font-size: clamp(40px, 6.6vw, 76px); font-weight: 700; }
-.start h1 em { font-style: normal; color: var(--primaer); }
-.start .einleitung { font-size: clamp(18px, 2vw, 21px); }
-.knoepfe { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.fakten { display: grid; gap: 12px; list-style: none; margin: 0; padding: 28px; background: var(--karte); border: 2px solid var(--rand-farbe); border-radius: var(--radius); }
-.fakten li { display: flex; align-items: flex-start; gap: 14px; font-weight: 500; }
-.fakten .icon { color: var(--aktion); margin-top: 1px; }
-.fakten strong { display: block; font: 700 32px/1.1 var(--kopf); color: var(--text); letter-spacing: -.02em; }
-.fakten li.gross { padding-bottom: 14px; border-bottom: 2px solid var(--gedaempft); }
-@media (max-width: 820px) { .start-raster { grid-template-columns: 1fr; } }
+.start { padding-block: clamp(64px, 10vw, 140px) clamp(56px, 8vw, 104px); }
+.start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
+.start h1 em { font-style: normal; color: var(--akzent); }
+.start-unten { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; margin-top: clamp(32px, 4vw, 48px); }
+.start .einleitung { margin: 0; font-size: clamp(18px, 1.9vw, 21px); }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+.fakten { display: flex; flex-wrap: wrap; gap: 12px 36px; list-style: none; margin: clamp(48px, 7vw, 88px) 0 0; padding: 28px 0 0; border-top: 1px solid var(--linie); color: var(--text-leise); font-size: 15px; }
+.fakten li { display: flex; align-items: baseline; gap: 10px; }
+.fakten strong { font: 700 28px/1 var(--kopf); color: var(--akzent); letter-spacing: -.02em; }
 
-/* ---------- 1 Problem ---------- */
-.probleme { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.problem { background: var(--hintergrund); border-radius: var(--radius); padding: 24px; }
-.problem .icon { width: 32px; height: 32px; color: var(--primaer); margin-bottom: 14px; }
-.problem p { color: var(--text-leise); margin: 8px 0 0; font-size: 16px; }
+/* ---------- Schaufenster: Beispiele im Browserrahmen ---------- */
+.schaufenster { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.5vw, 32px); }
+.fenster { display: block; text-decoration: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; transition: border-color .25s, transform .25s; }
+.fenster:hover { border-color: #4a4a50; transform: translateY(-4px); }
+.fenster-leiste { display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-bottom: 1px solid var(--linie); }
+.fenster-leiste i { width: 10px; height: 10px; border-radius: 50%; background: var(--linie); }
+.fenster-leiste span { margin-left: 10px; font-size: 12px; color: var(--text-leise); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fenster img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: var(--flaeche-hell); }
+.fenster-text { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 22px 24px 26px; }
+.fenster-text p { color: var(--text-leise); font-size: 16px; margin: 8px 0 0; }
+.fenster-text svg { width: 22px; height: 22px; flex: none; margin-top: 2px; fill: none; stroke: var(--akzent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
+.fenster:hover .fenster-text svg { transform: translate(3px, -3px); }
+.hinweis { display: inline-block; font: 500 12px/1 var(--kopf); letter-spacing: .06em; text-transform: uppercase; color: var(--text-leise); border: 1px solid var(--linie); border-radius: 999px; padding: 6px 10px; margin-bottom: 12px; }
+.fenster.gross { grid-column: 1 / -1; }
+.fenster.gross img { aspect-ratio: 16 / 8; }
+.hinweis.echt { color: var(--auf-akzent); background: var(--akzent); border-color: var(--akzent); }
+@media (max-width: 760px) { .schaufenster { grid-template-columns: 1fr; } .fenster.gross img { aspect-ratio: 16 / 10; } }
 
-/* ---------- 2 Lösung: Angebot ---------- */
-.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.karte { background: var(--karte); border: 2px solid var(--rand-farbe); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; }
-.karte .icon { width: 32px; height: 32px; color: var(--primaer); margin-bottom: 16px; }
-.karte.haupt { background: var(--primaer); border-color: var(--primaer); color: #fff; }
-.karte.haupt .icon, .karte.haupt .preis { color: #fff; }
-.karte.haupt p { color: #e0e7ff; }
-.karte p { color: var(--text-leise); font-size: 16px; margin: 10px 0 20px; }
-.preis { margin-top: auto; font: 700 30px/1 var(--kopf); letter-spacing: -.02em; color: var(--text); font-variant-numeric: tabular-nums; }
-.preis small { font: 500 15px/1 var(--sans); letter-spacing: 0; opacity: .85; }
-.zusatz { display: flex; gap: 14px; align-items: flex-start; margin-top: 16px; padding: 20px 24px; background: var(--gedaempft); border-radius: var(--radius); color: var(--text-leise); font-size: 16px; }
-.zusatz .icon { color: var(--primaer); }
+/* ---------- Warum: jedes Problem als kleines Bild ---------- */
+.gruende { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); }
+.grund { background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 32px); }
+.grund h3, .grund p { padding-inline: clamp(8px, 1.5vw, 16px); }
+.grund h3 { display: flex; align-items: baseline; gap: 12px; }
+.grund h3 b { font: 700 14px/1 var(--kopf); color: var(--akzent); }
+.grund p { color: var(--text-leise); font-size: 16px; margin: 10px 0 0; }
+.bild { position: relative; height: 210px; margin-bottom: 26px; padding: 18px; background: var(--grund); border: 1px solid var(--linie); border-radius: 10px; overflow: hidden; font-size: 13px; line-height: 1.3; }
+/* 1: Suche ohne den eigenen Betrieb */
+.suchfeld { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border: 1px solid var(--linie); border-radius: 999px; color: var(--text); margin-bottom: 12px; }
+.suchfeld::before { content: ""; width: 9px; height: 9px; border: 2px solid var(--text-leise); border-radius: 50%; }
+.treffer { display: flex; justify-content: space-between; gap: 8px; padding: 9px 4px; border-bottom: 1px solid var(--linie); }
+.treffer b { font-weight: 600; } .treffer span { color: var(--text-leise); white-space: nowrap; }
+.treffer.fehlt { border: 1px dashed var(--warn); border-radius: 8px; margin-top: 8px; padding: 9px 10px; }
+.treffer.fehlt b, .treffer.fehlt span { color: var(--warn); }
+/* 2: veraltete Öffnungszeiten */
+.zeiten-kopf { display: flex; justify-content: space-between; font: 600 15px/1 var(--kopf); margin-bottom: 14px; }
+.zeiten-kopf span { font: 500 11px/1 var(--sans); color: var(--text-leise); border: 1px solid var(--linie); border-radius: 999px; padding: 4px 8px; }
+.zeile { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--linie); color: var(--text-leise); }
+.zeile s { color: var(--text); text-decoration-color: var(--warn); text-decoration-thickness: 2px; }
+.schild { position: absolute; right: 18px; bottom: 18px; transform: rotate(-6deg); padding: 8px 14px; border: 2px solid var(--warn); border-radius: 6px; color: var(--warn); font: 700 15px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; }
+/* 3: Handy mit winziger Schrift */
+.bild.handy-feld { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 0; }
+.handy { width: 110px; height: 160px; border: 2px solid #3a3a40; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
+.handy i { display: block; height: 3px; border-radius: 2px; background: #3a3a40; }
+.handy i:nth-child(3n) { width: 70%; } .handy i:nth-child(4n) { width: 85%; }
+.uhr { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 58px; height: 58px; border: 2px solid var(--warn); border-radius: 50%; color: var(--warn); font: 700 17px/1 var(--kopf); }
+.lupe { position: absolute; top: 18px; left: 18px; color: var(--text-leise); max-width: 9em; }
+@media (max-width: 860px) { .gruende { grid-template-columns: 1fr; } }
+
+/* ---------- Angebot als Preisliste ---------- */
+.preisliste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linie); }
+.preisliste li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; align-items: baseline; padding: clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--linie); }
+.preisliste h3 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -.03em; }
+.preisliste p { grid-column: 1; color: var(--text-leise); font-size: 16px; margin: 0; max-width: 58ch; }
+.preis { grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
+.preis small.fein { margin-top: 6px; font-size: 12px; }
+.preisliste li.haupt .preis { color: var(--akzent); }
+.zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
 .zusatz strong { color: var(--text); }
-.zusatz p { margin: 0; }
+@media (max-width: 560px) { .preisliste li { grid-template-columns: 1fr; } .preis { grid-column: 1; grid-row: auto; text-align: left; } }
 
-/* ---------- 2 Lösung: Arbeiten ---------- */
-.arbeiten-kopf { margin-top: clamp(64px, 8vw, 104px); }
-.arbeiten { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
-.arbeit { display: block; text-decoration: none; color: var(--text); background: var(--karte); border: 2px solid var(--rand-farbe); border-radius: var(--radius); overflow: hidden; transition: border-color var(--tempo); }
-.arbeit:hover { border-color: var(--primaer); }
-.arbeit img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 2px solid var(--rand-farbe); background: var(--gedaempft); }
-.arbeit div { padding: 20px 22px 24px; }
-.arbeit h3 { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.arbeit h3 .icon { width: 20px; height: 20px; color: var(--primaer); transition: transform var(--tempo); }
-.arbeit:hover h3 .icon { transform: translate(2px, -2px); }
-.arbeit p { color: var(--text-leise); font-size: 16px; margin: 8px 0 0; }
-.etikett { display: inline-block; font: 600 12px/1 var(--kopf); letter-spacing: .06em; text-transform: uppercase; background: var(--gedaempft); color: var(--primaer-dunkel); border-radius: var(--radius); padding: 6px 8px; margin-bottom: 12px; }
+/* ---------- Ablauf: vier kleine Szenen, die abspielen, sobald sie sichtbar werden ---------- */
+.schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.schritte li { counter-increment: s; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 30px); transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; animation: auf .6s ease-out both; animation-delay: var(--d); }
+.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #4a4a50; }
+.schritte li:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
+.schritte h3 { display: flex; align-items: baseline; gap: 12px; padding-inline: clamp(8px, 1.2vw, 12px); }
+.schritte h3::before { content: "0" counter(s); font: 700 14px/1 var(--kopf); color: var(--akzent); }
+.schritte p { color: var(--text-leise); font-size: 16px; margin: 10px 0 0; padding-inline: clamp(8px, 1.2vw, 12px); }
+.szene { position: relative; height: 200px; margin-bottom: 24px; display: grid; place-items: center; background: var(--grund); border: 1px solid var(--linie); border-radius: 10px; overflow: hidden; font-size: 12px; line-height: 1.3; }
+.schritte li { --d: 0s; }
+@media (min-width: 901px) { .schritte li:nth-child(2) { --d: .5s; } .schritte li:nth-child(3) { --d: 1s; } .schritte li:nth-child(4) { --d: 1.5s; } }
+@media (max-width: 900px) { .schritte { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .schritte { grid-template-columns: 1fr; } }
+
+@keyframes auf { from { opacity: 0; translate: 0 24px; } }
+@keyframes rein { from { opacity: 0; transform: scale(.5); } }
+@keyframes breit { from { width: 0; } }
+@keyframes tippen { from { clip-path: inset(0 100% 0 0); } }
+@keyframes kurz { 0%, 100% { opacity: 0; } 12%, 85% { opacity: 1; } }
+@keyframes huepfen { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
+@keyframes blinken { 50% { opacity: 0; } }
+@keyframes puls { from { box-shadow: 0 0 0 0 rgba(12,12,13,.55); } to { box-shadow: 0 0 0 9px rgba(12,12,13,0); } }
+@keyframes zeigen { from { opacity: 0; translate: 46px 50px; } }
+@keyframes konfetti { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(220deg); } }
+.federnd { animation-timing-function: cubic-bezier(.3,1.6,.5,1) !important; }
+
+/* Ohne JavaScript oder mit reduzierter Bewegung: alles sofort im Endzustand. Mit JS warten die Szenen, bis sie sichtbar sind. */
+.js .schritte li:not(.an), .js .schritte li:not(.an) * { animation-play-state: paused !important; }
+
+/* 1 Angaben: ein Mail füllt sich */
+.mail { width: 80%; padding: 12px 14px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 10px; }
+.mail-kopf { display: flex; justify-content: space-between; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid var(--linie); color: var(--text-leise); }
+.mail-kopf b { color: var(--text); font-weight: 600; }
+.zeile-mail { display: block; height: 6px; margin: 7px 0; border-radius: 3px; background: #34343a; animation: breit .5s ease-out both; }
+.zeile-mail:nth-of-type(1) { width: 92%; animation-delay: calc(var(--d) + .3s); }
+.zeile-mail:nth-of-type(2) { width: 78%; animation-delay: calc(var(--d) + .5s); }
+.zeile-mail:nth-of-type(3) { width: 55%; animation-delay: calc(var(--d) + .7s); }
+.anhaenge { display: flex; gap: 6px; margin-top: 12px; }
+.anhaenge span { display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border: 1px solid var(--linie); border-radius: 999px; color: var(--text-leise); font-size: 11px; animation: rein .45s both; }
+.anhaenge span::before { content: ""; width: 6px; height: 6px; border-radius: 2px; background: var(--akzent); }
+.anhaenge span:nth-child(1) { animation-delay: calc(var(--d) + 1s); }
+.anhaenge span:nth-child(2) { animation-delay: calc(var(--d) + 1.15s); }
+.gesendet { position: absolute; right: 12px; bottom: 12px; padding: 5px 10px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 700 11px/1 var(--kopf); animation: rein .45s both; animation-delay: calc(var(--d) + 1.5s); }
+
+/* 2 Entwurf: die Seite baut sich auf */
+.browser { position: relative; width: 82%; height: 146px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; overflow: hidden; }
+.browser-leiste { display: flex; align-items: center; gap: 4px; height: 18px; padding: 0 8px; border-bottom: 1px solid var(--linie); }
+.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #3a3a40; }
+.baustein { border-radius: 4px; background: #2c2c31; animation: auf .5s both; }
+.baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(200,242,61,.45), rgba(200,242,61,.06)); animation-delay: calc(var(--d) + .25s); }
+.baustein.titel { width: 50%; height: 8px; margin: 0 8px 8px; animation-delay: calc(var(--d) + .45s); }
+.bausteine { display: flex; gap: 6px; margin: 0 8px; }
+.bausteine .baustein { flex: 1; height: 38px; }
+.bausteine .baustein:nth-child(1) { animation-delay: calc(var(--d) + .6s); }
+.bausteine .baustein:nth-child(2) { animation-delay: calc(var(--d) + .72s); }
+.bausteine .baustein:nth-child(3) { animation-delay: calc(var(--d) + .84s); }
+.zeiger { position: absolute; left: 58%; top: 52%; width: 18px; height: 18px; animation: zeigen .9s cubic-bezier(.4,0,.2,1) both; animation-delay: calc(var(--d) + 1.1s); filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)); }
+
+/* 3 Anpassen: kurzer Chat */
+.chat { display: flex; flex-direction: column; gap: 8px; width: 84%; }
+.blase { max-width: 82%; padding: 8px 12px; border-radius: 14px; font-size: 12px; animation: rein .4s both; }
+.blase.sie { align-self: flex-start; background: var(--flaeche-hell); border-bottom-left-radius: 4px; transform-origin: left bottom; }
+.blase.ich { align-self: flex-end; background: var(--akzent); color: var(--auf-akzent); font-weight: 600; border-bottom-right-radius: 4px; transform-origin: right bottom; }
+.chat > :nth-child(1) { animation-delay: calc(var(--d) + .3s); }
+.antwort { position: relative; align-self: flex-end; display: flex; justify-content: flex-end; min-width: 60%; }
+.antwort .blase { animation-delay: calc(var(--d) + 1.7s); max-width: 100%; }
+.tipp { position: absolute; right: 0; top: 2px; display: flex; gap: 4px; padding: 10px 12px; border-radius: 14px; background: var(--flaeche-hell); opacity: 0; animation: kurz 1s both; animation-delay: calc(var(--d) + .7s); }
+.tipp i { width: 5px; height: 5px; border-radius: 50%; background: var(--text-leise); animation: huepfen .9s infinite; }
+.tipp i:nth-child(2) { animation-delay: .15s; } .tipp i:nth-child(3) { animation-delay: .3s; }
+.chat > :nth-child(3) { animation-delay: calc(var(--d) + 2.3s); }
+
+/* 4 Online: Adresse tippt sich, dann Konfetti */
+.online { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 84%; }
+.adresse { display: flex; align-items: center; gap: 8px; width: 100%; height: 36px; padding: 0 14px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 999px; color: var(--text); font-size: 13px; }
+.adresse svg { width: 12px; height: 12px; flex: none; fill: none; stroke: var(--text-leise); stroke-width: 2.4; }
+.adresse .url { animation: tippen 1s steps(16) both; animation-delay: calc(var(--d) + .3s); }
+.adresse .strich { width: 1.5px; height: 15px; margin-left: -6px; background: var(--akzent); animation: blinken 1s steps(1) infinite; }
+.live { position: relative; display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 700 15px/1 var(--kopf); animation: rein .5s both; animation-delay: calc(var(--d) + 1.4s); }
+.live .punkt { width: 8px; height: 8px; border-radius: 50%; background: var(--auf-akzent); animation: puls 1.4s ease-out infinite; }
+.konfetti { position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; border-radius: 2px; opacity: 0; animation: konfetti 1s ease-out both; animation-delay: calc(var(--d) + 1.5s); }
+.konfetti:nth-child(odd) { background: var(--akzent); } .konfetti:nth-child(even) { background: var(--text); } .konfetti:nth-child(3n) { background: var(--warn); border-radius: 50%; }
+
+@media (prefers-reduced-motion: reduce) { .schritte li, .schritte li * { animation: none !important; } .tipp, .konfetti { display: none; } }
 
 /* ---------- Über mich ---------- */
-.ueber { display: grid; grid-template-columns: 200px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
-.bild-platz { aspect-ratio: 1; border-radius: var(--radius); background: var(--primaer); display: grid; place-items: center; font: 700 64px/1 var(--kopf); color: #fff; letter-spacing: -.04em; }
-.ueber p { color: var(--text-leise); max-width: 64ch; }
+.ueber { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); }
+.ueber p { color: var(--text-leise); font-size: 18px; max-width: 60ch; }
 .ueber p strong { color: var(--text); font-weight: 600; }
-@media (max-width: 720px) { .ueber { grid-template-columns: 1fr; } .bild-platz { width: 120px; font-size: 40px; } }
-
-/* ---------- 3 Anfrage: Ablauf ---------- */
-.schritte { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; counter-reset: s; }
-.schritte li { counter-increment: s; background: var(--karte); border: 2px solid var(--rand-farbe); border-radius: var(--radius); padding: 22px; }
-.schritte li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--radius); background: var(--gedaempft); color: var(--primaer); font: 700 16px/1 var(--kopf); margin-bottom: 16px; }
-.schritte p { color: var(--text-leise); font-size: 16px; margin: 8px 0 0; }
-
-/* ---------- Kontakt ---------- */
-.kontakt { margin-top: clamp(48px, 7vw, 80px); background: var(--text); color: #fff; border-radius: var(--radius); padding: clamp(32px, 6vw, 72px); display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
-.kontakt h2 { color: #fff; }
-.kontakt .einleitung { color: #c7d2fe; }
-.kontakt .knoepfe { margin-top: 0; flex-direction: column; align-items: stretch; }
-.kontakt .knopf-aktion { min-height: 60px; font-size: 18px; }
-.kontakt .klein { margin: 0; font-size: 15px; color: #c7d2fe; text-align: center; overflow-wrap: anywhere; }
-@media (max-width: 820px) { .kontakt { grid-template-columns: 1fr; } }
+.ueber .einleitung { margin-top: 0; }
+@media (max-width: 800px) { .ueber { grid-template-columns: 1fr; } }
 
 /* ---------- Fragen ---------- */
-.fragen { max-width: 780px; }
-.fragen details { border-bottom: 2px solid var(--gedaempft); }
-.fragen summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 16px 0; font: 600 18px/1.3 var(--kopf); }
+.fragen { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); }
+.fragen details { border-bottom: 1px solid var(--linie); }
+.fragen details:first-child { border-top: 1px solid var(--linie); }
+.fragen summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; padding: 18px 0; font: 600 19px/1.3 var(--kopf); }
 .fragen summary::-webkit-details-marker { display: none; }
-.fragen summary .icon { color: var(--primaer); transition: transform var(--tempo); }
-.fragen details[open] summary .icon { transform: rotate(45deg); }
-.fragen details p { color: var(--text-leise); margin: 0 0 22px; max-width: 64ch; }
+.fragen summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--akzent); border-bottom: 2px solid var(--akzent); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
+.fragen details[open] summary::after { transform: rotate(-135deg); }
+.fragen details p { color: var(--text-leise); margin: 0 0 24px; max-width: 62ch; }
+@media (max-width: 800px) { .fragen { grid-template-columns: 1fr; } }
+
+/* ---------- Kontakt ---------- */
+.kontakt { text-align: center; }
+.kontakt h2 { font-size: clamp(44px, 9vw, 120px); max-width: 12ch; margin-inline: auto; }
+.kontakt h2 em { font-style: normal; color: var(--akzent); }
+.kontakt .einleitung { margin-inline: auto; }
+.kontakt .knoepfe { justify-content: center; margin-top: 36px; }
+.kontakt .knopf-akzent { min-height: 64px; padding: 0 34px; font-size: 18px; }
+.kontakt .klein { margin: 18px 0 0; font-size: 15px; color: var(--text-leise); overflow-wrap: anywhere; }
+.mail-weg a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
+.kopieren { min-height: 44px; padding: 0 12px; background: none; border: 0; color: var(--text); font: inherit; cursor: pointer; overflow-wrap: anywhere; }
+.kopieren span { color: var(--akzent); }
 
 /* ---------- Fuss ---------- */
-footer { padding: 32px 0 40px; color: var(--text-leise); font-size: 15px; border-top: 2px solid var(--rand-farbe); }
+footer { padding: 28px 0 40px; border-top: 1px solid var(--linie); color: var(--text-leise); font-size: 15px; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
-footer nav { display: flex; gap: 8px 20px; flex-wrap: wrap; }
-footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+footer a:hover { color: var(--text); }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
-<!-- Symbole: Lucide (ISC-Lizenz), direkt eingebettet -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <!-- Logo: kleines m mit Schreibmarke dahinter — «hier wird gebaut» -->
+  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#c8f23d"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#0c0c0d" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#0c0c0d"/></symbol>
   <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
   <symbol id="i-extern" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
-  <symbol id="i-haken" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
-  <symbol id="i-suche" viewBox="0 0 24 24"><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-  <symbol id="i-handy" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
-  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-stern" viewBox="0 0 24 24"><path d="M11.53 2.3a.53.53 0 0 1 .95 0l2.31 4.68a2.12 2.12 0 0 0 1.6 1.16l5.16.76a.53.53 0 0 1 .3.9l-3.74 3.64a2.12 2.12 0 0 0-.61 1.88l.88 5.14a.53.53 0 0 1-.77.56l-4.62-2.43a2.12 2.12 0 0 0-1.97 0L6.4 21.02a.53.53 0 0 1-.77-.56l.88-5.14a2.12 2.12 0 0 0-.61-1.88L2.16 9.8a.53.53 0 0 1 .3-.9l5.16-.76a2.12 2.12 0 0 0 1.6-1.16z"/></symbol>
-  <symbol id="i-stift" viewBox="0 0 24 24"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></symbol>
-  <symbol id="i-geschenk" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></symbol>
 </svg>
 
 <a class="skip" href="#inhalt">Skip to content</a>
 
 <header class="nav">
   <div class="wrap nav-innen">
-    <a class="marke" href="#inhalt" aria-label="Maurice Studer, back to top"><span aria-hidden="true">MS</span>Maurice Studer</a>
+    <a class="marke" href="#inhalt" aria-label="Maurice Studer, back to top"><svg aria-hidden="true"><use href="#logo"/></svg><span class="name">Maurice Studer</span></a>
     <ul class="nav-links" aria-label="Main navigation">
-      <li class="breit"><a href="#angebot">Services</a></li>
       <li class="breit"><a href="#arbeiten">Work</a></li>
+      <li class="breit"><a href="#angebot">Services</a></li>
       <li class="breit"><a href="#ueber">About</a></li>
-      <li><a class="sprache" href="../" hreflang="de" lang="de">DE</a></li>
-      <li><a class="knopf knopf-aktion" href="#kontakt">Enquire</a></li>
+      <li><a class="knopf knopf-akzent" href="#kontakt">Enquire</a></li>
     </ul>
   </div>
 </header>
@@ -224,171 +312,252 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; color: v
 <main id="inhalt">
 
   <section class="start wrap" aria-labelledby="start-titel">
-    <div class="start-raster">
-      <div>
-        <span class="schritt ohne-zahl">Websites for small businesses</span>
-        <h1 id="start-titel">Your business deserves a <em>good website.</em></h1>
-        <p class="einleitung">I'm Maurice, 15, from Basel-Landschaft. I build websites that load fast, look good on a phone and tell your customers right away where you are and when you're open.</p>
-        <div class="knoepfe">
-          <a class="knopf knopf-aktion" href="#kontakt"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Ask for a free draft</a>
-          <a class="knopf knopf-linie" href="#arbeiten">See my work</a>
-        </div>
+    <span class="etikett">Websites for restaurants, shops and small businesses</span>
+    <h1 id="start-titel">Your business deserves a <em>good website.</em></h1>
+    <div class="start-unten">
+      <p class="einleitung">I'm Maurice, 15, from Basel-Landschaft. I build websites that load fast, look good on a phone and tell your customers right away where you are and when you're open.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf-akzent" href="#kontakt">Ask for a free draft<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+        <a class="knopf knopf-linie" href="#arbeiten">See my work</a>
       </div>
-      <ul class="fakten" aria-label="Key facts">
-        <li class="gross"><svg class="icon" aria-hidden="true"><use href="#i-haken"/></svg><span><strong>200.–</strong>for the finished website, one-off</span></li>
-        <li><svg class="icon" aria-hidden="true"><use href="#i-haken"/></svg>Free draft, no obligation</li>
-        <li><svg class="icon" aria-hidden="true"><use href="#i-haken"/></svg>The site belongs to you</li>
-        <li><svg class="icon" aria-hidden="true"><use href="#i-haken"/></svg>No cookies, no subscription</li>
-      </ul>
+    </div>
+    <ul class="fakten" aria-label="Key facts">
+      <li><strong>200.–</strong>for the finished website, one-off</li>
+      <li>Done in one week at most</li>
+      <li>Free draft, no obligation</li>
+      <li>The site belongs to you</li>
+      <li>No cookies, no subscription</li>
+    </ul>
+  </section>
+
+  <section class="abschnitt" id="arbeiten" aria-labelledby="arbeiten-titel">
+    <div class="wrap">
+      <div class="kopf-abschnitt">
+        <span class="etikett">Work</span>
+        <h2 id="arbeiten-titel">This is what my sites look like.</h2>
+        <p class="einleitung">One site for a real client and two fictional businesses — that's how different a website can look, depending on what suits your business. Click and try them on your phone. (All three sites are in German.)</p>
+      </div>
+      <div class="schaufenster">
+        <a class="fenster gross" href="https://mauricestuder.github.io/nailedbyjoanna/" target="_blank" rel="noopener">
+          <div class="fenster-leiste" aria-hidden="true"><i></i><i></i><i></i><span>mauricestuder.github.io/nailedbyjoanna</span></div>
+          <img src="../bilder/nailedbyjoanna.jpg" width="1280" height="800" alt="Nailed by Joanna home page: light beige, gold lettering, photo of nails" loading="lazy">
+          <div class="fenster-text">
+            <div>
+              <span class="hinweis echt">Client project</span>
+              <h3>Nail studio «Nailed by Joanna»</h3>
+              <p>Joanna is a world-class nail artist: 11 first places at European and World Championships. Her site: light and elegant, work shown as a gallery, price list, "book an appointment" as the main button.</p>
+            </div>
+            <svg aria-hidden="true"><use href="#i-extern"/></svg>
+          </div>
+        </a>
+        <a class="fenster" href="https://mauricestuder.github.io/demo-takeaway/" target="_blank" rel="noopener">
+          <div class="fenster-leiste" aria-hidden="true"><i></i><i></i><i></i><span>mauricestuder.github.io/demo-takeaway</span></div>
+          <img src="../bilder/firestone.jpg" width="1280" height="800" alt="Firestone steakhouse home page: dark photo, gold lettering" loading="lazy">
+          <div class="fenster-text">
+            <div>
+              <span class="hinweis">Fictional business</span>
+              <h3>Steakhouse «Firestone»</h3>
+              <p>Restaurant: dark and elegant, menu with wine list, "book a table" as the main button.</p>
+            </div>
+            <svg aria-hidden="true"><use href="#i-extern"/></svg>
+          </div>
+        </a>
+        <a class="fenster" href="https://mauricestuder.github.io/demo-reinigung/" target="_blank" rel="noopener">
+          <div class="fenster-leiste" aria-hidden="true"><i></i><i></i><i></i><span>mauricestuder.github.io/demo-reinigung</span></div>
+          <img src="../bilder/klarblick.jpg" width="1280" height="800" alt="Klarblick cleaning company home page: light and blue" loading="lazy">
+          <div class="fenster-text">
+            <div>
+              <span class="hinweis">Fictional business</span>
+              <h3>Cleaning company «Klarblick»</h3>
+              <p>Service business: light and clear, services with guide prices, a quote in three steps, service area on a map.</p>
+            </div>
+            <svg aria-hidden="true"><use href="#i-extern"/></svg>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="abschnitt weiss" id="problem" aria-labelledby="problem-titel">
+  <section class="abschnitt" id="warum" aria-labelledby="warum-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="schritt"><b>1</b>The problem</span>
-        <h2 id="problem-titel">If they can't find you, they won't come.</h2>
+        <span class="etikett">Why</span>
+        <h2 id="warum-titel">If they can't find you, they won't come.</h2>
         <p class="einleitung">Most customers search on their phone first. Without a website — or with an old one — this happens:</p>
       </div>
-      <div class="probleme">
-        <div class="problem"><svg class="icon" aria-hidden="true"><use href="#i-suche"/></svg><h3>Can't be found</h3><p>Google shows your competitors, not you.</p></div>
-        <div class="problem"><svg class="icon" aria-hidden="true"><use href="#i-uhr"/></svg><h3>Wrong details</h3><p>Old opening hours and prices in directories send customers to a locked door.</p></div>
-        <div class="problem"><svg class="icon" aria-hidden="true"><use href="#i-handy"/></svg><h3>Not made for phones</h3><p>Tiny text, no call button — three seconds later the customer is gone.</p></div>
+      <div class="gruende">
+        <div class="grund">
+          <div class="bild" aria-hidden="true">
+            <div class="suchfeld">pizza near me</div>
+            <div class="treffer"><b>Pizzeria Rival</b><span>300 m</span></div>
+            <div class="treffer"><b>Ristorante Next Door</b><span>800 m</span></div>
+            <div class="treffer fehlt"><b>Your business</b><span>not found</span></div>
+          </div>
+          <h3><b>01</b>Can't be found</h3><p>Google shows your competitors, not you.</p>
+        </div>
+        <div class="grund">
+          <div class="bild" aria-hidden="true">
+            <div class="zeiten-kopf">Opening hours <span>as of 2019</span></div>
+            <div class="zeile"><span>Mon–Fri</span><s>8 am–6 pm</s></div>
+            <div class="zeile"><span>Saturday</span><s>9 am–4 pm</s></div>
+            <div class="schild">Closed</div>
+          </div>
+          <h3><b>02</b>Wrong details</h3><p>Old opening hours and prices in directories send customers to a locked door.</p>
+        </div>
+        <div class="grund">
+          <div class="bild handy-feld" aria-hidden="true">
+            <span class="lupe">Text too small, no call button</span>
+            <div class="handy"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="uhr">3 s</div>
+          </div>
+          <h3><b>03</b>Not made for phones</h3><p>Tiny text, no call button — three seconds later the customer is gone.</p>
+        </div>
       </div>
-      <a class="weiter" href="#angebot">My solution<svg class="icon" aria-hidden="true"><use href="#i-pfeil"/></svg></a>
     </div>
   </section>
 
   <section class="abschnitt" id="angebot" aria-labelledby="angebot-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="schritt"><b>2</b>The solution</span>
+        <span class="etikett">Services</span>
         <h2 id="angebot-titel">What I do — and what it costs.</h2>
-        <p class="einleitung">Fixed prices, no hidden costs. All prices in Swiss francs.</p>
+        <p class="einleitung">For restaurants, online shops, hair salons, tradespeople, practices and every other small business. Fixed prices, no hidden costs. All prices in Swiss francs.</p>
       </div>
-      <div class="karten">
-        <article class="karte haupt">
-          <svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+      <ul class="preisliste">
+        <li class="haupt">
           <h3>Website</h3>
           <p>A site for your business, built for phones: services, prices, opening hours, map, call and email buttons. You see the draft before you pay anything.</p>
-          <div class="preis">200.– <small>one-off</small></div>
-        </article>
-        <article class="karte">
-          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <div class="preis">200.– <small>one-off</small><small class="fein">(+ about 15.– a year for the domain)</small></div>
+        </li>
+        <li>
+          <h3>Redo an old website</h3>
+          <p>Is your website showing its age or hard to read on a phone? I rebuild it and keep your texts and pictures.</p>
+          <div class="preis">from 150.–</div>
+        </li>
+        <li>
           <h3>Google profile</h3>
           <p>Your Google Maps listing, complete: photos, opening hours, services, link to your website. So people can find you.</p>
-          <div class="preis">120.–</div>
-        </article>
-        <article class="karte">
-          <svg class="icon" aria-hidden="true"><use href="#i-stern"/></svg>
-          <h3>Review stand</h3>
-          <p>A small stand for your counter. Customers tap their phone and the Google review page opens. With NFC and a QR code.</p>
-          <div class="preis">25.– <small>· two for 40.–</small></div>
-        </article>
-        <article class="karte">
-          <svg class="icon" aria-hidden="true"><use href="#i-stift"/></svg>
+          <div class="preis">50.–</div>
+        </li>
+        <li>
           <h3>Upkeep</h3>
           <p>Your existing website or online shop: updating prices, hours and texts, adding products with photos.</p>
           <div class="preis">30.– <small>per hour</small></div>
-        </article>
-      </div>
-      <div class="zusatz">
-        <svg class="icon" aria-hidden="true"><use href="#i-geschenk"/></svg>
-        <p><strong>Extras, if you like:</strong> an email address on your own domain (info@yourbusiness.ch), a simple logo or business card, and upkeep for the whole year. We'll talk about that once the website is up.</p>
-      </div>
-
-      <div class="kopf-abschnitt arbeiten-kopf" id="arbeiten">
-          <h2 id="arbeiten-titel">This is what my sites look like.</h2>
-          <p class="einleitung">Two examples showing how different a website can look — depending on what suits your business. Click and try them on your phone. (Both sites are in German.)</p>
-      </div>
-      <div class="arbeiten">
-        <a class="arbeit" href="https://mauricestuder.github.io/demo-takeaway/" target="_blank" rel="noopener">
-          <img src="../bilder/firestone.jpg" width="1280" height="800" alt="Firestone steakhouse home page: dark photo, gold lettering" loading="lazy">
-          <div>
-            <span class="etikett">Example site</span>
-            <h3>Steakhouse «Firestone»<svg class="icon" aria-hidden="true"><use href="#i-extern"/></svg></h3>
-            <p>Restaurant: dark and elegant, menu with wine list, "book a table" as the main button.</p>
-          </div>
-        </a>
-        <a class="arbeit" href="https://mauricestuder.github.io/demo-reinigung/" target="_blank" rel="noopener">
-          <img src="../bilder/klarblick.jpg" width="1280" height="800" alt="Klarblick cleaning company home page: light and blue" loading="lazy">
-          <div>
-            <span class="etikett">Example site</span>
-            <h3>Cleaning company «Klarblick»<svg class="icon" aria-hidden="true"><use href="#i-extern"/></svg></h3>
-            <p>Service business: light and clear, services with guide prices, a quote in three steps, service area on a map.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="abschnitt weiss" id="ueber" aria-labelledby="ueber-titel">
-    <div class="wrap ueber">
-      <div class="bild-platz" aria-hidden="true">MS</div>
-      <div>
-        <span class="schritt ohne-zahl">About me</span>
-        <h2 id="ueber-titel">Young, careful and quick.</h2>
-        <p class="einleitung">My name is <strong>Maurice Studer</strong> and I'm in 9th grade in Liestal. For my school project I want to earn enough in one school year for my first motorbike, the licence and the gear — with real work for real customers.</p>
-        <p>Many small businesses have no website, or one nobody has touched in years. That's where I help: <strong>a clear page with what your customers are actually looking for</strong> — services, prices, opening hours, address, contact. No frills, no subscription, no cookie banner.</p>
-        <p>Because I'm still at school, I work evenings and weekends. In return I'm affordable, reply quickly and take my time with every site.</p>
-      </div>
+        </li>
+      </ul>
+      <p class="zusatz"><strong>Extras, if you like:</strong> an email address on your own domain (info@yourbusiness.ch), a simple logo or business card, and upkeep for the whole year. We'll talk about that once the website is up.</p>
     </div>
   </section>
 
   <section class="abschnitt" id="ablauf" aria-labelledby="ablauf-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="schritt"><b>3</b>Let's go</span>
+        <span class="etikett">How it works</span>
         <h2 id="ablauf-titel">Online in four steps.</h2>
+        <p class="einleitung">From the first email to the finished site in one week at most.</p>
       </div>
       <ol class="schritte">
-        <li><h3>Details</h3><p>You send me what should go on the site: services, hours, a few photos. One email is enough.</p></li>
-        <li><h3>Draft</h3><p>I build a draft and send you the link. If you don't like it, it costs nothing.</p></li>
-        <li><h3>Adjust</h3><p>You tell me what should change. I adjust it until it's right.</p></li>
-        <li><h3>Live</h3><p>The site goes on your own address, in your name. It belongs to you.</p></li>
+        <li>
+          <div class="szene" aria-hidden="true">
+            <div class="mail">
+              <div class="mail-kopf"><b>To: Maurice</b><span>New enquiry</span></div>
+              <i class="zeile-mail"></i><i class="zeile-mail"></i><i class="zeile-mail"></i>
+              <div class="anhaenge"><span class="federnd">photos.zip</span><span class="federnd">hours.pdf</span></div>
+            </div>
+            <span class="gesendet federnd">Sent</span>
+          </div>
+          <h3>Details</h3><p>You send me what should go on the site: services, hours, a few photos. One email is enough.</p>
+        </li>
+        <li>
+          <div class="szene" aria-hidden="true">
+            <div class="browser">
+              <div class="browser-leiste"><i></i><i></i><i></i></div>
+              <div class="baustein held"></div>
+              <div class="baustein titel"></div>
+              <div class="bausteine"><div class="baustein"></div><div class="baustein"></div><div class="baustein"></div></div>
+              <svg class="zeiger" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#f3f2ee" stroke="#0c0c0d" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <h3>Draft</h3><p>I build a draft and send you the link. If you don't like it, it costs nothing.</p>
+        </li>
+        <li>
+          <div class="szene" aria-hidden="true">
+            <div class="chat">
+              <div class="blase sie federnd">Could the logo be a bit bigger?</div>
+              <div class="antwort"><span class="tipp"><i></i><i></i><i></i></span><div class="blase ich federnd">Sure, done!</div></div>
+              <div class="blase sie federnd">Perfect, thanks!</div>
+            </div>
+          </div>
+          <h3>Adjust</h3><p>You tell me what should change. I adjust it until it's right.</p>
+        </li>
+        <li>
+          <div class="szene" aria-hidden="true">
+            <div class="online">
+              <div class="adresse"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span class="url">yourbusiness.ch</span><span class="strich"></span></div>
+              <div class="live federnd"><span class="punkt"></span>Online<i class="konfetti" style="--x:-60px;--y:-46px"></i><i class="konfetti" style="--x:58px;--y:-50px"></i><i class="konfetti" style="--x:-78px;--y:6px"></i><i class="konfetti" style="--x:80px;--y:2px"></i><i class="konfetti" style="--x:-34px;--y:-64px"></i><i class="konfetti" style="--x:30px;--y:-66px"></i><i class="konfetti" style="--x:-56px;--y:40px"></i><i class="konfetti" style="--x:54px;--y:42px"></i><i class="konfetti" style="--x:4px;--y:-72px"></i></div>
+            </div>
+          </div>
+          <h3>Live</h3><p>The site goes on your own address, in your name. It belongs to you.</p>
+        </li>
       </ol>
+    </div>
+  </section>
 
-      <div class="kontakt" id="kontakt">
-        <div>
-          <h2 id="kontakt-titel">Want a draft?</h2>
-          <p class="einleitung">Write me a few lines about your business. I'll get back to you within two days. English is fine.</p>
-        </div>
-        <div class="knoepfe">
-          <a class="knopf knopf-aktion" href="mailto:maurice.studer.contact@gmail.com?subject=Website%20enquiry"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Send an email</a>
-          <p class="klein">maurice.studer.contact@gmail.com</p>
-        </div>
+  <section class="abschnitt" id="ueber" aria-labelledby="ueber-titel">
+    <div class="wrap ueber">
+      <div>
+        <span class="etikett">About me</span>
+        <h2 id="ueber-titel">Young, careful and quick.</h2>
+      </div>
+      <div>
+        <p class="einleitung">My name is <strong>Maurice Studer</strong> and I'm in 9th grade in Liestal. For my school project I want to earn enough in one school year for my first motorbike, the licence and the gear — with real work for real customers.</p>
+        <p>Many small businesses have no website, or one nobody has touched in years. That's where I help: <strong>a clear page with what your customers are actually looking for</strong> — services, prices, opening hours, address, contact. No frills, no subscription, no cookie banner.</p>
       </div>
     </div>
   </section>
 
-  <section class="abschnitt weiss" id="fragen" aria-labelledby="fragen-titel">
-    <div class="wrap">
-      <div class="kopf-abschnitt">
-        <span class="schritt ohne-zahl">Questions</span>
+  <section class="abschnitt" id="fragen" aria-labelledby="fragen-titel">
+    <div class="wrap fragen">
+      <div>
+        <span class="etikett">Questions</span>
         <h2 id="fragen-titel">Frequently asked.</h2>
       </div>
-      <div class="fragen">
+      <div>
         <details>
-          <summary>What does the website cost each year?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>Only your own address (domain) with hosting, about 11 francs a year, directly with Infomaniak in your name. I earn nothing from it, and you're not tied to me.</p>
+          <summary>What does the website cost each year?</summary>
+          <p>Only your own address (domain) with hosting, about 15 francs a year, directly with Infomaniak in your name. I earn nothing from it, and you're not tied to me.</p>
         </details>
         <details>
-          <summary>How long does it take?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>You usually get the first draft within a week. How quickly the site goes live after that depends on how fast the details and feedback come in.</p>
+          <summary>How long does it take?</summary>
+          <p>The site is usually done in one week at most. All I need is your details and quick feedback on the draft.</p>
         </details>
         <details>
-          <summary>And if something changes later?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <summary>And if something changes later?</summary>
           <p>I update new opening hours or prices for you — by the hour or with yearly upkeep.</p>
         </details>
         <details>
-          <summary>Do I need a cookie notice?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <summary>Do I need a cookie notice?</summary>
           <p>No. My sites use no cookies, no tracking and no embedded Google maps. So no notice is needed.</p>
         </details>
         <details>
-          <summary>You're 15 — is this serious?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <summary>You're 15 — is this serious?</summary>
           <p>Look at the examples and decide for yourself. The draft is free: you see the result before you pay anything.</p>
         </details>
       </div>
+    </div>
+  </section>
+
+  <section class="abschnitt kontakt" id="kontakt" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+      <span class="etikett">Contact</span>
+      <h2 id="kontakt-titel">Want a <em>draft?</em></h2>
+      <p class="einleitung">Write me a few lines about your business. I'll get back to you within two days. English is fine.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Website%20enquiry">Send an email<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+      </div>
+      <!-- Falls auf dem Computer kein Mailprogramm eingerichtet ist, tut mailto nichts: darum Webmail-Links und Kopieren -->
+      <p class="klein mail-weg">No mail app? Write directly in <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=maurice.studer.contact@gmail.com&amp;su=Website%20enquiry" target="_blank" rel="noopener">Gmail</a> or <a href="https://outlook.live.com/mail/0/deeplink/compose?to=maurice.studer.contact@gmail.com&amp;subject=Website%20enquiry" target="_blank" rel="noopener">Outlook</a>.</p>
+      <p class="klein"><button class="kopieren" type="button" data-fertig="copied">maurice.studer.contact@gmail.com <span>· copy</span></button></p>
     </div>
   </section>
 
@@ -403,5 +572,24 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; color: v
     </nav>
   </div>
 </footer>
+<script>
+// Ablauf: jede Szene spielt einmal ab, sobald sie zu einem Drittel sichtbar ist
+(function () {
+  var karten = document.querySelectorAll('.schritte li');
+  if (!('IntersectionObserver' in window)) { karten.forEach(function (k) { k.classList.add('an'); }); return; }
+  var beobachter = new IntersectionObserver(function (eintraege) {
+    eintraege.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('an'); beobachter.unobserve(e.target); } });
+  }, { threshold: .35 });
+  karten.forEach(function (k) { beobachter.observe(k); });
+})();
+// Adresse in die Zwischenablage, falls der Mail-Knopf nichts öffnet
+document.querySelectorAll('.kopieren').forEach(function (k) {
+  k.addEventListener('click', function () {
+    var adresse = 'maurice.studer.contact@gmail.com';
+    if (!navigator.clipboard) return;
+    navigator.clipboard.writeText(adresse).then(function () { k.querySelector('span').textContent = '· ' + k.dataset.fertig; });
+  });
+});
+</script>
 </body>
 </html>
