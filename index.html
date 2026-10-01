@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites für kleine Betriebe</title>
 <meta name="description" content="Ich baue Websites für kleine Betriebe in der Schweiz: einfach, schnell, auf dem Handy gut lesbar. Fertige Website ab 200 Franken, dazu Google-Profil und Pflege.">
-<meta name="theme-color" content="#0c0c0d">
-<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#fbf8f1">
+<meta name="color-scheme" content="light only">
 <meta property="og:title" content="Maurice Studer · Websites für kleine Betriebe">
 <meta property="og:description" content="Fertige Website ab 200 Franken. Einfach, schnell, gut auf dem Handy.">
 <meta property="og:type" content="website">
@@ -27,16 +27,20 @@
 
 /* ---------- Farben und Masse ---------- */
 :root {
-  --grund: #0c0c0d;
-  --flaeche: #151517;
-  --flaeche-hell: #1d1d20;
-  --flaeche-tief: #0f0f12;
-  --linie: #2a2a2e;
-  --text: #f3f2ee;
-  --text-leise: #a3a3a8;      /* 8:1 auf --grund */
-  --akzent: #c8f23d;          /* Limette: nur Anfrage-Knöpfe, Logo, Preise */
-  --auf-akzent: #0c0c0d;
-  --warn: #ff7a59;            /* nur für Probleme im Abschnitt Warum */
+  /* Fassung «hell und fröhlich» (01.10.): warmes Creme statt Schwarz */
+  --grund: #fbf8f1;
+  --flaeche: #ffffff;
+  --flaeche-hell: #f3efe4;
+  --flaeche-tief: #f4efe3;
+  --linie: #e6e0d2;
+  --text: #16160f;
+  --text-leise: #5c5a52;      /* 6.6:1 auf --grund */
+  --akzent: #c8f23d;          /* Limette als Fläche: Knöpfe, Logo, Markierungen */
+  --akzent-text: #4a7300;     /* Limette als Schrift auf hellem Grund, 5.5:1 */
+  --akzent-rand: #a9d22a;
+  --auf-akzent: #16160f;
+  --warn: #d9481f;            /* nur für Probleme im Abschnitt Warum */
+  --schatten: 0 1px 2px rgba(40,30,0,.05), 0 12px 32px -14px rgba(40,30,0,.16);
   --kopf: "Space Grotesk", system-ui, sans-serif;
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --breite: 1200px;
@@ -47,7 +51,7 @@
 
 /* ---------- Grundlagen ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: dark only; scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+html { color-scheme: light only; scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--grund); color: var(--text); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -56,7 +60,7 @@ h2 { font-size: clamp(38px, 6vw, 76px); }
 h3 { font-size: 22px; letter-spacing: -.015em; line-height: 1.2; font-weight: 600; }
 p { margin: 0 0 1em; }
 ::selection { background: var(--akzent); color: var(--auf-akzent); }
-:focus-visible { outline: 2px solid var(--akzent); outline-offset: 4px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--akzent-text); outline-offset: 4px; border-radius: 4px; }
 .skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--akzent); color: var(--auf-akzent); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; }
 .skip:focus { top: 12px; }
 
@@ -69,7 +73,7 @@ p { margin: 0 0 1em; }
 .abschnitt > .wrap { transition: scale 1s cubic-bezier(.2,.8,.2,1); }
 .js .abschnitt:not(.da) > .wrap { scale: .97; }
 .etikett { display: block; font: 500 14px/1 var(--kopf); color: var(--text-leise); margin-bottom: 24px; }
-.etikett::before { content: "/ "; color: var(--akzent); }
+.etikett::before { content: "/ "; color: var(--akzent-text); }
 .einleitung { max-width: 54ch; color: var(--text-leise); font-size: clamp(17px, 1.6vw, 19px); margin-top: 24px; }
 .kopf-abschnitt { margin-bottom: clamp(40px, 6vw, 72px); }
 
@@ -77,7 +81,7 @@ p { margin: 0 0 1em; }
 .knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--kopf); text-decoration: none; transition: background-color .2s, color .2s, transform .2s; touch-action: manipulation; }
 .knopf svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .knopf-akzent { background: var(--akzent); color: var(--auf-akzent); }
-.knopf-akzent:hover { background: #d8ff5c; }
+.knopf-akzent:hover { background: #d6fb55; }
 .knopf-akzent:hover svg { transform: translateX(3px); }
 .knopf-linie { border: 1px solid var(--linie); color: var(--text); }
 .knopf-linie:hover { background: var(--flaeche-hell); }
@@ -88,7 +92,7 @@ p { margin: 0 0 1em; }
 .marke svg { width: 36px; height: 36px; flex: none; }
 
 /* ---------- Navigation ---------- */
-.nav { position: sticky; top: 0; z-index: 50; background: rgba(12,12,13,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(251,248,241,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
 .nav-innen { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
 .nav-links { display: flex; align-items: center; gap: clamp(6px, 2vw, 28px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
 .nav-links a:not(.knopf) { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; text-decoration: none; color: var(--text-leise); transition: color .2s; }
@@ -100,13 +104,13 @@ p { margin: 0 0 1em; }
 /* ---------- Start ---------- */
 .start { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(64px, 10vw, 140px) clamp(56px, 8vw, 104px); }
 /* Raster, das zum Rand hin ausblendet */
-.raster { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); animation: raster-zug 20s linear infinite; }
+.raster { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(22,22,15,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,15,.07) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); animation: raster-zug 20s linear infinite; }
 @keyframes raster-zug { to { background-position: 64px 64px; } }
 /* zwei weiche Lichtflecken, die langsam wandern */
 .leuchten { position: absolute; inset: 0; z-index: -2; pointer-events: none; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
 .leuchten i { position: absolute; border-radius: 50%; filter: blur(80px); }
-.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.22); animation: wandern 16s ease-in-out infinite alternate; }
-.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(96,92,255,.28); animation: wandern 19s ease-in-out infinite alternate-reverse; }
+.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.45); animation: wandern 16s ease-in-out infinite alternate; }
+.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(130,120,255,.22); animation: wandern 19s ease-in-out infinite alternate-reverse; }
 @keyframes wandern { to { transform: translate(-8vw, 6vw) scale(1.15); } }
 /* Start fährt beim Laden ein */
 .start .etikett, .start h1, .start-unten, .fakten { animation: auf .8s cubic-bezier(.2,.8,.2,1) both; }
@@ -130,15 +134,16 @@ p { margin: 0 0 1em; }
 #angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.13), transparent 70%), radial-gradient(40% 40% at 100% 35%, rgba(96,92,255,.20), transparent 70%); }
 #ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(96,92,255,.24), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
 #fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.06), transparent 70%); }
-.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(50% 60% at 50% 55%, rgba(200,242,61,.20), transparent 70%), radial-gradient(70% 60% at 50% 120%, rgba(96,92,255,.30), transparent 70%); }
-.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
+.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(50% 60% at 50% 55%, rgba(200,242,61,.40), transparent 70%), radial-gradient(70% 60% at 50% 120%, rgba(255,150,110,.25), transparent 70%); }
+.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(22,22,15,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,15,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
 
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
-.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.10), transparent 45%); }
+.fenster, .grund, .schritte li { box-shadow: var(--schatten); }
+.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.22), transparent 45%); }
 .fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
 .grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
-.grund:hover { transform: translateY(-6px); border-color: #4a4a50; }
+.grund:hover { transform: translateY(-6px); border-color: #d3c8ad; }
 
 /* Knöpfe leuchten */
 .knopf-akzent { box-shadow: 0 0 0 rgba(200,242,61,0); position: relative; overflow: hidden; }
@@ -150,25 +155,25 @@ p { margin: 0 0 1em; }
 .js .zeigen { opacity: 0; translate: 0 36px; transition: opacity .8s cubic-bezier(.2,.8,.2,1), translate .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 90ms); }
 .js .zeigen.sichtbar { opacity: 1; translate: 0 0; }
 .start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
-.start h1 em { font-style: normal; color: var(--akzent); }
+.start h1 em { font-style: normal; color: var(--text); background: linear-gradient(transparent 60%, var(--akzent) 60%, var(--akzent) 92%, transparent 92%); padding: 0 .06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .start-unten { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; margin-top: clamp(32px, 4vw, 48px); }
 .start .einleitung { margin: 0; font-size: clamp(18px, 1.9vw, 21px); }
 .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
 .fakten { display: flex; flex-wrap: wrap; gap: 12px 36px; list-style: none; margin: clamp(48px, 7vw, 88px) 0 0; padding: 28px 0 0; border-top: 1px solid var(--linie); color: var(--text-leise); font-size: 15px; }
 .fakten li { display: flex; align-items: baseline; gap: 10px; }
-.fakten strong { font: 700 28px/1 var(--kopf); color: var(--akzent); letter-spacing: -.02em; }
+.fakten strong { font: 700 28px/1 var(--kopf); color: var(--akzent-text); letter-spacing: -.02em; }
 
 /* ---------- Schaufenster: Beispiele im Browserrahmen ---------- */
 .schaufenster { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.5vw, 32px); }
 .fenster { display: block; text-decoration: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; transition: border-color .25s, transform .25s; }
-.fenster:hover { border-color: #4a4a50; transform: translateY(-4px); }
+.fenster:hover { border-color: #d3c8ad; transform: translateY(-4px); }
 .fenster-leiste { display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-bottom: 1px solid var(--linie); }
 .fenster-leiste i { width: 10px; height: 10px; border-radius: 50%; background: var(--linie); }
 .fenster-leiste span { margin-left: 10px; font-size: 12px; color: var(--text-leise); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .fenster img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: var(--flaeche-hell); }
 .fenster-text { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 22px 24px 26px; }
 .fenster-text p { color: var(--text-leise); font-size: 16px; margin: 8px 0 0; }
-.fenster-text svg { width: 22px; height: 22px; flex: none; margin-top: 2px; fill: none; stroke: var(--akzent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
+.fenster-text svg { width: 22px; height: 22px; flex: none; margin-top: 2px; fill: none; stroke: var(--akzent-text); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
 .fenster:hover .fenster-text svg { transform: translate(3px, -3px); }
 .hinweis { display: inline-block; font: 500 12px/1 var(--kopf); letter-spacing: .06em; text-transform: uppercase; color: var(--text-leise); border: 1px solid var(--linie); border-radius: 999px; padding: 6px 10px; margin-bottom: 12px; }
 .fenster.gross { grid-column: 1 / -1; }
@@ -181,7 +186,7 @@ p { margin: 0 0 1em; }
 .grund { background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 32px); }
 .grund h3, .grund p { padding-inline: clamp(8px, 1.5vw, 16px); }
 .grund h3 { display: flex; align-items: baseline; gap: 12px; }
-.grund h3 b { font: 700 14px/1 var(--kopf); color: var(--akzent); }
+.grund h3 b { font: 700 14px/1 var(--kopf); color: var(--akzent-text); }
 .grund p { color: var(--text-leise); font-size: 16px; margin: 10px 0 0; }
 .bild { position: relative; height: 210px; margin-bottom: 26px; padding: 18px; background: var(--grund); border: 1px solid var(--linie); border-radius: 10px; overflow: hidden; font-size: 13px; line-height: 1.3; }
 /* 1: Suche ohne den eigenen Betrieb */
@@ -199,8 +204,8 @@ p { margin: 0 0 1em; }
 .schild { position: absolute; right: 18px; bottom: 18px; transform: rotate(-6deg); padding: 8px 14px; border: 2px solid var(--warn); border-radius: 6px; color: var(--warn); font: 700 15px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; }
 /* 3: Handy mit winziger Schrift */
 .bild.handy-feld { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 0; }
-.handy { width: 110px; height: 160px; border: 2px solid #3a3a40; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
-.handy i { display: block; height: 3px; border-radius: 2px; background: #3a3a40; }
+.handy { width: 110px; height: 160px; border: 2px solid #d6cfbf; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
+.handy i { display: block; height: 3px; border-radius: 2px; background: #d6cfbf; }
 .handy i:nth-child(3n) { width: 70%; } .handy i:nth-child(4n) { width: 85%; }
 .uhr { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 58px; height: 58px; border: 2px solid var(--warn); border-radius: 50%; color: var(--warn); font: 700 17px/1 var(--kopf); }
 .lupe { position: absolute; top: 18px; left: 18px; color: var(--text-leise); max-width: 9em; }
@@ -214,10 +219,10 @@ p { margin: 0 0 1em; }
 .preis { grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
 .preis small.fein { margin-top: 6px; font-size: 12px; }
-.preisliste li.haupt .preis { color: var(--akzent); }
-.gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent); }
+.preisliste li.haupt .preis { color: var(--akzent-text); }
+.gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent-text); }
 .preisliste + .gruppe-titel { margin-top: clamp(48px, 6vw, 72px); }
-.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1px solid var(--akzent); border-radius: var(--radius); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.14), transparent 60%), var(--flaeche); }
+.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1.5px solid var(--akzent-rand); border-radius: var(--radius); box-shadow: var(--schatten); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.30), transparent 60%), var(--flaeche); }
 .check h3 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.03em; }
 .check p { color: var(--text-leise); margin: 10px 0 0; max-width: 56ch; }
 .zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
@@ -227,10 +232,10 @@ p { margin: 0 0 1em; }
 /* ---------- Ablauf: vier kleine Szenen, die abspielen, sobald sie sichtbar werden ---------- */
 .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .schritte li { counter-increment: s; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 30px); transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; animation: auf .6s ease-out both; animation-delay: var(--d); }
-.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #4a4a50; }
+.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #d3c8ad; }
 .schritte li:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
 .schritte h3 { display: flex; align-items: baseline; gap: 12px; padding-inline: clamp(8px, 1.2vw, 12px); }
-.schritte h3::before { content: "0" counter(s); font: 700 14px/1 var(--kopf); color: var(--akzent); }
+.schritte h3::before { content: "0" counter(s); font: 700 14px/1 var(--kopf); color: var(--akzent-text); }
 .schritte p { color: var(--text-leise); font-size: 16px; margin: 10px 0 0; padding-inline: clamp(8px, 1.2vw, 12px); }
 .szene { position: relative; height: 200px; margin-bottom: 24px; display: grid; place-items: center; background: var(--grund); border: 1px solid var(--linie); border-radius: 10px; overflow: hidden; font-size: 12px; line-height: 1.3; }
 .schritte li { --d: 0s; }
@@ -257,7 +262,7 @@ p { margin: 0 0 1em; }
 .mail { width: 80%; padding: 12px 14px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 10px; }
 .mail-kopf { display: flex; justify-content: space-between; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid var(--linie); color: var(--text-leise); }
 .mail-kopf b { color: var(--text); font-weight: 600; }
-.zeile-mail { display: block; height: 6px; margin: 7px 0; border-radius: 3px; background: #34343a; animation: breit .5s ease-out both; }
+.zeile-mail { display: block; height: 6px; margin: 7px 0; border-radius: 3px; background: #e6dfcd; animation: breit .5s ease-out both; }
 .zeile-mail:nth-of-type(1) { width: 92%; animation-delay: calc(var(--d) + .3s); }
 .zeile-mail:nth-of-type(2) { width: 78%; animation-delay: calc(var(--d) + .5s); }
 .zeile-mail:nth-of-type(3) { width: 55%; animation-delay: calc(var(--d) + .7s); }
@@ -271,16 +276,16 @@ p { margin: 0 0 1em; }
 /* 2 Entwurf: die Seite baut sich auf */
 .browser { position: relative; width: 82%; height: 146px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; overflow: hidden; }
 .browser-leiste { display: flex; align-items: center; gap: 4px; height: 18px; padding: 0 8px; border-bottom: 1px solid var(--linie); }
-.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #3a3a40; }
-.baustein { border-radius: 4px; background: #2c2c31; animation: auf .5s both; }
-.baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(200,242,61,.45), rgba(200,242,61,.06)); animation-delay: calc(var(--d) + .25s); }
+.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #d6cfbf; }
+.baustein { border-radius: 4px; background: #efe9db; animation: auf .5s both; }
+.baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(200,242,61,.85), rgba(200,242,61,.2)); animation-delay: calc(var(--d) + .25s); }
 .baustein.titel { width: 50%; height: 8px; margin: 0 8px 8px; animation-delay: calc(var(--d) + .45s); }
 .bausteine { display: flex; gap: 6px; margin: 0 8px; }
 .bausteine .baustein { flex: 1; height: 38px; }
 .bausteine .baustein:nth-child(1) { animation-delay: calc(var(--d) + .6s); }
 .bausteine .baustein:nth-child(2) { animation-delay: calc(var(--d) + .72s); }
 .bausteine .baustein:nth-child(3) { animation-delay: calc(var(--d) + .84s); }
-.zeiger { position: absolute; left: 58%; top: 52%; width: 18px; height: 18px; animation: zeigen .9s cubic-bezier(.4,0,.2,1) both; animation-delay: calc(var(--d) + 1.1s); filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)); }
+.zeiger { position: absolute; left: 58%; top: 52%; width: 18px; height: 18px; animation: zeigen .9s cubic-bezier(.4,0,.2,1) both; animation-delay: calc(var(--d) + 1.1s); filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
 
 /* 3 Anpassen: kurzer Chat */
 .chat { display: flex; flex-direction: column; gap: 8px; width: 84%; }
@@ -321,7 +326,7 @@ p { margin: 0 0 1em; }
 .fragen details:first-child { border-top: 1px solid var(--linie); }
 .fragen summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; padding: 18px 0; font: 600 19px/1.3 var(--kopf); }
 .fragen summary::-webkit-details-marker { display: none; }
-.fragen summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--akzent); border-bottom: 2px solid var(--akzent); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
+.fragen summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--akzent-text); border-bottom: 2px solid var(--akzent-text); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
 .fragen details[open] summary::after { transform: rotate(-135deg); }
 .fragen details p { color: var(--text-leise); margin: 0 0 24px; max-width: 62ch; }
 @media (max-width: 800px) { .fragen { grid-template-columns: 1fr; } }
@@ -329,14 +334,20 @@ p { margin: 0 0 1em; }
 /* ---------- Kontakt ---------- */
 .kontakt { text-align: center; }
 .kontakt h2 { font-size: clamp(44px, 9vw, 120px); max-width: 12ch; margin-inline: auto; }
-.kontakt h2 em { font-style: normal; color: var(--akzent); }
+.kontakt h2 em { font-style: normal; color: var(--text); background: linear-gradient(transparent 60%, var(--akzent) 60%, var(--akzent) 92%, transparent 92%); padding: 0 .06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .kontakt .einleitung { margin-inline: auto; }
 .kontakt .knoepfe { justify-content: center; margin-top: 36px; }
 .kontakt .knopf-akzent { min-height: 64px; padding: 0 34px; font-size: 18px; }
+.mail-wahl { position: fixed; z-index: 200; width: 260px; padding: 8px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 14px; box-shadow: 0 18px 50px -12px rgba(40,30,0,.35); animation: rein .2s ease-out; transform-origin: top center; }
+.mail-wahl[hidden] { display: none; }
+.mail-wahl-titel { margin: 6px 10px 6px; font: 600 13px/1.2 var(--kopf); color: var(--text-leise); }
+.mail-wahl a, .mail-wahl button { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 0 12px; border: 0; border-radius: 9px; background: none; color: var(--text); font: 500 15px/1 var(--sans); text-align: left; text-decoration: none; }
+.mail-wahl a:hover, .mail-wahl button:hover, .mail-wahl a:focus-visible { background: rgba(200,242,61,.28); outline: none; }
+.mail-wahl a:first-of-type { font-weight: 700; }
 .kontakt .klein { margin: 18px 0 0; font-size: 15px; color: var(--text-leise); overflow-wrap: anywhere; }
 .mail-weg a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
 .kopieren { min-height: 44px; padding: 0 12px; background: none; border: 0; color: var(--text); font: inherit; cursor: pointer; overflow-wrap: anywhere; }
-.kopieren span { color: var(--akzent); }
+.kopieren span { color: var(--akzent-text); }
 
 /* ---------- Fuss ---------- */
 footer { padding: 28px 0 40px; border-top: 1px solid var(--linie); color: var(--text-leise); font-size: 15px; }
@@ -348,17 +359,17 @@ footer a:hover { color: var(--text); }
 /* ---------- Eigener Mauszeiger und Hover-Spielereien (nur mit Maus) ---------- */
 /* Normaler Mauszeiger, nur in Limette */
 html, body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 2.5l6.8 17.5 2.5-7.2 7.2-2.5z' fill='%23c8f23d' stroke='%230c0c0d' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto; }
-a, button, summary, .fenster, .kopieren { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%230c0c0d' stroke-width='4.2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3Cg stroke='%23c8f23d' stroke-width='2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3C/svg%3E") 8 3, pointer; }
+a, button, summary, .fenster, .kopieren, .mail-wahl a, .mail-wahl button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%230c0c0d' stroke-width='4.2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3Cg stroke='%23c8f23d' stroke-width='2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3C/svg%3E") 8 3, pointer; }
 .knopf { transition: background-color .2s, color .2s, transform .2s, translate .25s cubic-bezier(.3,1.4,.5,1), box-shadow .3s; }
 .fenster img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .fenster:hover img { transform: scale(1.04); }
 .preisliste li { transition: padding .35s cubic-bezier(.2,.8,.2,1), background-color .35s; }
 .preisliste li h3 { transition: color .25s; }
-@media (hover: hover) { .preisliste li:hover { padding-inline: 18px; background: rgba(200,242,61,.045); } .preisliste li:hover h3 { color: var(--akzent); } }
+@media (hover: hover) { .preisliste li:hover { padding-inline: 18px; background: rgba(200,242,61,.16); } .preisliste li:hover h3 { color: var(--akzent-text); } }
 .fragen summary { transition: color .2s, padding .3s; }
-.fragen summary:hover { color: var(--akzent); padding-left: 8px; }
+.fragen summary:hover { color: var(--akzent-text); padding-left: 8px; }
 .nav-links a:not(.knopf):not(.sprache) { position: relative; }
-.nav-links a:not(.knopf):not(.sprache)::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 10px; height: 1.5px; background: var(--akzent); transform: scaleX(0); transform-origin: right; transition: transform .3s; }
+.nav-links a:not(.knopf):not(.sprache)::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 10px; height: 2px; background: var(--akzent-text); transform: scaleX(0); transform-origin: right; transition: transform .3s; }
 .nav-links a:not(.knopf):not(.sprache):hover::after { transform: scaleX(1); transform-origin: left; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; animation: none !important; } .js .zeigen { opacity: 1; translate: none; } }
@@ -602,7 +613,7 @@ a, button, summary, .fenster, .kopieren { cursor: url("data:image/svg+xml,%3Csvg
               <div class="baustein held"></div>
               <div class="baustein titel"></div>
               <div class="bausteine"><div class="baustein"></div><div class="baustein"></div><div class="baustein"></div></div>
-              <svg class="zeiger" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#f3f2ee" stroke="#0c0c0d" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <svg class="zeiger" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#16160f" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/></svg>
             </div>
           </div>
           <h3>Entwurf</h3><p>Ich baue einen Entwurf und schicke Ihnen den Link. Gefällt er nicht, kostet er nichts.</p>
@@ -699,7 +710,50 @@ a, button, summary, .fenster, .kopieren { cursor: url("data:image/svg+xml,%3Csvg
     </nav>
   </div>
 </footer>
+<div class="mail-wahl" id="mail-wahl" hidden>
+  <p class="mail-wahl-titel">Wie möchten Sie schreiben?</p>
+  <a data-art="app" href="#">Mail-Programm öffnen</a>
+  <a data-art="gmail" href="#" target="_blank" rel="noopener">In Gmail schreiben</a>
+  <a data-art="outlook" href="#" target="_blank" rel="noopener">In Outlook schreiben</a>
+  <button type="button" data-art="kopieren" data-fertig="Adresse kopiert">Adresse kopieren</button>
+</div>
 <script>
+// Mail-Knöpfe: Auf Computern öffnet mailto oft nichts (kein Mailprogramm eingerichtet).
+// Darum dort eine kleine Auswahl. Auf dem Handy bleibt es beim direkten mailto.
+(function () {
+  var wahl = document.getElementById('mail-wahl');
+  if (!wahl || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var offen = null;
+  function zu() { wahl.hidden = true; offen = null; }
+  document.querySelectorAll('a.knopf[href^="mailto:"]').forEach(function (k) {
+    k.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (offen === k) { zu(); return; }
+      var m = k.getAttribute('href'), an = m.slice(7).split('?')[0];
+      var q = new URLSearchParams(m.split('?')[1] || '');
+      var betreff = q.get('subject') || '', text = q.get('body') || '';
+      wahl.querySelector('[data-art="app"]').href = m;
+      wahl.querySelector('[data-art="gmail"]').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(an) + '&su=' + encodeURIComponent(betreff) + '&body=' + encodeURIComponent(text);
+      wahl.querySelector('[data-art="outlook"]').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + encodeURIComponent(an) + '&subject=' + encodeURIComponent(betreff) + '&body=' + encodeURIComponent(text);
+      var kn = wahl.querySelector('[data-art="kopieren"]');
+      kn.dataset.adresse = an; kn.textContent = kn.dataset.text || (kn.dataset.text = kn.textContent);
+      wahl.hidden = false;
+      var r = k.getBoundingClientRect(), b = wahl.offsetWidth;
+      wahl.style.left = Math.max(12, Math.min(innerWidth - b - 12, r.left + r.width / 2 - b / 2)) + 'px';
+      wahl.style.top = (r.bottom + 10) + 'px';
+      offen = k;
+      wahl.querySelector('a').focus();
+    });
+  });
+  wahl.querySelector('[data-art="kopieren"]').addEventListener('click', function () {
+    var kn = this;
+    if (navigator.clipboard) navigator.clipboard.writeText(kn.dataset.adresse).then(function () { kn.textContent = kn.dataset.fertig; });
+  });
+  wahl.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setTimeout(zu, 50); }); });
+  document.addEventListener('click', function (e) { if (offen && !wahl.contains(e.target) && !offen.contains(e.target)) zu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && offen) { var k = offen; zu(); k.focus(); } });
+  addEventListener('scroll', function () { if (offen) zu(); }, { passive: true });
+})();
 // Ablauf: jede Szene spielt einmal ab, sobald sie zu einem Drittel sichtbar ist
 (function () {
   var karten = document.querySelectorAll('.schritte li');
