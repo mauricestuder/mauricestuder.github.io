@@ -220,7 +220,9 @@ p { margin: 0 0 1em; }
 .preisliste h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.03em; }
 .preisliste p { color: var(--text-leise); font-size: 16px; margin: 0; }
 .preisliste .preis { margin-top: auto; padding-top: 14px; text-align: left; }
-.preisliste li.haupt { grid-column: 1 / -1; background: var(--akzent); border-color: var(--akzent); --text: #0e0f0b; --text-leise: #33400f; --akzent-text: #0e0f0b; color: var(--text); }
+.preisliste li.haupt { grid-column: 1 / -1; padding: clamp(28px, 3.4vw, 40px); background: linear-gradient(135deg, rgba(200,242,61,.13), rgba(200,242,61,.03) 60%), var(--flaeche); border-color: rgba(200,242,61,.45); }
+.preisliste li.haupt h3 { font-size: clamp(28px, 3vw, 38px); }
+.preisliste li.haupt .preis { font-size: clamp(36px, 4.4vw, 56px); }
 .preis { align-self: flex-start; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
 .preis small.fein { margin-top: 6px; font-size: 12px; }
@@ -407,7 +409,7 @@ footer a:hover { color: var(--text); }
     <div class="leuchten" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
       <span class="etikett">Websites for restaurants, shops and small businesses</span>
-      <h1 id="start-titel">Websites that <em>bring customers.</em></h1>
+      <h1 id="start-titel">You run the business. <em>I'll do the website.</em></h1>
       <div class="start-unten">
         <p class="einleitung">I'm Maurice, 15, from Basel-Landschaft. I build websites that load fast, look good on a phone and tell your customers right away where you are and when you're open.</p>
         <div class="knoepfe">
