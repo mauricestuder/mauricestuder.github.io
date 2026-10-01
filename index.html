@@ -30,6 +30,7 @@
   --grund: #0c0c0d;
   --flaeche: #151517;
   --flaeche-hell: #1d1d20;
+  --flaeche-tief: #0f0f12;
   --linie: #2a2a2e;
   --text: #f3f2ee;
   --text-leise: #a3a3a8;      /* 8:1 auf --grund */
@@ -91,7 +92,55 @@ p { margin: 0 0 1em; }
 @media (max-width: 800px) { .nav-links li.breit { display: none; } .marke .name { display: none; } }
 
 /* ---------- Start ---------- */
-.start { padding-block: clamp(64px, 10vw, 140px) clamp(56px, 8vw, 104px); }
+.start { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(64px, 10vw, 140px) clamp(56px, 8vw, 104px); }
+/* Raster, das zum Rand hin ausblendet */
+.raster { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); animation: raster-zug 20s linear infinite; }
+@keyframes raster-zug { to { background-position: 64px 64px; } }
+/* zwei weiche Lichtflecken, die langsam wandern */
+.leuchten { position: absolute; inset: 0; z-index: -2; pointer-events: none; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
+.leuchten i { position: absolute; border-radius: 50%; filter: blur(80px); }
+.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.22); animation: wandern 16s ease-in-out infinite alternate; }
+.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(96,92,255,.28); animation: wandern 19s ease-in-out infinite alternate-reverse; }
+@keyframes wandern { to { transform: translate(-8vw, 6vw) scale(1.15); } }
+/* Start fährt beim Laden ein */
+.start .etikett, .start h1, .start-unten, .fakten { animation: auf .8s cubic-bezier(.2,.8,.2,1) both; }
+.start h1 { animation-delay: .1s; } .start-unten { animation-delay: .3s; } .fakten { animation-delay: .45s; }
+.start h1 em { display: inline-block; animation: aufblitzen 1s .6s both; }
+@keyframes aufblitzen { from { opacity: 0; transform: translateY(.3em) rotate(-3deg); filter: blur(8px); } }
+
+/* ---------- Band mit Branchen ---------- */
+.band { overflow: hidden; padding: 28px 0; margin-block: -28px; position: relative; z-index: 2; }
+.band-lauf { display: flex; width: max-content; background: var(--akzent); color: var(--auf-akzent); transform: rotate(-2deg) scale(1.05); font: 700 clamp(22px, 3vw, 34px)/1 var(--kopf); letter-spacing: -.02em; text-transform: uppercase; padding: 18px 0; animation: band 32s linear infinite; }
+.band-lauf span { white-space: nowrap; padding-right: .5em; }
+.band-lauf b { display: inline-block; margin: 0 .45em; font-weight: 400; animation: drehen 6s linear infinite; }
+@keyframes band { to { translate: -50% 0; } }
+@keyframes drehen { to { transform: rotate(360deg); } }
+
+/* ---------- Abschnitte mit Licht statt nur Schwarz ---------- */
+#arbeiten { background: radial-gradient(50% 40% at 0% 10%, rgba(96,92,255,.18), transparent 70%), radial-gradient(40% 30% at 100% 90%, rgba(200,242,61,.07), transparent 70%); }
+#warum { background: radial-gradient(45% 45% at 100% 0%, rgba(255,122,89,.16), transparent 70%), var(--flaeche-tief); }
+#angebot { background: radial-gradient(50% 40% at 0% 100%, rgba(200,242,61,.13), transparent 70%), radial-gradient(40% 40% at 100% 0%, rgba(96,92,255,.20), transparent 70%); }
+#ablauf { background: radial-gradient(60% 50% at 50% 100%, rgba(96,92,255,.24), transparent 70%), var(--flaeche-tief); }
+#fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.06), transparent 70%); }
+.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(50% 60% at 50% 55%, rgba(200,242,61,.20), transparent 70%), radial-gradient(70% 60% at 50% 120%, rgba(96,92,255,.30), transparent 70%); }
+.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
+
+/* Lichtfleck folgt der Maus auf Karten */
+.fenster, .grund, .schritte li { position: relative; }
+.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.10), transparent 45%); }
+.fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
+.grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
+.grund:hover { transform: translateY(-6px); border-color: #4a4a50; }
+
+/* Knöpfe leuchten */
+.knopf-akzent { box-shadow: 0 0 0 rgba(200,242,61,0); position: relative; overflow: hidden; }
+.knopf-akzent:hover { box-shadow: 0 10px 34px rgba(200,242,61,.35); }
+.knopf-akzent::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: glanz 4.5s ease-in-out infinite 1.5s; }
+@keyframes glanz { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+
+/* Beim Scrollen einblenden */
+.js .zeigen { opacity: 0; translate: 0 36px; transition: opacity .8s cubic-bezier(.2,.8,.2,1), translate .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .zeigen.sichtbar { opacity: 1; translate: 0 0; }
 .start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
 .start h1 em { font-style: normal; color: var(--akzent); }
 .start-unten { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; margin-top: clamp(32px, 4vw, 48px); }
@@ -283,7 +332,7 @@ footer nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
 footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 footer a:hover { color: var(--text); }
 
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; animation: none !important; } .js .zeigen { opacity: 1; translate: none; } }
 </style>
 </head>
 <body>
@@ -310,24 +359,30 @@ footer a:hover { color: var(--text); }
 
 <main id="inhalt">
 
-  <section class="start wrap" aria-labelledby="start-titel">
-    <span class="etikett">Websites für Restaurants, Shops und kleine Betriebe</span>
-    <h1 id="start-titel">Ihr Betrieb verdient eine <em>gute Website.</em></h1>
-    <div class="start-unten">
-      <p class="einleitung">Ich bin Maurice, 15, aus dem Baselbiet. Ich baue Websites, die schnell laden, auf dem Handy gut aussehen und Ihren Kunden sofort sagen, wo Sie sind und wann Sie offen haben.</p>
-      <div class="knoepfe">
-        <a class="knopf knopf-akzent" href="#kontakt">Gratis-Entwurf anfragen<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
-        <a class="knopf knopf-linie" href="#arbeiten">Arbeiten ansehen</a>
+  <section class="start" aria-labelledby="start-titel">
+    <div class="raster" aria-hidden="true"></div>
+    <div class="leuchten" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <span class="etikett">Websites für Restaurants, Shops und kleine Betriebe</span>
+      <h1 id="start-titel">Ihr Betrieb verdient eine <em>gute Website.</em></h1>
+      <div class="start-unten">
+        <p class="einleitung">Ich bin Maurice, 15, aus dem Baselbiet. Ich baue Websites, die schnell laden, auf dem Handy gut aussehen und Ihren Kunden sofort sagen, wo Sie sind und wann Sie offen haben.</p>
+        <div class="knoepfe">
+          <a class="knopf knopf-akzent" href="#kontakt">Gratis-Entwurf anfragen<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+          <a class="knopf knopf-linie" href="#arbeiten">Arbeiten ansehen</a>
+        </div>
       </div>
+      <ul class="fakten" aria-label="Das Wichtigste">
+        <li><strong>200.–</strong>für die fertige Website, einmalig</li>
+        <li>Fertig in höchstens einer Woche</li>
+        <li>Entwurf gratis und unverbindlich</li>
+        <li>Die Seite gehört Ihnen</li>
+        <li>Keine Cookies, kein Abo</li>
+      </ul>
     </div>
-    <ul class="fakten" aria-label="Das Wichtigste">
-      <li><strong>200.–</strong>für die fertige Website, einmalig</li>
-      <li>Fertig in höchstens einer Woche</li>
-      <li>Entwurf gratis und unverbindlich</li>
-      <li>Die Seite gehört Ihnen</li>
-      <li>Keine Cookies, kein Abo</li>
-    </ul>
   </section>
+
+  <div class="band" aria-hidden="true"><div class="band-lauf"><span>Restaurants <b>✦</b> Onlineshops <b>✦</b> Coiffeure <b>✦</b> Handwerker <b>✦</b> Praxen <b>✦</b> Cafés <b>✦</b> Nagelstudios <b>✦</b> Garagen <b>✦</b> </span><span>Restaurants <b>✦</b> Onlineshops <b>✦</b> Coiffeure <b>✦</b> Handwerker <b>✦</b> Praxen <b>✦</b> Cafés <b>✦</b> Nagelstudios <b>✦</b> Garagen <b>✦</b> </span></div></div>
 
   <section class="abschnitt" id="arbeiten" aria-labelledby="arbeiten-titel">
     <div class="wrap">
@@ -580,6 +635,42 @@ footer a:hover { color: var(--text); }
     eintraege.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('an'); beobachter.unobserve(e.target); } });
   }, { threshold: .35 });
   karten.forEach(function (k) { beobachter.observe(k); });
+})();
+// Einblenden beim Scrollen, Lichtfleck unter der Maus, 200 zählt hoch
+(function () {
+  var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
+  var teile = [];
+  gruppen.forEach(function (g) {
+    document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });
+  });
+  if (!bewegung || !('IntersectionObserver' in window)) { teile.forEach(function (el) { el.classList.add('sichtbar'); }); }
+  else {
+    var b = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('sichtbar'); b.unobserve(e.target); } });
+    }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    teile.forEach(function (el) { b.observe(el); });
+  }
+  document.querySelectorAll('.fenster, .grund, .schritte li').forEach(function (k) {
+    k.addEventListener('pointermove', function (e) {
+      var r = k.getBoundingClientRect();
+      k.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      k.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+  var zahl = document.querySelector('.fakten strong');
+  if (zahl && bewegung) {
+    var start = null, ziel = 200;
+    zahl.textContent = '0.–';
+    setTimeout(function () {
+      requestAnimationFrame(function schritt(t) {
+        if (!start) start = t;
+        var x = Math.min((t - start) / 1200, 1);
+        zahl.textContent = Math.round(ziel * (1 - Math.pow(1 - x, 3))) + '.–';
+        if (x < 1) requestAnimationFrame(schritt);
+      });
+    }, 600);
+  }
 })();
 // Adresse in die Zwischenablage, falls der Mail-Knopf nichts öffnet
 document.querySelectorAll('.kopieren').forEach(function (k) {
