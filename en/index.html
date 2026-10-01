@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites for small businesses</title>
 <meta name="description" content="I build websites for small businesses in Switzerland: simple, fast, easy to read on a phone. A finished website from 200 francs, plus Google profiles and upkeep.">
-<meta name="theme-color" content="#fbf8f1">
-<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#0e0f0b">
+<meta name="color-scheme" content="dark only">
 <meta property="og:title" content="Maurice Studer · Websites for small businesses">
 <meta property="og:description" content="A finished website from 200 francs. Simple, fast, great on a phone.">
 <meta property="og:type" content="website">
@@ -29,19 +29,19 @@
 /* ---------- Farben und Masse ---------- */
 :root {
   /* Fassung «hell und fröhlich» (01.10.): warmes Creme statt Schwarz */
-  --grund: #fbf8f1;
-  --flaeche: #ffffff;
-  --flaeche-hell: #f3efe4;
-  --flaeche-tief: #f4efe3;
-  --linie: #e6e0d2;
-  --text: #16160f;
-  --text-leise: #5c5a52;      /* 6.6:1 auf --grund */
-  --akzent: #c8f23d;          /* Limette als Fläche: Knöpfe, Logo, Markierungen */
-  --akzent-text: #4a7300;     /* Limette als Schrift auf hellem Grund, 5.5:1 */
-  --akzent-rand: #a9d22a;
-  --auf-akzent: #16160f;
-  --warn: #d9481f;            /* nur für Probleme im Abschnitt Warum */
-  --schatten: 0 1px 2px rgba(40,30,0,.05), 0 12px 32px -14px rgba(40,30,0,.16);
+  --grund: #0e0f0b;
+  --flaeche: #181a13;
+  --flaeche-hell: #23261b;
+  --flaeche-tief: #13150f;
+  --linie: #2d3124;
+  --text: #f4f6ec;
+  --text-leise: #a9ad9b;      /* 8:1 auf --grund */
+  --akzent: #c8f23d;          /* Limette: Knöpfe, Logo, Markierungen */
+  --akzent-text: #c8f23d;     /* Limette als Schrift auf dunklem Grund */
+  --akzent-rand: #c8f23d;
+  --auf-akzent: #0e0f0b;
+  --warn: #ff7a59;            /* nur für Probleme im Abschnitt Warum */
+  --schatten: 0 1px 2px rgba(0,0,0,.3), 0 18px 40px -20px rgba(0,0,0,.8);
   --kopf: "Space Grotesk", system-ui, sans-serif;
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --breite: 1200px;
@@ -52,7 +52,7 @@
 
 /* ---------- Grundlagen ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: light only; scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+html { color-scheme: dark only; scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--grund); color: var(--text); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -68,7 +68,7 @@ p { margin: 0 0 1em; }
 .wrap { width: min(100% - 2 * var(--rand), var(--breite)); margin-inline: auto; }
 .abschnitt { position: relative; padding-block: var(--abschnitt); }
 /* Übergang: statt harter Linie zieht sich ein leuchtender Strich von der Mitte nach aussen, wenn der Abschnitt ins Bild kommt */
-.abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 30%, #8f8cff 70%, transparent); box-shadow: 0 0 22px rgba(200,242,61,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
+.abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 50%, transparent); box-shadow: 0 0 22px rgba(200,242,61,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
 .js .abschnitt:not(.da)::after { transform: scaleX(0); opacity: 0; }
 /* Abschnitt-Inhalt rückt beim Hereinkommen leicht nach */
 .abschnitt > .wrap { transition: scale 1s cubic-bezier(.2,.8,.2,1); }
@@ -93,7 +93,7 @@ p { margin: 0 0 1em; }
 .marke svg { width: 36px; height: 36px; flex: none; }
 
 /* ---------- Navigation ---------- */
-.nav { position: sticky; top: 0; z-index: 50; background: rgba(251,248,241,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(14,15,11,.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
 .nav-innen { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
 .nav-links { display: flex; align-items: center; gap: clamp(6px, 2vw, 28px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
 .nav-links a:not(.knopf) { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; text-decoration: none; color: var(--text-leise); transition: color .2s; }
@@ -105,13 +105,13 @@ p { margin: 0 0 1em; }
 /* ---------- Start ---------- */
 .start { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(64px, 10vw, 140px) clamp(56px, 8vw, 104px); }
 /* Raster, das zum Rand hin ausblendet */
-.raster { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(22,22,15,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,15,.07) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); animation: raster-zug 20s linear infinite; }
+.raster { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 70% 20%, #000, transparent 75%); animation: raster-zug 20s linear infinite; }
 @keyframes raster-zug { to { background-position: 64px 64px; } }
 /* zwei weiche Lichtflecken, die langsam wandern */
 .leuchten { position: absolute; inset: 0; z-index: -2; pointer-events: none; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
 .leuchten i { position: absolute; border-radius: 50%; filter: blur(80px); }
-.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.45); animation: wandern 16s ease-in-out infinite alternate; }
-.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(130,120,255,.22); animation: wandern 19s ease-in-out infinite alternate-reverse; }
+.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.22); animation: wandern 16s ease-in-out infinite alternate; }
+.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(200,242,61,.10); animation: wandern 19s ease-in-out infinite alternate-reverse; }
 @keyframes wandern { to { transform: translate(-8vw, 6vw) scale(1.15); } }
 /* Start fährt beim Laden ein */
 .start .etikett, .start h1, .start-unten, .fakten { animation: auf .8s cubic-bezier(.2,.8,.2,1) both; }
@@ -130,13 +130,15 @@ p { margin: 0 0 1em; }
 @keyframes drehen { to { transform: rotate(360deg); } }
 
 /* ---------- Abschnitte mit Licht statt nur Schwarz ---------- */
-#arbeiten { background: radial-gradient(50% 40% at 0% 30%, rgba(96,92,255,.18), transparent 70%), radial-gradient(40% 30% at 100% 70%, rgba(200,242,61,.07), transparent 70%); }
-#warum { background: radial-gradient(45% 45% at 100% 30%, rgba(255,122,89,.16), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
-#angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.13), transparent 70%), radial-gradient(40% 40% at 100% 35%, rgba(96,92,255,.20), transparent 70%); }
-#ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(96,92,255,.24), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
-#fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.06), transparent 70%); }
-.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(50% 60% at 50% 55%, rgba(200,242,61,.40), transparent 70%), radial-gradient(70% 60% at 50% 120%, rgba(255,150,110,.25), transparent 70%); }
-.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(22,22,15,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,15,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
+#arbeiten { background: radial-gradient(50% 40% at 0% 30%, rgba(200,242,61,.07), transparent 70%); }
+#warum { background: radial-gradient(45% 45% at 100% 30%, rgba(200,242,61,.06), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
+#angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.08), transparent 70%); }
+#ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(200,242,61,.07), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
+#fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.05), transparent 70%); }
+.kontakt { position: relative; isolation: isolate; overflow: hidden; background: #c8f23d; --text: #0e0f0b; --text-leise: #33400f; --akzent-text: #0e0f0b; --linie: rgba(14,15,11,.18); --akzent: #0e0f0b; --auf-akzent: #c8f23d; color: var(--text); }
+.kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(14,15,11,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(14,15,11,.08) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
+.kontakt::after { display: none; }
+.kontakt .knopf-akzent:hover { box-shadow: 0 10px 34px rgba(14,15,11,.35); }
 
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
@@ -144,7 +146,7 @@ p { margin: 0 0 1em; }
 .fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.22), transparent 45%); }
 .fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
 .grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
-.grund:hover { transform: translateY(-6px); border-color: #d3c8ad; }
+.grund:hover { transform: translateY(-6px); border-color: #4b5338; }
 
 /* Knöpfe leuchten */
 .knopf-akzent { box-shadow: 0 0 0 rgba(200,242,61,0); position: relative; overflow: hidden; }
@@ -156,7 +158,7 @@ p { margin: 0 0 1em; }
 .js .zeigen { opacity: 0; translate: 0 36px; transition: opacity .8s cubic-bezier(.2,.8,.2,1), translate .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 90ms); }
 .js .zeigen.sichtbar { opacity: 1; translate: 0 0; }
 .start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
-.start h1 em { font-style: normal; color: var(--text); background: linear-gradient(transparent 60%, var(--akzent) 60%, var(--akzent) 92%, transparent 92%); padding: 0 .06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.start h1 em { font-style: normal; color: var(--akzent); }
 .start-unten { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; margin-top: clamp(32px, 4vw, 48px); }
 .start .einleitung { margin: 0; font-size: clamp(18px, 1.9vw, 21px); }
 .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -167,7 +169,7 @@ p { margin: 0 0 1em; }
 /* ---------- Schaufenster: Beispiele im Browserrahmen ---------- */
 .schaufenster { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.5vw, 32px); }
 .fenster { display: block; text-decoration: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; transition: border-color .25s, transform .25s; }
-.fenster:hover { border-color: #d3c8ad; transform: translateY(-4px); }
+.fenster:hover { border-color: #4b5338; transform: translateY(-4px); }
 .fenster-leiste { display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-bottom: 1px solid var(--linie); }
 .fenster-leiste i { width: 10px; height: 10px; border-radius: 50%; background: var(--linie); }
 .fenster-leiste span { margin-left: 10px; font-size: 12px; color: var(--text-leise); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -213,27 +215,30 @@ p { margin: 0 0 1em; }
 @media (max-width: 860px) { .gruende { grid-template-columns: 1fr; } }
 
 /* ---------- Angebot als Preisliste ---------- */
-.preisliste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linie); }
-.preisliste li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; align-items: baseline; padding: clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--linie); }
-.preisliste h3 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -.03em; }
-.preisliste p { grid-column: 1; color: var(--text-leise); font-size: 16px; margin: 0; max-width: 58ch; }
-.preis { grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.preisliste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.preisliste li { display: flex; flex-direction: column; gap: 10px; padding: clamp(22px, 2.6vw, 30px); background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); box-shadow: var(--schatten); }
+.preisliste h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.03em; }
+.preisliste p { color: var(--text-leise); font-size: 16px; margin: 0; }
+.preisliste .preis { margin-top: auto; padding-top: 14px; text-align: left; }
+.preisliste li.haupt { grid-column: 1 / -1; background: var(--akzent); border-color: var(--akzent); --text: #0e0f0b; --text-leise: #33400f; --akzent-text: #0e0f0b; color: var(--text); }
+.preis { align-self: flex-start; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
 .preis small.fein { margin-top: 6px; font-size: 12px; }
 .preisliste li.haupt .preis { color: var(--akzent-text); }
+@media (min-width: 720px) { .preisliste li.haupt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 40px; align-items: center; } .preisliste li.haupt .preis { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; text-align: right; align-self: center; } .preisliste li.haupt p { grid-column: 1; max-width: 60ch; } }
 .gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent-text); }
 .preisliste + .gruppe-titel { margin-top: clamp(48px, 6vw, 72px); }
-.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1.5px solid var(--akzent-rand); border-radius: var(--radius); box-shadow: var(--schatten); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.30), transparent 60%), var(--flaeche); }
+.gruppe-titel { margin-bottom: 16px !important; }
+.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1.5px solid var(--akzent-rand); border-radius: var(--radius); box-shadow: var(--schatten); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.16), transparent 60%), var(--flaeche); }
 .check h3 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.03em; }
 .check p { color: var(--text-leise); margin: 10px 0 0; max-width: 56ch; }
 .zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
 .zusatz strong { color: var(--text); }
-@media (max-width: 560px) { .preisliste li { grid-template-columns: 1fr; } .preis { grid-column: 1; grid-row: auto; text-align: left; } }
 
 /* ---------- Ablauf: vier kleine Szenen, die abspielen, sobald sie sichtbar werden ---------- */
 .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .schritte li { counter-increment: s; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 30px); transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; animation: auf .6s ease-out both; animation-delay: var(--d); }
-.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #d3c8ad; }
+.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #4b5338; }
 .schritte li:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
 .schritte h3 { display: flex; align-items: baseline; gap: 12px; padding-inline: clamp(8px, 1.2vw, 12px); }
 .schritte h3::before { content: "0" counter(s); font: 700 14px/1 var(--kopf); color: var(--akzent-text); }
@@ -335,11 +340,11 @@ p { margin: 0 0 1em; }
 /* ---------- Kontakt ---------- */
 .kontakt { text-align: center; }
 .kontakt h2 { font-size: clamp(44px, 9vw, 120px); max-width: 12ch; margin-inline: auto; }
-.kontakt h2 em { font-style: normal; color: var(--text); background: linear-gradient(transparent 60%, var(--akzent) 60%, var(--akzent) 92%, transparent 92%); padding: 0 .06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.kontakt h2 em { font-style: italic; color: var(--text); }
 .kontakt .einleitung { margin-inline: auto; }
 .kontakt .knoepfe { justify-content: center; margin-top: 36px; }
 .kontakt .knopf-akzent { min-height: 64px; padding: 0 34px; font-size: 18px; }
-.mail-wahl { position: fixed; z-index: 200; width: 260px; padding: 8px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 14px; box-shadow: 0 18px 50px -12px rgba(40,30,0,.35); animation: rein .2s ease-out; transform-origin: top center; }
+.mail-wahl { position: fixed; z-index: 200; width: 260px; padding: 8px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 14px; box-shadow: 0 18px 50px -12px rgba(0,0,0,.7); animation: rein .2s ease-out; transform-origin: top center; }
 .mail-wahl[hidden] { display: none; }
 .mail-wahl-titel { margin: 6px 10px 6px; font: 600 13px/1.2 var(--kopf); color: var(--text-leise); }
 .mail-wahl a, .mail-wahl button { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 0 12px; border: 0; border-radius: 9px; background: none; color: var(--text); font: 500 15px/1 var(--sans); text-align: left; text-decoration: none; }
@@ -358,15 +363,12 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; text-dec
 footer a:hover { color: var(--text); }
 
 /* ---------- Eigener Mauszeiger und Hover-Spielereien (nur mit Maus) ---------- */
-/* Normaler Mauszeiger, nur in Limette */
-html, body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 2.5l6.8 17.5 2.5-7.2 7.2-2.5z' fill='%23c8f23d' stroke='%230c0c0d' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto; }
-a, button, summary, .fenster, .kopieren, .mail-wahl a, .mail-wahl button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%230c0c0d' stroke-width='4.2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3Cg stroke='%23c8f23d' stroke-width='2'%3E%3Cpath d='M10 9.5V4a2 2 0 0 0-4 0v10M14 10V9a2 2 0 0 0-4 0v1M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3C/svg%3E") 8 3, pointer; }
 .knopf { transition: background-color .2s, color .2s, transform .2s, translate .25s cubic-bezier(.3,1.4,.5,1), box-shadow .3s; }
 .fenster img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .fenster:hover img { transform: scale(1.04); }
-.preisliste li { transition: padding .35s cubic-bezier(.2,.8,.2,1), background-color .35s; }
+.preisliste li { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
 .preisliste li h3 { transition: color .25s; }
-@media (hover: hover) { .preisliste li:hover { padding-inline: 18px; background: rgba(200,242,61,.16); } .preisliste li:hover h3 { color: var(--akzent-text); } }
+@media (hover: hover) { .preisliste li:hover { transform: translateY(-6px); border-color: var(--akzent); } .preisliste li:not(.haupt):hover h3 { color: var(--akzent-text); } }
 .fragen summary { transition: color .2s, padding .3s; }
 .fragen summary:hover { color: var(--akzent-text); padding-left: 8px; }
 .nav-links a:not(.knopf):not(.sprache) { position: relative; }
