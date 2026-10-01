@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites, design and social media for small businesses</title>
-<meta name="description" content="Websites, online shops, logos, flyers and Instagram for small businesses in Switzerland. A finished website from 200 francs, design and social media at fixed prices.">
+<meta name="description" content="Websites, online shops, logos, flyers and Instagram for small businesses in Switzerland. A finished website from 250 francs, design and social media at fixed prices.">
 <meta name="theme-color" content="#0e0f0b">
 <meta name="color-scheme" content="dark only">
 <meta property="og:title" content="Maurice Studer · Websites, design and social media for small businesses">
@@ -123,7 +123,7 @@ p { margin: 0 0 1em; }
 /* Der Streifen selbst steht still und schräg; nur der Text darin läuft – so springt nichts */
 .band { overflow: hidden; padding: 32px 0; margin-block: -32px; position: relative; z-index: 2; }
 .band-streifen { width: 112%; margin-left: -6%; overflow: hidden; background: var(--akzent); color: var(--auf-akzent); transform: rotate(-2deg); padding: 18px 0; }
-.band-lauf { display: flex; width: max-content; font: 700 clamp(22px, 3vw, 34px)/1 var(--kopf); letter-spacing: -.02em; text-transform: uppercase; animation: band 40s linear infinite; will-change: transform; }
+.band-lauf { display: flex; width: max-content; font: 700 clamp(22px, 3vw, 34px)/1 var(--kopf); letter-spacing: -.02em; text-transform: uppercase; animation: band 55s linear infinite; will-change: transform; }
 .band-lauf span { white-space: nowrap; }
 .band-lauf b { display: inline-block; margin: 0 .45em; font-weight: 400; animation: drehen 6s linear infinite; }
 @keyframes band { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
@@ -154,7 +154,9 @@ p { margin: 0 0 1em; }
 @keyframes glanz { 0%, 70% { left: -60%; } 100% { left: 130%; } }
 
 /* Beim Scrollen einblenden */
-.js .zeigen { opacity: 0; translate: 0 36px; transition: opacity .8s cubic-bezier(.2,.8,.2,1), translate .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .zeigen { opacity: 0; translate: 0 36px; transition: opacity .6s cubic-bezier(.2,.8,.2,1), translate .6s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 60ms); }
+/* Finger über allem, was man anklicken kann */
+a[href], button, summary, label, select, [role="button"], .fenster { cursor: pointer; }
 .js .zeigen.sichtbar { opacity: 1; translate: 0 0; }
 .start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
 .start h1 em { font-style: normal; color: var(--akzent); }
@@ -482,7 +484,7 @@ footer a:hover { color: var(--text); }
         </div>
       </div>
       <ul class="fakten" aria-label="Key facts">
-        <li><strong>200.–</strong>for the finished website, one-off</li>
+        <li><strong>250.–</strong>for the finished website, one-off</li>
         <li>Done in one week at most</li>
         <li>Free draft, no obligation</li>
         <li>Everything belongs to you</li>
@@ -592,7 +594,7 @@ footer a:hover { color: var(--text); }
         <li class="haupt">
           <h3>Website</h3>
           <p>A site for your business, built for phones: services, prices, opening hours, map, call and email buttons. You see the draft before you pay anything.</p>
-          <div class="preis">200.– <small>one-off</small><small class="fein">(+ about 15.– a year for the domain)</small></div>
+          <div class="preis">250.– <small>one-off</small><small class="fein">(+ about 15.– a year for the domain)</small></div>
         </li>
         <li>
           <h3>Redo an old website</h3>
@@ -834,7 +836,7 @@ footer a:hover { color: var(--text); }
   }, { threshold: .35 });
   karten.forEach(function (k) { beobachter.observe(k); });
 })();
-// Einblenden beim Scrollen, Lichtfleck unter der Maus, 200 zählt hoch
+// Einblenden beim Scrollen, Lichtfleck unter der Maus, 250 zählt hoch
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
@@ -847,7 +849,7 @@ footer a:hover { color: var(--text); }
   else {
     var b = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('sichtbar'); b.unobserve(e.target); } });
-    }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: .05, rootMargin: '0px 0px 60px 0px' });
     teile.forEach(function (el) { b.observe(el); });
     var ba = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add('da'); ba.unobserve(e.target); } });
@@ -863,7 +865,7 @@ footer a:hover { color: var(--text); }
   });
   var zahl = document.querySelector('.fakten strong');
   if (zahl && bewegung) {
-    var start = null, ziel = 200;
+    var start = null, ziel = 250;
     zahl.textContent = '0.–';
     setTimeout(function () {
       requestAnimationFrame(function schritt(t) {
