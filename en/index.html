@@ -138,19 +138,19 @@ p { margin: 0 0 1em; }
 .kontakt { position: relative; isolation: isolate; overflow: hidden; background: #c8f23d; --text: #0e0f0b; --text-leise: #33400f; --akzent-text: #0e0f0b; --linie: rgba(14,15,11,.18); --akzent: #0e0f0b; --auf-akzent: #c8f23d; color: var(--text); }
 .kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(14,15,11,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(14,15,11,.08) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
 .kontakt::after { display: none; }
-.kontakt .knopf-akzent:hover { box-shadow: 0 10px 34px rgba(14,15,11,.35); }
+.kontakt .knopf-akzent:hover { background: #262a1d; box-shadow: 0 8px 22px rgba(14,15,11,.2); }
 
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
 .fenster, .grund, .schritte li { box-shadow: var(--schatten); }
-.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.22), transparent 45%); }
+.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.06), transparent 45%); }
 .fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
 .grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
 .grund:hover { transform: translateY(-6px); border-color: #4b5338; }
 
 /* Knöpfe leuchten */
 .knopf-akzent { box-shadow: 0 0 0 rgba(200,242,61,0); position: relative; overflow: hidden; }
-.knopf-akzent:hover { box-shadow: 0 10px 34px rgba(200,242,61,.35); }
+.knopf-akzent:hover { box-shadow: 0 8px 22px rgba(200,242,61,.14); }
 .knopf-akzent::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: glanz 4.5s ease-in-out infinite 1.5s; }
 @keyframes glanz { 0%, 70% { left: -60%; } 100% { left: 130%; } }
 
@@ -345,6 +345,9 @@ p { margin: 0 0 1em; }
 .kontakt h2 em { font-style: italic; color: var(--text); }
 .kontakt .einleitung { margin-inline: auto; }
 .kontakt .knoepfe { justify-content: center; margin-top: 36px; }
+.kontakt .knopf-linie:hover { background: rgba(14,15,11,.08); }
+.kontakt .kopier-knopf { min-width: 12em; justify-content: center; }
+.adresse-text { font-weight: 600; color: var(--text) !important; }
 .kontakt .knopf-akzent { min-height: 64px; padding: 0 34px; font-size: 18px; }
 .mail-wahl { position: fixed; z-index: 200; width: 260px; padding: 8px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 14px; box-shadow: 0 18px 50px -12px rgba(0,0,0,.7); animation: rein .2s ease-out; transform-origin: top center; }
 .mail-wahl[hidden] { display: none; }
@@ -408,10 +411,10 @@ footer a:hover { color: var(--text); }
     <div class="raster" aria-hidden="true"></div>
     <div class="leuchten" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
-      <span class="etikett">Websites for restaurants, shops and small businesses</span>
-      <h1 id="start-titel">You run the business. <em>I'll do the website.</em></h1>
+      <span class="etikett">Websites, social media and design for small businesses</span>
+      <h1 id="start-titel">You run the business. <em>I'll make sure it gets seen.</em></h1>
       <div class="start-unten">
-        <p class="einleitung">I'm Maurice, 15, from Basel-Landschaft. I build websites that load fast, look good on a phone and tell your customers right away where you are and when you're open.</p>
+        <p class="einleitung">I am Maurice, 15, from Basel-Country. Website, Google profile, Instagram, logo or flyer: I make sure your customers find you and see right away what you offer.</p>
         <div class="knoepfe">
           <a class="knopf knopf-akzent" href="#kontakt">Ask for a free draft<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
           <a class="knopf knopf-linie" href="#arbeiten">See my work</a>
@@ -584,10 +587,10 @@ footer a:hover { color: var(--text); }
       <div class="check">
         <div>
           <span class="hinweis echt">Free</span>
-          <h3>Website check</h3>
-          <p>Send me your website address. You get three concrete things you can improve — free and with no obligation.</p>
+          <h3>Online check</h3>
+          <p>Send me the link to your website, your Instagram or your Google listing. You get three concrete things you can improve — free and with no obligation.</p>
         </div>
-        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Website%20check&amp;body=My%20website%3A%20">Request a check<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Online%20check&amp;body=My%20link%20(website%2C%20Instagram%20or%20Google)%3A%20">Request a check<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
       </div>
     </div>
   </section>
@@ -696,11 +699,12 @@ footer a:hover { color: var(--text); }
       <h2 id="kontakt-titel">Want a <em>draft?</em></h2>
       <p class="einleitung">Write me a few lines about your business. I'll get back to you within two days. English is fine.</p>
       <div class="knoepfe">
-        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Website%20enquiry">Send an email<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+        <button class="knopf knopf-akzent kopier-knopf" type="button" data-fertig="Copied ✓">Copy address</button>
+        <a class="knopf knopf-linie" data-direkt href="mailto:maurice.studer.contact@gmail.com?subject=Enquiry">Open in mail app</a>
       </div>
       <!-- Falls auf dem Computer kein Mailprogramm eingerichtet ist, tut mailto nichts: darum Webmail-Links und Kopieren -->
-      <p class="klein mail-weg">No mail app? Write directly in <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=maurice.studer.contact@gmail.com&amp;su=Website%20enquiry" target="_blank" rel="noopener">Gmail</a> or <a href="https://outlook.live.com/mail/0/deeplink/compose?to=maurice.studer.contact@gmail.com&amp;subject=Website%20enquiry" target="_blank" rel="noopener">Outlook</a>.</p>
-      <p class="klein"><button class="kopieren" type="button" data-fertig="copied">maurice.studer.contact@gmail.com <span>· copy</span></button></p>
+      <p class="klein mail-weg">No mail app? Write directly in <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=maurice.studer.contact@gmail.com&amp;su=Enquiry" target="_blank" rel="noopener">Gmail</a> or <a href="https://outlook.live.com/mail/0/deeplink/compose?to=maurice.studer.contact@gmail.com&amp;subject=Enquiry" target="_blank" rel="noopener">Outlook</a>.</p>
+      <p class="klein adresse-text">maurice.studer.contact@gmail.com</p>
     </div>
   </section>
 
@@ -730,7 +734,7 @@ footer a:hover { color: var(--text); }
   if (!wahl || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   var offen = null;
   function zu() { wahl.hidden = true; offen = null; }
-  document.querySelectorAll('a.knopf[href^="mailto:"]').forEach(function (k) {
+  document.querySelectorAll('a.knopf[href^="mailto:"]:not([data-direkt])').forEach(function (k) {
     k.addEventListener('click', function (e) {
       e.preventDefault();
       if (offen === k) { zu(); return; }
@@ -821,6 +825,16 @@ footer a:hover { color: var(--text); }
     k.addEventListener('mouseleave', function () { k.style.translate = ''; });
   });
 })();
+// Grosser Knopf im Kontakt: Adresse kopieren
+document.querySelectorAll('.kopier-knopf').forEach(function (k) {
+  var text = k.textContent;
+  k.addEventListener('click', function () {
+    var adresse = 'maurice.studer.contact@gmail.com';
+    var fertig = function () { k.textContent = k.dataset.fertig; setTimeout(function () { k.textContent = text; }, 2500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(adresse).then(fertig);
+    else { var t = document.createElement('textarea'); t.value = adresse; document.body.append(t); t.select(); document.execCommand('copy'); t.remove(); fertig(); }
+  });
+});
 // Adresse in die Zwischenablage, falls der Mail-Knopf nichts öffnet
 document.querySelectorAll('.kopieren').forEach(function (k) {
   k.addEventListener('click', function () {
