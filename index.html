@@ -340,6 +340,26 @@ footer nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
 footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 footer a:hover { color: var(--text); }
 
+/* ---------- Eigener Mauszeiger und Hover-Spielereien (nur mit Maus) ---------- */
+.zeiger-an, .zeiger-an * { cursor: none !important; }
+.c-punkt, .c-ring { position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity .3s; }
+.c-punkt { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--akzent); mix-blend-mode: difference; }
+.c-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1.5px solid rgba(200,242,61,.55); transition: opacity .3s, width .25s, height .25s, margin .25s, background-color .25s, border-color .25s, scale .15s; }
+.c-ring.gross { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgba(200,242,61,.10); border-color: var(--akzent); }
+.c-ring.klick { scale: .75; }
+.zeiger-da .c-punkt, .zeiger-da .c-ring { opacity: 1; }
+.knopf { transition: background-color .2s, color .2s, transform .2s, translate .25s cubic-bezier(.3,1.4,.5,1), box-shadow .3s; }
+.fenster img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.fenster:hover img { transform: scale(1.04); }
+.preisliste li { transition: padding .35s cubic-bezier(.2,.8,.2,1), background-color .35s; }
+.preisliste li h3 { transition: color .25s; }
+@media (hover: hover) { .preisliste li:hover { padding-inline: 18px; background: rgba(200,242,61,.045); } .preisliste li:hover h3 { color: var(--akzent); } }
+.fragen summary { transition: color .2s, padding .3s; }
+.fragen summary:hover { color: var(--akzent); padding-left: 8px; }
+.nav-links a:not(.knopf):not(.sprache) { position: relative; }
+.nav-links a:not(.knopf):not(.sprache)::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 10px; height: 1.5px; background: var(--akzent); transform: scaleX(0); transform-origin: right; transition: transform .3s; }
+.nav-links a:not(.knopf):not(.sprache):hover::after { transform: scaleX(1); transform-origin: left; }
+
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; animation: none !important; } .js .zeigen { opacity: 1; translate: none; } }
 </style>
 </head>
@@ -684,6 +704,39 @@ footer a:hover { color: var(--text); }
       });
     }, 600);
   }
+})();
+// Eigener Mauszeiger mit nachziehendem Ring, magnetische Knöpfe – nur mit Maus und ohne reduzierte Bewegung
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var html = document.documentElement;
+  var punkt = document.createElement('div'), ring = document.createElement('div');
+  punkt.className = 'c-punkt'; ring.className = 'c-ring';
+  punkt.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+  document.body.append(punkt, ring);
+  html.classList.add('zeiger-an');
+  var mx = -100, my = -100, rx = -100, ry = -100;
+  addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    punkt.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+    html.classList.add('zeiger-da');
+  });
+  document.addEventListener('mouseleave', function () { html.classList.remove('zeiger-da'); });
+  (function folgen() {
+    rx += (mx - rx) * .18; ry += (my - ry) * .18;
+    ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+    requestAnimationFrame(folgen);
+  })();
+  addEventListener('mouseover', function (e) { ring.classList.toggle('gross', !!e.target.closest('a, button, summary')); });
+  addEventListener('mousedown', function () { ring.classList.add('klick'); });
+  addEventListener('mouseup', function () { ring.classList.remove('klick'); });
+  // Knöpfe ziehen sich leicht zur Maus hin
+  document.querySelectorAll('.knopf').forEach(function (k) {
+    k.addEventListener('mousemove', function (e) {
+      var r = k.getBoundingClientRect();
+      k.style.translate = ((e.clientX - r.left - r.width / 2) * .25) + 'px ' + ((e.clientY - r.top - r.height / 2) * .35) + 'px';
+    });
+    k.addEventListener('mouseleave', function () { k.style.translate = ''; });
+  });
 })();
 // Adresse in die Zwischenablage, falls der Mail-Knopf nichts öffnet
 document.querySelectorAll('.kopieren').forEach(function (k) {
