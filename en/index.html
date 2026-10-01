@@ -143,7 +143,7 @@ p { margin: 0 0 1em; }
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
 .fenster, .grund, .schritte li { box-shadow: var(--schatten); }
-.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.06), transparent 45%); }
+.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.06), transparent 45%); }
 .fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
 .grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
 .grund:hover { transform: translateY(-6px); border-color: #4b5338; }
@@ -159,6 +159,37 @@ p { margin: 0 0 1em; }
 .js .zeigen.sichtbar { opacity: 1; translate: 0 0; }
 .start h1 { font-size: clamp(46px, 9vw, 128px); max-width: 11ch; }
 .start h1 em { font-style: normal; color: var(--akzent); }
+.start-oben { display: grid; gap: 48px; }
+@media (min-width: 980px) {
+  .start-oben { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
+  .start h1 { font-size: clamp(52px, 6.2vw, 92px) !important; }
+  .start-unten { flex-direction: column; align-items: flex-start !important; }
+}
+@media (max-width: 979px) { .start-bild { display: none; } }
+.start-bild { position: relative; height: 520px; animation: auf .9s .35s cubic-bezier(.2,.8,.2,1) both; }
+.h-telefon { position: absolute; left: 50%; top: 50%; width: 250px; height: 500px; translate: -50% -50%; rotate: 4deg; padding: 34px 16px 16px; border-radius: 40px; background: #0b0c09; border: 1px solid var(--linie); box-shadow: 0 0 0 8px #1b1d16, 0 40px 80px -30px rgba(0,0,0,.9); overflow: hidden; display: flex; flex-direction: column; gap: 14px; }
+.h-kerbe { position: absolute; top: 10px; left: 50%; width: 76px; height: 18px; translate: -50% 0; border-radius: 999px; background: #1b1d16; }
+.h-kopf { display: flex; align-items: center; gap: 8px; }
+.h-kopf i { width: 22px; height: 22px; border-radius: 7px; background: var(--akzent); }
+.h-kopf span { height: 6px; width: 36px; border-radius: 9px; background: var(--linie); }
+.h-kopf span:first-of-type { margin-left: auto; }
+.h-held { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; height: 170px; padding: 16px; border-radius: 18px; background: radial-gradient(120% 90% at 100% 0%, rgba(200,242,61,.55), transparent 60%), linear-gradient(160deg, #2b3a10, #151a0c); }
+.h-held b { font: 700 24px/1 var(--kopf); color: #fff; letter-spacing: -.02em; }
+.h-held .h-offen { font: 500 11px/1 var(--sans); color: var(--akzent); letter-spacing: 0; }
+.h-zeilen { display: grid; gap: 7px; }
+.h-zeilen span { height: 6px; border-radius: 9px; background: var(--linie); }
+.h-zeilen span:nth-child(2) { width: 80%; } .h-zeilen span:nth-child(3) { width: 60%; }
+.h-knopf { align-self: flex-start; padding: 9px 14px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 700 11px/1 var(--kopf); }
+.h-kacheln { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.h-kacheln i { height: 58px; border-radius: 12px; background: var(--flaeche-hell); }
+.h-kacheln i:nth-child(2), .h-kacheln i:nth-child(3) { background: rgba(200,242,61,.16); }
+.chip { position: absolute; display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 14px; background: rgba(24,26,19,.92); border: 1px solid var(--linie); box-shadow: var(--schatten); font: 600 14px/1 var(--kopf); color: var(--text); white-space: nowrap; animation: schweben 5s ease-in-out infinite alternate; animation-delay: calc(var(--c) * -1.3s); }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--akzent); box-shadow: 0 0 10px var(--akzent); }
+.chip:nth-of-type(1) { top: 9%; left: 2%; }
+.chip:nth-of-type(2) { top: 32%; right: 0; }
+.chip:nth-of-type(3) { bottom: 24%; left: 0; }
+.chip:nth-of-type(4) { bottom: 6%; right: 8%; }
+@keyframes schweben { to { transform: translateY(-12px); } }
 .start-unten { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; margin-top: clamp(32px, 4vw, 48px); }
 .start .einleitung { margin: 0; font-size: clamp(18px, 1.9vw, 21px); }
 .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -167,6 +198,8 @@ p { margin: 0 0 1em; }
 .fakten strong { font: 700 28px/1 var(--kopf); color: var(--akzent-text); letter-spacing: -.02em; }
 
 /* ---------- Schaufenster: Beispiele im Browserrahmen ---------- */
+.eigen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: clamp(16px, 2.5vw, 32px) 0 0; padding: 18px 22px; border: 1px dashed var(--linie); border-radius: var(--radius); color: var(--text-leise); font-size: 16px; }
+.eigen .hinweis { margin: 0; }
 .schaufenster { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.5vw, 32px); }
 .fenster { display: block; text-decoration: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; transition: border-color .25s, transform .25s; }
 .fenster:hover { border-color: #4b5338; transform: translateY(-4px); }
@@ -207,8 +240,8 @@ p { margin: 0 0 1em; }
 .schild { position: absolute; right: 18px; bottom: 18px; transform: rotate(-6deg); padding: 8px 14px; border: 2px solid var(--warn); border-radius: 6px; color: var(--warn); font: 700 15px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; }
 /* 3: Handy mit winziger Schrift */
 .bild.handy-feld { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 0; }
-.handy { width: 110px; height: 160px; border: 2px solid #d6cfbf; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
-.handy i { display: block; height: 3px; border-radius: 2px; background: #d6cfbf; }
+.handy { width: 110px; height: 160px; border: 2px solid #4b5338; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
+.handy i { display: block; height: 3px; border-radius: 2px; background: #4b5338; }
 .handy i:nth-child(3n) { width: 70%; } .handy i:nth-child(4n) { width: 85%; }
 .uhr { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 58px; height: 58px; border: 2px solid var(--warn); border-radius: 50%; color: var(--warn); font: 700 17px/1 var(--kopf); }
 .lupe { position: absolute; top: 18px; left: 18px; color: var(--text-leise); max-width: 9em; }
@@ -284,7 +317,7 @@ p { margin: 0 0 1em; }
 /* 2 Entwurf: die Seite baut sich auf */
 .browser { position: relative; width: 82%; height: 146px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; overflow: hidden; }
 .browser-leiste { display: flex; align-items: center; gap: 4px; height: 18px; padding: 0 8px; border-bottom: 1px solid var(--linie); }
-.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #d6cfbf; }
+.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #4b5338; }
 .baustein { border-radius: 4px; background: #efe9db; animation: auf .5s both; }
 .baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(200,242,61,.85), rgba(200,242,61,.2)); animation-delay: calc(var(--d) + .25s); }
 .baustein.titel { width: 50%; height: 8px; margin: 0 8px 8px; animation-delay: calc(var(--d) + .45s); }
@@ -411,13 +444,34 @@ footer a:hover { color: var(--text); }
     <div class="raster" aria-hidden="true"></div>
     <div class="leuchten" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
-      <span class="etikett">Websites, social media and design for small businesses</span>
-      <h1 id="start-titel">You run the business. <em>I'll make sure it gets seen.</em></h1>
-      <div class="start-unten">
-        <p class="einleitung">I am Maurice, 15, from Basel-Country. Website, Google profile, Instagram, logo or flyer: I make sure your customers find you and see right away what you offer.</p>
-        <div class="knoepfe">
-          <a class="knopf knopf-akzent" href="#kontakt">Ask for a free draft<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
-          <a class="knopf knopf-linie" href="#arbeiten">See my work</a>
+      <div class="start-oben">
+        <div>
+          <span class="etikett">Websites, social media and design for small businesses</span>
+          <h1 id="start-titel">You run the business. <em>I'll make sure it gets seen.</em></h1>
+          <div class="start-unten">
+            <p class="einleitung">I am Maurice, 15, from Basel-Country. Website, Google profile, Instagram, logo or flyer: I make sure your customers find you and see right away what you offer.</p>
+            <div class="knoepfe">
+              <a class="knopf knopf-akzent" href="#kontakt">Ask for a free draft<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+              <a class="knopf knopf-linie" href="#arbeiten">See my work</a>
+            </div>
+          </div>
+        </div>
+        <div class="start-bild" aria-hidden="true">
+          <div class="h-telefon">
+            <div class="h-kerbe"></div>
+            <div class="h-kopf"><i></i><span></span><span></span></div>
+            <div class="h-held">
+              <b>Café Linde</b>
+              <b class="h-offen">Open today until 6 pm</b>
+            </div>
+            <div class="h-zeilen"><span></span><span></span><span></span></div>
+            <span class="h-knopf">Book a table</span>
+            <div class="h-kacheln"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <span class="chip" style="--c:0"><i></i>Website online</span>
+          <span class="chip" style="--c:1"><i></i>Google profile</span>
+          <span class="chip" style="--c:2"><i></i>Instagram</span>
+          <span class="chip" style="--c:3"><i></i>Logo &amp; Flyer</span>
         </div>
       </div>
       <ul class="fakten" aria-label="Key facts">
@@ -477,6 +531,7 @@ footer a:hover { color: var(--text); }
           </div>
         </a>
       </div>
+      <p class="eigen"><span class="hinweis echt">Own project</span> And this page right here? Also mine: design, copy and code, built from scratch.</p>
     </div>
   </section>
 
@@ -776,7 +831,7 @@ footer a:hover { color: var(--text); }
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
-  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
+  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.eigen', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
   var teile = [];
   gruppen.forEach(function (g) {
     document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });
@@ -820,7 +875,7 @@ footer a:hover { color: var(--text); }
   document.querySelectorAll('.knopf').forEach(function (k) {
     k.addEventListener('mousemove', function (e) {
       var r = k.getBoundingClientRect();
-      k.style.translate = ((e.clientX - r.left - r.width / 2) * .25) + 'px ' + ((e.clientY - r.top - r.height / 2) * .35) + 'px';
+      k.style.translate = ((e.clientX - r.left - r.width / 2) * .08) + 'px ' + ((e.clientY - r.top - r.height / 2) * .12) + 'px';
     });
     k.addEventListener('mouseleave', function () { k.style.translate = ''; });
   });
