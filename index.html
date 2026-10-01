@@ -215,6 +215,11 @@ p { margin: 0 0 1em; }
 .preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
 .preis small.fein { margin-top: 6px; font-size: 12px; }
 .preisliste li.haupt .preis { color: var(--akzent); }
+.gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent); }
+.preisliste + .gruppe-titel { margin-top: clamp(48px, 6vw, 72px); }
+.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1px solid var(--akzent); border-radius: var(--radius); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.14), transparent 60%), var(--flaeche); }
+.check h3 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.03em; }
+.check p { color: var(--text-leise); margin: 10px 0 0; max-width: 56ch; }
 .zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
 .zusatz strong { color: var(--text); }
 @media (max-width: 560px) { .preisliste li { grid-template-columns: 1fr; } .preis { grid-column: 1; grid-row: auto; text-align: left; } }
@@ -505,6 +510,7 @@ footer a:hover { color: var(--text); }
         <h2 id="angebot-titel">Was ich mache — und was es kostet.</h2>
         <p class="einleitung">Für Restaurants, Onlineshops, Coiffeure, Handwerker, Praxen und alle anderen kleinen Betriebe. Feste Preise, keine versteckten Kosten. Alle Preise in Franken.</p>
       </div>
+      <p class="gruppe-titel">Websites</p>
       <ul class="preisliste">
         <li class="haupt">
           <h3>Website</h3>
@@ -526,8 +532,51 @@ footer a:hover { color: var(--text); }
           <p>Ihre bestehende Website oder Ihr Onlineshop: Preise, Zeiten und Texte nachführen, Produkte mit Fotos einpflegen.</p>
           <div class="preis">30.– <small>pro Stunde</small></div>
         </li>
+        <li>
+          <h3>Onlineshop einrichten</h3>
+          <p>Produkte mit Fotos, Preisen und Beschreibungen in Ihren Shop bringen — Shopify, Wix oder Etsy.</p>
+          <div class="preis">30.– <small>pro Stunde</small></div>
+        </li>
+        <li>
+          <h3>E-Mail auf eigener Domain</h3>
+          <p>info@ihrbetrieb.ch statt einer Gmail-Adresse: eingerichtet auf Handy und Computer, mit passender Signatur.</p>
+          <div class="preis">30.–</div>
+        </li>
       </ul>
-      <p class="zusatz"><strong>Dazu, wenn Sie möchten:</strong> E-Mail-Adresse auf Ihrer eigenen Domain (info@ihrbetrieb.ch), ein einfaches Logo oder eine Visitenkarte, und Wartung fürs ganze Jahr. Das besprechen wir, wenn die Website steht.</p>
+
+      <p class="gruppe-titel">Design &amp; Social Media</p>
+      <ul class="preisliste">
+        <li>
+          <h3>Logo + Visitenkarte</h3>
+          <p>Ein einfaches, klares Logo und eine passende Visitenkarte, bereit für den Druck.</p>
+          <div class="preis">80.–</div>
+        </li>
+        <li>
+          <h3>Instagram einrichten</h3>
+          <p>Ihr Geschäftsprofil richtig aufgesetzt: Bio, Highlight-Bilder und neun Beitragsvorlagen, die Sie selbst weiter verwenden können.</p>
+          <div class="preis">80.–</div>
+        </li>
+        <li>
+          <h3>Speisekarte / Preisliste</h3>
+          <p>Ihre Karte oder Preisliste neu gestaltet: als PDF zum Drucken und zum Aufschalten online.</p>
+          <div class="preis">60.–</div>
+        </li>
+        <li>
+          <h3>Flyer</h3>
+          <p>Ein Flyer für Eröffnung, Anlass oder Aktion, im Format A5 oder A6, bereit für den Druck.</p>
+          <div class="preis">40.–</div>
+        </li>
+      </ul>
+      <p class="zusatz"><strong>Alles auch einzeln:</strong> Sie brauchen keine Website von mir, um ein Logo, einen Flyer oder ein Instagram-Profil zu bestellen.</p>
+
+      <div class="check">
+        <div>
+          <span class="hinweis echt">Gratis</span>
+          <h3>Website-Check</h3>
+          <p>Schicken Sie mir die Adresse Ihrer Website. Sie bekommen drei konkrete Dinge, die Sie verbessern können — kostenlos und ohne Verpflichtung.</p>
+        </div>
+        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Website-Check&amp;body=Meine%20Website%3A%20">Check anfragen<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+      </div>
     </div>
   </section>
 
@@ -668,7 +717,7 @@ footer a:hover { color: var(--text); }
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
-  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
+  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
   var teile = [];
   gruppen.forEach(function (g) {
     document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });

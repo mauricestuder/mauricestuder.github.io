@@ -216,6 +216,11 @@ p { margin: 0 0 1em; }
 .preis small { display: block; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--text-leise); }
 .preis small.fein { margin-top: 6px; font-size: 12px; }
 .preisliste li.haupt .preis { color: var(--akzent); }
+.gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent); }
+.preisliste + .gruppe-titel { margin-top: clamp(48px, 6vw, 72px); }
+.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1px solid var(--akzent); border-radius: var(--radius); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.14), transparent 60%), var(--flaeche); }
+.check h3 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.03em; }
+.check p { color: var(--text-leise); margin: 10px 0 0; max-width: 56ch; }
 .zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
 .zusatz strong { color: var(--text); }
 @media (max-width: 560px) { .preisliste li { grid-template-columns: 1fr; } .preis { grid-column: 1; grid-row: auto; text-align: left; } }
@@ -506,6 +511,7 @@ footer a:hover { color: var(--text); }
         <h2 id="angebot-titel">What I do — and what it costs.</h2>
         <p class="einleitung">For restaurants, online shops, hair salons, tradespeople, practices and every other small business. Fixed prices, no hidden costs. All prices in Swiss francs.</p>
       </div>
+      <p class="gruppe-titel">Websites</p>
       <ul class="preisliste">
         <li class="haupt">
           <h3>Website</h3>
@@ -527,8 +533,51 @@ footer a:hover { color: var(--text); }
           <p>Your existing website or online shop: updating prices, hours and texts, adding products with photos.</p>
           <div class="preis">30.– <small>per hour</small></div>
         </li>
+        <li>
+          <h3>Online shop setup</h3>
+          <p>Getting products into your shop with photos, prices and descriptions — Shopify, Wix or Etsy.</p>
+          <div class="preis">30.– <small>per hour</small></div>
+        </li>
+        <li>
+          <h3>Email on your own domain</h3>
+          <p>info@yourbusiness.ch instead of a Gmail address: set up on phone and computer, with a matching signature.</p>
+          <div class="preis">30.–</div>
+        </li>
       </ul>
-      <p class="zusatz"><strong>Extras, if you like:</strong> an email address on your own domain (info@yourbusiness.ch), a simple logo or business card, and upkeep for the whole year. We'll talk about that once the website is up.</p>
+
+      <p class="gruppe-titel">Design &amp; social media</p>
+      <ul class="preisliste">
+        <li>
+          <h3>Logo + business card</h3>
+          <p>A simple, clear logo and a matching business card, ready to print.</p>
+          <div class="preis">80.–</div>
+        </li>
+        <li>
+          <h3>Instagram setup</h3>
+          <p>Your business profile set up properly: bio, highlight covers and nine post templates you can keep using yourself.</p>
+          <div class="preis">80.–</div>
+        </li>
+        <li>
+          <h3>Menu / price list</h3>
+          <p>Your menu or price list redesigned: as a PDF for printing and for putting online.</p>
+          <div class="preis">60.–</div>
+        </li>
+        <li>
+          <h3>Flyer</h3>
+          <p>A flyer for an opening, event or special offer, A5 or A6, ready to print.</p>
+          <div class="preis">40.–</div>
+        </li>
+      </ul>
+      <p class="zusatz"><strong>Everything on its own, too:</strong> you don't need a website from me to order a logo, a flyer or an Instagram profile.</p>
+
+      <div class="check">
+        <div>
+          <span class="hinweis echt">Free</span>
+          <h3>Website check</h3>
+          <p>Send me your website address. You get three concrete things you can improve — free and with no obligation.</p>
+        </div>
+        <a class="knopf knopf-akzent" href="mailto:maurice.studer.contact@gmail.com?subject=Website%20check&amp;body=My%20website%3A%20">Request a check<svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+      </div>
     </div>
   </section>
 
@@ -669,7 +718,7 @@ footer a:hover { color: var(--text); }
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
-  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
+  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
   var teile = [];
   gruppen.forEach(function (g) {
     document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });
