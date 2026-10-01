@@ -62,7 +62,13 @@ p { margin: 0 0 1em; }
 .skip:focus { top: 12px; }
 
 .wrap { width: min(100% - 2 * var(--rand), var(--breite)); margin-inline: auto; }
-.abschnitt { padding-block: var(--abschnitt); border-top: 1px solid var(--linie); }
+.abschnitt { position: relative; padding-block: var(--abschnitt); }
+/* Übergang: statt harter Linie zieht sich ein leuchtender Strich von der Mitte nach aussen, wenn der Abschnitt ins Bild kommt */
+.abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 30%, #8f8cff 70%, transparent); box-shadow: 0 0 22px rgba(200,242,61,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
+.js .abschnitt:not(.da)::after { transform: scaleX(0); opacity: 0; }
+/* Abschnitt-Inhalt rückt beim Hereinkommen leicht nach */
+.abschnitt > .wrap { transition: scale 1s cubic-bezier(.2,.8,.2,1); }
+.js .abschnitt:not(.da) > .wrap { scale: .97; }
 .etikett { display: block; font: 500 14px/1 var(--kopf); color: var(--text-leise); margin-bottom: 24px; }
 .etikett::before { content: "/ "; color: var(--akzent); }
 .einleitung { max-width: 54ch; color: var(--text-leise); font-size: clamp(17px, 1.6vw, 19px); margin-top: 24px; }
@@ -120,10 +126,10 @@ p { margin: 0 0 1em; }
 @keyframes drehen { to { transform: rotate(360deg); } }
 
 /* ---------- Abschnitte mit Licht statt nur Schwarz ---------- */
-#arbeiten { background: radial-gradient(50% 40% at 0% 10%, rgba(96,92,255,.18), transparent 70%), radial-gradient(40% 30% at 100% 90%, rgba(200,242,61,.07), transparent 70%); }
-#warum { background: radial-gradient(45% 45% at 100% 0%, rgba(255,122,89,.16), transparent 70%), var(--flaeche-tief); }
-#angebot { background: radial-gradient(50% 40% at 0% 100%, rgba(200,242,61,.13), transparent 70%), radial-gradient(40% 40% at 100% 0%, rgba(96,92,255,.20), transparent 70%); }
-#ablauf { background: radial-gradient(60% 50% at 50% 100%, rgba(96,92,255,.24), transparent 70%), var(--flaeche-tief); }
+#arbeiten { background: radial-gradient(50% 40% at 0% 30%, rgba(96,92,255,.18), transparent 70%), radial-gradient(40% 30% at 100% 70%, rgba(200,242,61,.07), transparent 70%); }
+#warum { background: radial-gradient(45% 45% at 100% 30%, rgba(255,122,89,.16), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
+#angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.13), transparent 70%), radial-gradient(40% 40% at 100% 35%, rgba(96,92,255,.20), transparent 70%); }
+#ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(96,92,255,.24), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
 #fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.06), transparent 70%); }
 .kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(50% 60% at 50% 55%, rgba(200,242,61,.20), transparent 70%), radial-gradient(70% 60% at 50% 120%, rgba(96,92,255,.30), transparent 70%); }
 .kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
@@ -642,17 +648,22 @@ footer a:hover { color: var(--text); }
 // Einblenden beim Scrollen, Lichtfleck unter der Maus, 200 zählt hoch
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var abschnitte = document.querySelectorAll('.abschnitt');
   var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.gruende > *', '.preisliste > li', '.zusatz', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
   var teile = [];
   gruppen.forEach(function (g) {
     document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });
   });
-  if (!bewegung || !('IntersectionObserver' in window)) { teile.forEach(function (el) { el.classList.add('sichtbar'); }); }
+  if (!bewegung || !('IntersectionObserver' in window)) { teile.forEach(function (el) { el.classList.add('sichtbar'); }); abschnitte.forEach(function (a) { a.classList.add('da'); }); }
   else {
     var b = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('sichtbar'); b.unobserve(e.target); } });
     }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
     teile.forEach(function (el) { b.observe(el); });
+    var ba = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add('da'); ba.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -25% 0px' });
+    abschnitte.forEach(function (a) { ba.observe(a); });
   }
   document.querySelectorAll('.fenster, .grund, .schritte li').forEach(function (k) {
     k.addEventListener('pointermove', function (e) {
