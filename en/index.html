@@ -376,13 +376,6 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .ich-fakten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
 .ich-fakten li { padding: 10px 6px; border-radius: 10px; background: var(--grund); font-size: 13px; color: var(--text-leise); text-align: center; }
 .ich-fakten b { display: block; margin-bottom: 4px; font: 700 22px/1 var(--kopf); color: var(--akzent-text); }
-.ich-ziel { margin-top: 18px; font-size: 13px; color: var(--text-leise); }
-.ich-ziel b { display: block; margin-top: 2px; font: 600 15px/1.3 var(--kopf); color: var(--text); }
-.strasse { position: relative; height: 46px; margin-top: 12px; border-radius: 10px; background: var(--akzent); overflow: hidden; }
-.strasse::before { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: repeating-linear-gradient(90deg, rgba(248,241,228,.55) 0 14px, transparent 14px 28px); animation: strasse .5s linear infinite; }
-@keyframes strasse { to { background-position: -28px 0; } }
-.strasse svg { position: absolute; left: 50%; bottom: 7px; width: 46px; height: 30px; margin-left: -23px; fill: none; stroke: #f3cf9b; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; animation: holpern .45s ease-in-out infinite alternate; }
-@keyframes holpern { to { transform: translateY(-2px) rotate(-2deg); } }
 
 .frage-bild { position: relative; max-width: 380px; height: 210px; margin-top: clamp(32px, 4vw, 48px); }
 .frage-zeichen { position: absolute; right: 8px; top: 0; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: var(--akzent); color: var(--auf-akzent); font: 700 48px/1 var(--kopf); animation: wackeln 3s ease-in-out infinite; }
@@ -531,8 +524,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="arbeiten" aria-labelledby="arbeiten-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="etikett">Work</span>
-        <h2 id="arbeiten-titel">This is what my work looks like.</h2>
+        <h2 id="arbeiten-titel">Work</h2>
         <p class="einleitung">One website for a real client and two fictional businesses — that's how different a business can look online, depending on what suits it. Click and try them on your phone. (All three sites are in German.)</p>
       </div>
       <div class="schaufenster">
@@ -580,8 +572,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="warum" aria-labelledby="warum-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="etikett">Why</span>
-        <h2 id="warum-titel">If they can't find you, they won't come.</h2>
+        <h2 id="warum-titel">Why</h2>
         <p class="einleitung">Most customers search on their phone first. Without a website — or with an old one — this happens:</p>
       </div>
       <div class="gruende">
@@ -618,8 +609,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="angebot" aria-labelledby="angebot-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="etikett">Services</span>
-        <h2 id="angebot-titel">What I do — and what it costs.</h2>
+        <h2 id="angebot-titel">Services</h2>
         <p class="einleitung">For restaurants, online shops, hair salons, tradespeople, practices and every other small business. Fixed prices, no hidden costs. All prices in Swiss francs.</p>
       </div>
       <p class="gruppe-titel">Websites</p>
@@ -700,8 +690,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="ablauf" aria-labelledby="ablauf-titel">
     <div class="wrap">
       <div class="kopf-abschnitt">
-        <span class="etikett">How it works</span>
-        <h2 id="ablauf-titel">Done in four steps.</h2>
+        <h2 id="ablauf-titel">How it works</h2>
         <p class="einleitung">Website, shop, logo or Instagram: from the first email to the finished result in one week at most.</p>
       </div>
       <ol class="schritte">
@@ -754,8 +743,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="ueber" aria-labelledby="ueber-titel">
     <div class="wrap ueber">
       <div>
-        <span class="etikett">About me</span>
-        <h2 id="ueber-titel">Young, careful and quick.</h2>
+        <h2 id="ueber-titel">About me</h2>
         <div class="ich-karte">
           <div class="ich-kopf">
             <span class="ich-bild" aria-hidden="true">MS</span>
@@ -766,17 +754,10 @@ footer a:hover { color: var(--text); }
             <li><b>9th</b>grade</li>
             <li><b>BL</b>Liestal</li>
           </ul>
-          <div class="ich-ziel">
-            <span>My goal this school year</span>
-            <b>Motorbike, licence and gear</b>
-            <div class="strasse" aria-hidden="true">
-              <svg viewBox="0 0 46 30"><circle cx="9" cy="22" r="6"/><circle cx="37" cy="22" r="6"/><path d="M9 22l9-10h12l7 10M18 12l4 10 8-10M30 12l1-5h4M15 10h7"/></svg>
-            </div>
-          </div>
         </div>
       </div>
       <div>
-        <p class="einleitung">My name is <strong>Maurice Studer</strong> and I'm in 9th grade in Liestal. For my school project I want to earn enough in one school year for my first motorbike, the licence and the gear — with real work for real customers.</p>
+        <p class="einleitung">My name is <strong>Maurice Studer</strong> and I'm in 9th grade in Liestal. Alongside school I build websites and design how small businesses show up — with real work for real customers.</p>
         <p>Many small businesses are hard to find online: no website, an empty Instagram, a logo from 2005. That's where I help: <strong>a clear presence with what your customers are actually looking for</strong> — website, shop, Google profile, Instagram, logo and print, all from one person. No frills or subscription.</p>
       </div>
     </div>
@@ -785,8 +766,7 @@ footer a:hover { color: var(--text); }
   <section class="abschnitt" id="fragen" aria-labelledby="fragen-titel">
     <div class="wrap fragen">
       <div>
-        <span class="etikett">Questions</span>
-        <h2 id="fragen-titel">Frequently asked.</h2>
+        <h2 id="fragen-titel">Questions</h2>
         <div class="frage-bild" aria-hidden="true">
           <span class="frage-zeichen">?</span>
           <span class="blase-f" style="--c:0">What does it cost?</span>
@@ -822,8 +802,7 @@ footer a:hover { color: var(--text); }
 
   <section class="abschnitt kontakt" id="kontakt" aria-labelledby="kontakt-titel">
     <div class="wrap">
-      <span class="etikett">Contact</span>
-      <h2 id="kontakt-titel">Want a <em>draft?</em></h2>
+      <h2 id="kontakt-titel">Contact</h2>
       <p class="einleitung">Write me a few lines about your business and what you need — website, shop, logo or Instagram. I'll get back to you within two days. English is fine.</p>
       <div class="knoepfe">
         <button class="knopf knopf-akzent kopier-knopf" type="button" data-fertig="Copied ✓">Copy address</button>
