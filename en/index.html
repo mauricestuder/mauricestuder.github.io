@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites, design and social media for small businesses</title>
 <meta name="description" content="Websites, online shops, logos, flyers and Instagram for small businesses in Switzerland. A finished website from 249 francs, design and social media at fixed prices.">
-<meta name="theme-color" content="#0e0f0b">
+<meta name="theme-color" content="#0f0d0a">
 <meta name="color-scheme" content="dark only">
 <meta property="og:title" content="Maurice Studer · Websites, design and social media for small businesses">
 <meta property="og:description" content="Website, online shop, logo, flyer, Instagram: everything for how your business shows up, at fixed prices.">
@@ -18,7 +18,7 @@
 <!-- Schriften liegen selbst auf dem Server: schneller, keine Daten an Google -->
 <link rel="preload" href="../schrift/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../schrift/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c8f23d'/%3E%3Cpath d='M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23' fill='none' stroke='%230c0c0d' stroke-width='3' stroke-linecap='round'/%3E%3Crect x='23.5' y='20.5' width='3.5' height='3' fill='%230c0c0d'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffb020'/%3E%3Cpath d='M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23' fill='none' stroke='%230c0c0d' stroke-width='3' stroke-linecap='round'/%3E%3Crect x='23.5' y='20.5' width='3.5' height='3' fill='%230c0c0d'/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 /* Fassung 01.10.: dunkel, gross, eine Akzentfarbe. Die Fassung nach UI/UX Pro Max liegt in ../maurice-skill/ */
@@ -29,18 +29,18 @@
 /* ---------- Farben und Masse ---------- */
 :root {
   /* Fassung «hell und fröhlich» (01.10.): warmes Creme statt Schwarz */
-  --grund: #0e0f0b;
-  --flaeche: #181a13;
-  --flaeche-hell: #23261b;
-  --flaeche-tief: #13150f;
-  --linie: #2d3124;
-  --text: #f4f6ec;
-  --text-leise: #a9ad9b;      /* 8:1 auf --grund */
-  --akzent: #c8f23d;          /* Limette: Knöpfe, Logo, Markierungen */
-  --akzent-text: #c8f23d;     /* Limette als Schrift auf dunklem Grund */
-  --akzent-rand: #c8f23d;
-  --auf-akzent: #0e0f0b;
-  --warn: #ff7a59;            /* nur für Probleme im Abschnitt Warum */
+  --grund: #0f0d0a;
+  --flaeche: #1b1813;
+  --flaeche-hell: #28241b;
+  --flaeche-tief: #15130e;
+  --linie: #342e24;
+  --text: #f7f3ea;
+  --text-leise: #b0a998;      /* 8:1 auf --grund */
+  --akzent: #ffb020;          /* Amber: Knöpfe, Logo, Markierungen */
+  --akzent-text: #ffb020;     /* Amber als Schrift auf dunklem Grund */
+  --akzent-rand: #ffb020;
+  --auf-akzent: #0f0d0a;
+  --warn: #ff5d5d;            /* nur für Probleme im Abschnitt Warum */
   --schatten: 0 1px 2px rgba(0,0,0,.3), 0 18px 40px -20px rgba(0,0,0,.8);
   --kopf: "Space Grotesk", system-ui, sans-serif;
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -68,7 +68,7 @@ p { margin: 0 0 1em; }
 .wrap { width: min(100% - 2 * var(--rand), var(--breite)); margin-inline: auto; }
 .abschnitt { position: relative; padding-block: var(--abschnitt); }
 /* Übergang: statt harter Linie zieht sich ein leuchtender Strich von der Mitte nach aussen, wenn der Abschnitt ins Bild kommt */
-.abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 50%, transparent); box-shadow: 0 0 22px rgba(200,242,61,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
+.abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 50%, transparent); box-shadow: 0 0 22px rgba(255,176,32,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
 .js .abschnitt:not(.da)::after { transform: scaleX(0); opacity: 0; }
 /* Abschnitt-Inhalt rückt beim Hereinkommen leicht nach */
 .abschnitt > .wrap { transition: scale 1s cubic-bezier(.2,.8,.2,1); }
@@ -82,7 +82,7 @@ p { margin: 0 0 1em; }
 .knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--kopf); text-decoration: none; transition: background-color .2s, color .2s, transform .2s; touch-action: manipulation; }
 .knopf svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .knopf-akzent { background: var(--akzent); color: var(--auf-akzent); }
-.knopf-akzent:hover { background: #d6fb55; }
+.knopf-akzent:hover { background: #ffc24d; }
 .knopf-akzent:hover svg { transform: translateX(3px); }
 .knopf-linie { border: 1px solid var(--linie); color: var(--text); }
 .knopf-linie:hover { background: var(--flaeche-hell); }
@@ -93,7 +93,7 @@ p { margin: 0 0 1em; }
 .marke svg { width: 36px; height: 36px; flex: none; }
 
 /* ---------- Navigation ---------- */
-.nav { position: sticky; top: 0; z-index: 50; background: rgba(14,15,11,.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(15,13,10,.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--linie); }
 .nav-innen { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
 .nav-links { display: flex; align-items: center; gap: clamp(6px, 2vw, 28px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
 .nav-links a:not(.knopf) { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; text-decoration: none; color: var(--text-leise); transition: color .2s; }
@@ -110,8 +110,8 @@ p { margin: 0 0 1em; }
 /* zwei weiche Lichtflecken, die langsam wandern */
 .leuchten { position: absolute; inset: 0; z-index: -2; pointer-events: none; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
 .leuchten i { position: absolute; border-radius: 50%; filter: blur(80px); }
-.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(200,242,61,.22); animation: wandern 16s ease-in-out infinite alternate; }
-.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(200,242,61,.10); animation: wandern 19s ease-in-out infinite alternate-reverse; }
+.leuchten i:nth-child(1) { width: 46vw; height: 46vw; right: -8vw; top: -16vw; background: rgba(255,176,32,.22); animation: wandern 16s ease-in-out infinite alternate; }
+.leuchten i:nth-child(2) { width: 38vw; height: 38vw; left: -10vw; bottom: -20vw; background: rgba(255,176,32,.10); animation: wandern 19s ease-in-out infinite alternate-reverse; }
 @keyframes wandern { to { transform: translate(-8vw, 6vw) scale(1.15); } }
 /* Start fährt beim Laden ein */
 .start .etikett, .start h1, .start-unten, .fakten { animation: auf .8s cubic-bezier(.2,.8,.2,1) both; }
@@ -130,26 +130,26 @@ p { margin: 0 0 1em; }
 @keyframes drehen { to { transform: rotate(360deg); } }
 
 /* ---------- Abschnitte mit Licht statt nur Schwarz ---------- */
-#arbeiten { background: radial-gradient(50% 40% at 0% 30%, rgba(200,242,61,.07), transparent 70%); }
-#warum { background: radial-gradient(45% 45% at 100% 30%, rgba(200,242,61,.06), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
-#angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(200,242,61,.08), transparent 70%); }
-#ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(200,242,61,.07), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
-#fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(200,242,61,.05), transparent 70%); }
-.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(70% 70% at 50% 100%, rgba(200,242,61,.22), transparent 70%), linear-gradient(180deg, var(--grund) 0%, #141a0c 35%, #1d2911 100%); }
+#arbeiten { background: radial-gradient(50% 40% at 0% 30%, rgba(255,176,32,.07), transparent 70%); }
+#warum { background: radial-gradient(45% 45% at 100% 30%, rgba(255,176,32,.06), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
+#angebot { background: radial-gradient(50% 40% at 0% 70%, rgba(255,176,32,.08), transparent 70%); }
+#ablauf { background: radial-gradient(60% 50% at 50% 70%, rgba(255,176,32,.07), transparent 70%), linear-gradient(transparent, var(--flaeche-tief) 180px, var(--flaeche-tief) calc(100% - 180px), transparent); }
+#fragen { background: radial-gradient(40% 50% at 0% 50%, rgba(255,176,32,.05), transparent 70%); }
+.kontakt { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(70% 70% at 50% 100%, rgba(255,176,32,.22), transparent 70%), linear-gradient(180deg, var(--grund) 0%, #1c150a 35%, #2c1f0b 100%); }
 .kontakt::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000, transparent 75%); }
 .kontakt::after { display: none; }
 
 /* Lichtfleck folgt der Maus auf Karten */
 .fenster, .grund, .schritte li { position: relative; }
 .fenster, .grund, .schritte li { box-shadow: var(--schatten); }
-.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(200,242,61,.06), transparent 45%); }
+.fenster::after, .grund::after, .schritte li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(255,176,32,.06), transparent 45%); }
 .fenster:hover::after, .grund:hover::after, .schritte li:hover::after { opacity: 1; }
 .grund { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
-.grund:hover { transform: translateY(-6px); border-color: #4b5338; }
+.grund:hover { transform: translateY(-6px); border-color: #5a4c33; }
 
 /* Knöpfe leuchten */
-.knopf-akzent { box-shadow: 0 0 0 rgba(200,242,61,0); position: relative; overflow: hidden; }
-.knopf-akzent:hover { box-shadow: 0 8px 22px rgba(200,242,61,.14); }
+.knopf-akzent { box-shadow: 0 0 0 rgba(255,176,32,0); position: relative; overflow: hidden; }
+.knopf-akzent:hover { box-shadow: 0 8px 22px rgba(255,176,32,.14); }
 .knopf-akzent::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: glanz 4.5s ease-in-out infinite 1.5s; }
 @keyframes glanz { 0%, 70% { left: -60%; } 100% { left: 130%; } }
 
@@ -168,13 +168,13 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 }
 @media (max-width: 979px) { .start-bild { display: none; } }
 .start-bild { position: relative; height: 590px; animation: auf .9s .35s cubic-bezier(.2,.8,.2,1) both; }
-.h-telefon { position: absolute; left: 50%; top: 50%; width: 280px; height: 560px; translate: -50% -50%; rotate: 4deg; padding: 34px 16px 16px; border-radius: 40px; background: #0b0c09; border: 1px solid var(--linie); box-shadow: 0 0 0 8px #1b1d16, 0 40px 80px -30px rgba(0,0,0,.9); overflow: hidden; display: flex; flex-direction: column; gap: 14px; }
-.h-kerbe { position: absolute; top: 10px; left: 50%; width: 76px; height: 18px; translate: -50% 0; border-radius: 999px; background: #1b1d16; }
+.h-telefon { position: absolute; left: 50%; top: 50%; width: 280px; height: 560px; translate: -50% -50%; rotate: 4deg; padding: 34px 16px 16px; border-radius: 40px; background: #0c0b09; border: 1px solid var(--linie); box-shadow: 0 0 0 8px #1e1b16, 0 40px 80px -30px rgba(0,0,0,.9); overflow: hidden; display: flex; flex-direction: column; gap: 14px; }
+.h-kerbe { position: absolute; top: 10px; left: 50%; width: 76px; height: 18px; translate: -50% 0; border-radius: 999px; background: #1e1b16; }
 .h-kopf { display: flex; align-items: center; gap: 8px; }
 .h-kopf i { width: 22px; height: 22px; border-radius: 7px; background: var(--akzent); }
 .h-kopf span { height: 6px; width: 36px; border-radius: 9px; background: var(--linie); }
 .h-kopf span:first-of-type { margin-left: auto; }
-.h-held { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; height: 196px; padding: 16px; border-radius: 18px; background: radial-gradient(120% 90% at 100% 0%, rgba(200,242,61,.55), transparent 60%), linear-gradient(160deg, #2b3a10, #151a0c); }
+.h-held { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; height: 196px; padding: 16px; border-radius: 18px; background: radial-gradient(120% 90% at 100% 0%, rgba(255,176,32,.55), transparent 60%), linear-gradient(160deg, #3d2b0c, #1a140a); }
 .h-held b { font: 700 24px/1 var(--kopf); color: #fff; letter-spacing: -.02em; }
 .h-held .h-offen { font: 500 11px/1 var(--sans); color: var(--akzent); letter-spacing: 0; }
 .h-zeilen { display: grid; gap: 7px; }
@@ -183,8 +183,8 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .h-knopf { align-self: flex-start; padding: 9px 14px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 700 11px/1 var(--kopf); }
 .h-kacheln { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
 .h-kacheln i { height: 64px; border-radius: 12px; background: var(--flaeche-hell); }
-.h-kacheln i:nth-child(2), .h-kacheln i:nth-child(3) { background: rgba(200,242,61,.16); }
-.chip { position: absolute; display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 14px; background: rgba(24,26,19,.92); border: 1px solid var(--linie); box-shadow: var(--schatten); font: 600 14px/1 var(--kopf); color: var(--text); white-space: nowrap; animation: schweben 5s ease-in-out infinite alternate; animation-delay: calc(var(--c) * -1.3s); }
+.h-kacheln i:nth-child(2), .h-kacheln i:nth-child(3) { background: rgba(255,176,32,.16); }
+.chip { position: absolute; display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 14px; background: rgba(27,24,19,.92); border: 1px solid var(--linie); box-shadow: var(--schatten); font: 600 14px/1 var(--kopf); color: var(--text); white-space: nowrap; animation: schweben 5s ease-in-out infinite alternate; animation-delay: calc(var(--c) * -1.3s); }
 .chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--akzent); box-shadow: 0 0 10px var(--akzent); }
 .chip:nth-of-type(1) { top: 9%; left: 2%; }
 .chip:nth-of-type(2) { top: 32%; right: 0; }
@@ -203,7 +203,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .eigen .hinweis { margin: 0; }
 .schaufenster { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.5vw, 32px); }
 .fenster { display: block; text-decoration: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; transition: border-color .25s, transform .25s; }
-.fenster:hover { border-color: #4b5338; transform: translateY(-4px); }
+.fenster:hover { border-color: #5a4c33; transform: translateY(-4px); }
 .fenster-leiste { display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-bottom: 1px solid var(--linie); }
 .fenster-leiste i { width: 10px; height: 10px; border-radius: 50%; background: var(--linie); }
 .fenster-leiste span { margin-left: 10px; font-size: 12px; color: var(--text-leise); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -241,8 +241,8 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .schild { position: absolute; right: 18px; bottom: 18px; transform: rotate(-6deg); padding: 8px 14px; border: 2px solid var(--warn); border-radius: 6px; color: var(--warn); font: 700 15px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; }
 /* 3: Handy mit winziger Schrift */
 .bild.handy-feld { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 0; }
-.handy { width: 110px; height: 160px; border: 2px solid #4b5338; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
-.handy i { display: block; height: 3px; border-radius: 2px; background: #4b5338; }
+.handy { width: 110px; height: 160px; border: 2px solid #5a4c33; border-bottom: 0; border-radius: 18px 18px 0 0; padding: 22px 12px 0; display: flex; flex-direction: column; gap: 5px; }
+.handy i { display: block; height: 3px; border-radius: 2px; background: #5a4c33; }
 .handy i:nth-child(3n) { width: 70%; } .handy i:nth-child(4n) { width: 85%; }
 .uhr { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 58px; height: 58px; border: 2px solid var(--warn); border-radius: 50%; color: var(--warn); font: 700 17px/1 var(--kopf); }
 .lupe { position: absolute; top: 18px; left: 18px; color: var(--text-leise); max-width: 9em; }
@@ -254,7 +254,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .preisliste h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.03em; }
 .preisliste p { color: var(--text-leise); font-size: 16px; margin: 0; }
 .preisliste .preis { margin-top: auto; padding-top: 14px; text-align: left; }
-.preisliste li.haupt { grid-column: 1 / -1; padding: clamp(28px, 3.4vw, 40px); background: linear-gradient(135deg, rgba(200,242,61,.13), rgba(200,242,61,.03) 60%), var(--flaeche); border-color: rgba(200,242,61,.45); }
+.preisliste li.haupt { grid-column: 1 / -1; padding: clamp(28px, 3.4vw, 40px); background: linear-gradient(135deg, rgba(255,176,32,.13), rgba(255,176,32,.03) 60%), var(--flaeche); border-color: rgba(255,176,32,.45); }
 .preisliste li.haupt h3 { font-size: clamp(28px, 3vw, 38px); }
 .preisliste li.haupt .preis { font-size: clamp(36px, 4.4vw, 56px); }
 .preis { align-self: flex-start; font: 700 clamp(28px, 3.6vw, 44px)/1 var(--kopf); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -265,7 +265,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .gruppe-titel { margin: 0 0 4px; font: 600 14px/1 var(--kopf); letter-spacing: .08em; text-transform: uppercase; color: var(--akzent-text); }
 .preisliste + .gruppe-titel { margin-top: clamp(48px, 6vw, 72px); }
 .gruppe-titel { margin-bottom: 16px !important; }
-.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1.5px solid var(--akzent-rand); border-radius: var(--radius); box-shadow: var(--schatten); background: radial-gradient(80% 120% at 0% 0%, rgba(200,242,61,.16), transparent 60%), var(--flaeche); }
+.check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; margin-top: clamp(40px, 5vw, 56px); padding: clamp(24px, 4vw, 40px); border: 1.5px solid var(--akzent-rand); border-radius: var(--radius); box-shadow: var(--schatten); background: radial-gradient(80% 120% at 0% 0%, rgba(255,176,32,.16), transparent 60%), var(--flaeche); }
 .check h3 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.03em; }
 .check p { color: var(--text-leise); margin: 10px 0 0; max-width: 56ch; }
 .zusatz { margin-top: 28px; color: var(--text-leise); font-size: 16px; max-width: 72ch; }
@@ -274,7 +274,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 /* ---------- Ablauf: vier kleine Szenen, die abspielen, sobald sie sichtbar werden ---------- */
 .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .schritte li { counter-increment: s; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); padding: 14px 14px clamp(24px, 3vw, 30px); transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; animation: auf .6s ease-out both; animation-delay: var(--d); }
-.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #4b5338; }
+.schritte li:hover { transform: translateY(-6px) rotate(-.6deg); border-color: #5a4c33; }
 .schritte li:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
 .schritte h3 { display: flex; align-items: baseline; gap: 12px; padding-inline: clamp(8px, 1.2vw, 12px); }
 .schritte h3::before { content: "0" counter(s); font: 700 14px/1 var(--kopf); color: var(--akzent-text); }
@@ -318,9 +318,9 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 /* 2 Entwurf: die Seite baut sich auf */
 .browser { position: relative; width: 82%; height: 146px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; overflow: hidden; }
 .browser-leiste { display: flex; align-items: center; gap: 4px; height: 18px; padding: 0 8px; border-bottom: 1px solid var(--linie); }
-.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #4b5338; }
+.browser-leiste i { width: 5px; height: 5px; border-radius: 50%; background: #5a4c33; }
 .baustein { border-radius: 4px; background: #efe9db; animation: auf .5s both; }
-.baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(200,242,61,.85), rgba(200,242,61,.2)); animation-delay: calc(var(--d) + .25s); }
+.baustein.held { height: 46px; margin: 8px; background: linear-gradient(120deg, rgba(255,176,32,.85), rgba(255,176,32,.2)); animation-delay: calc(var(--d) + .25s); }
 .baustein.titel { width: 50%; height: 8px; margin: 0 8px 8px; animation-delay: calc(var(--d) + .45s); }
 .bausteine { display: flex; gap: 6px; margin: 0 8px; }
 .bausteine .baustein { flex: 1; height: 38px; }
@@ -395,7 +395,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .mail-wahl[hidden] { display: none; }
 .mail-wahl-titel { margin: 6px 10px 6px; font: 600 13px/1.2 var(--kopf); color: var(--text-leise); }
 .mail-wahl a, .mail-wahl button { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 0 12px; border: 0; border-radius: 9px; background: none; color: var(--text); font: 500 15px/1 var(--sans); text-align: left; text-decoration: none; }
-.mail-wahl a:hover, .mail-wahl button:hover, .mail-wahl a:focus-visible { background: rgba(200,242,61,.28); outline: none; }
+.mail-wahl a:hover, .mail-wahl button:hover, .mail-wahl a:focus-visible { background: rgba(255,176,32,.28); outline: none; }
 .mail-wahl a:first-of-type { font-weight: 700; }
 .kontakt .klein { margin: 18px 0 0; font-size: 15px; color: var(--text-leise); overflow-wrap: anywhere; }
 .mail-weg a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
@@ -429,7 +429,7 @@ footer a:hover { color: var(--text); }
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <!-- Logo: kleines m mit Schreibmarke dahinter — «hier wird gebaut» -->
-  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#c8f23d"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#0c0c0d" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#0c0c0d"/></symbol>
+  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#ffb020"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#0c0c0d" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#0c0c0d"/></symbol>
   <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
   <symbol id="i-extern" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
 </svg>
