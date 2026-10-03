@@ -46,7 +46,7 @@
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --breite: 1200px;
   --rand: clamp(16px, 5vw, 48px);
-  --abschnitt: clamp(80px, 11vw, 160px);
+  --abschnitt: clamp(56px, 7vw, 104px);
   --radius: 14px;
 }
 
@@ -78,7 +78,9 @@ p { margin: 0 0 1em; }
 .etikett { display: block; font: 500 14px/1 var(--kopf); color: var(--text-leise); margin-bottom: 24px; }
 .etikett::before { content: "/ "; color: var(--akzent-text); }
 .einleitung { max-width: 54ch; color: var(--text-leise); font-size: clamp(17px, 1.6vw, 19px); margin-top: 24px; }
-.kopf-abschnitt { margin-bottom: clamp(40px, 6vw, 72px); }
+.kopf-abschnitt { margin-bottom: clamp(32px, 4.5vw, 56px); }
+.abschnitt:not(.kontakt) h2::after { content: ""; display: block; width: 56px; height: 3px; margin-top: 16px; border-radius: 2px; background: var(--akzent); transform-origin: left; transition: transform .9s cubic-bezier(.2,.8,.2,1) .3s; }
+.js .abschnitt:not(.kontakt):not(.da) h2::after { transform: scaleX(0); }
 
 /* ---------- Knöpfe ---------- */
 .knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--kopf); text-decoration: none; transition: background-color .2s, color .2s, transform .2s; touch-action: manipulation; }
@@ -404,6 +406,13 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .blase-f:nth-of-type(2) { top: 14px; }
 .blase-f:nth-of-type(3) { top: 82px; left: 64px; border-radius: 16px 16px 4px 16px; background: var(--akzent); border-color: var(--akzent); color: var(--auf-akzent); }
 .blase-f:nth-of-type(4) { top: 150px; left: 16px; }
+.frage-fakten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; list-style: none; margin: 36px 0 0; padding: 0; }
+.frage-fakten li { padding: 20px 16px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); box-shadow: var(--schatten); transition: translate .3s ease; }
+@media (hover: hover) { .frage-fakten li:hover { translate: 0 -4px; } }
+.frage-fakten strong { display: block; font: 700 clamp(28px, 3vw, 38px)/1 var(--kopf); color: var(--akzent-text); font-variant-numeric: tabular-nums; }
+.frage-fakten span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.4; color: var(--text-leise); }
+@media (max-width: 480px) { .frage-fakten li { padding: 16px 12px; } .frage-fakten span { font-size: 13px; } .frage-fakten strong { font-size: 26px; } }
+
 .frage-mehr { margin-top: 8px; max-width: 32ch; color: var(--text-leise); font-size: 16px; }
 .frage-mehr a { color: var(--akzent-text); font-weight: 600; text-underline-offset: 3px; }
 
@@ -834,6 +843,11 @@ footer a:hover { color: var(--text); }
           <summary>You're 15 — is this serious?</summary>
           <p>Look at the examples and decide for yourself. The draft is free: you see the result before you pay anything.</p>
         </details>
+        <ul class="frage-fakten">
+          <li><strong data-ziel="15">15</strong><span>francs a year for the domain</span></li>
+          <li><strong data-ziel="100" data-nach="%">100%</strong><span>yours: texts, pictures, domain</span></li>
+          <li><strong data-ziel="7">7</strong><span>days to go live, at most</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -919,7 +933,7 @@ footer a:hover { color: var(--text); }
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
-  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.eigen', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.kontakt .wrap > *'];
+  var gruppen = ['.kopf-abschnitt', '.schaufenster > *', '.eigen', '.gruende > *', '.preisliste > li', '.zusatz', '.gruppe-titel', '.check', '.ueber > *', '.fragen > *', '.fragen details', '.frage-fakten > li', '.ich-plus > li', '.kontakt .wrap > *'];
   var teile = [];
   gruppen.forEach(function (g) {
     document.querySelectorAll(g).forEach(function (el, i) { el.classList.add('zeigen'); el.style.setProperty('--i', i); teile.push(el); });
@@ -942,6 +956,23 @@ footer a:hover { color: var(--text); }
       k.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
+  // Zahlen bei den Fragen zählen hoch, sobald sie sichtbar sind
+  var zahlen = document.querySelectorAll('[data-ziel]');
+  if (bewegung && 'IntersectionObserver' in window) {
+    var bz = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        bz.unobserve(e.target);
+        var el = e.target, ziel = +el.dataset.ziel, nach = el.dataset.nach || '', t0 = performance.now();
+        (function schritt(t) {
+          var p = Math.min((t - t0) / 1100, 1), w = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(ziel * w) + nach;
+          if (p < 1) requestAnimationFrame(schritt);
+        })(t0);
+      });
+    }, { threshold: .6 });
+    zahlen.forEach(function (el) { el.textContent = '0' + (el.dataset.nach || ''); bz.observe(el); });
+  }
   var zahl = document.querySelector('.fakten strong');
   if (zahl && bewegung) {
     var start = null, ziel = 249;
