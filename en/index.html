@@ -36,9 +36,9 @@
   --linie: #d9c9b0;
   --text: #2b1e15;
   --text-leise: #6b5747;      /* 5.6:1 auf --grund */
-  --akzent: #5a3622;          /* Milchschokolade: Knöpfe, Logo, Markierungen */
-  --akzent-text: #5a3622;
-  --akzent-rand: #5a3622;
+  --akzent: #46281a;          /* Milchschokolade: Knöpfe, Logo, Markierungen */
+  --akzent-text: #46281a;
+  --akzent-rand: #46281a;
   --auf-akzent: #f8f1e4;
   --warn: #c0392b;            /* nur für Probleme im Abschnitt Warum */
   --schatten: 0 1px 2px rgba(60,40,20,.08), 0 18px 40px -20px rgba(60,40,20,.28);
@@ -86,7 +86,7 @@ p { margin: 0 0 1em; }
 .knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--kopf); text-decoration: none; transition: background-color .2s, color .2s, transform .2s; touch-action: manipulation; }
 .knopf svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .knopf-akzent { background: var(--akzent); color: var(--auf-akzent); }
-.knopf-akzent:hover { background: #6e4530; }
+.knopf-akzent:hover { background: #5a3622; }
 .knopf-akzent:hover svg { transform: translateX(3px); }
 .knopf-linie { border: 1px solid var(--linie); color: var(--text); }
 .knopf-linie:hover { background: var(--flaeche-hell); }
@@ -178,7 +178,7 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .h-kopf i { width: 22px; height: 22px; border-radius: 7px; background: var(--akzent); }
 .h-kopf span { height: 6px; width: 36px; border-radius: 9px; background: var(--linie); }
 .h-kopf span:first-of-type { margin-left: auto; }
-.h-held { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; height: 196px; padding: 16px; border-radius: 18px; background: radial-gradient(120% 90% at 100% 0%, rgba(201,138,61,.55), transparent 60%), linear-gradient(160deg, #7a4b2e, #3b2417); }
+.h-held { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; height: 196px; padding: 16px; border-radius: 18px; background: radial-gradient(120% 90% at 100% 0%, rgba(201,138,61,.55), transparent 60%), linear-gradient(160deg, #64402a, #3b2417); }
 .h-held b { font: 700 24px/1 var(--kopf); color: #fff; letter-spacing: -.02em; }
 .h-held .h-offen { font: 500 11px/1 var(--sans); color: #f3cf9b; letter-spacing: 0; }
 .h-zeilen { display: grid; gap: 7px; }
@@ -484,7 +484,7 @@ footer a:hover { color: var(--text); }
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <!-- Logo: kleines m mit Schreibmarke dahinter — «hier wird gebaut» -->
-  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#5a3622"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#f8f1e4" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#f8f1e4"/></symbol>
+  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#46281a"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#f8f1e4" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#f8f1e4"/></symbol>
   <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
   <symbol id="i-extern" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
 </svg>
