@@ -410,6 +410,7 @@ footer a:hover { color: var(--text); }
 
 /* ---------- Eigener Mauszeiger und Hover-Spielereien (nur mit Maus) ---------- */
 .knopf { transition: background-color .2s, color .2s, transform .2s, translate .25s cubic-bezier(.3,1.4,.5,1), box-shadow .3s; }
+@media (hover: hover) { .knopf:hover { translate: 0 -3px; } }
 .fenster img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .fenster:hover img { transform: scale(1.04); }
 .preisliste li { transition: transform .3s cubic-bezier(.3,1.4,.5,1), border-color .3s; }
@@ -880,18 +881,6 @@ footer a:hover { color: var(--text); }
       });
     }, 600);
   }
-})();
-// Magnetische Knöpfe – nur mit Maus und ohne reduzierte Bewegung
-(function () {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  // Knöpfe ziehen sich leicht zur Maus hin
-  document.querySelectorAll('.knopf').forEach(function (k) {
-    k.addEventListener('mousemove', function (e) {
-      var r = k.getBoundingClientRect();
-      k.style.translate = ((e.clientX - r.left - r.width / 2) * .08) + 'px ' + ((e.clientY - r.top - r.height / 2) * .12) + 'px';
-    });
-    k.addEventListener('mouseleave', function () { k.style.translate = ''; });
-  });
 })();
 // Grosser Knopf im Kontakt: Adresse kopieren
 document.querySelectorAll('.kopier-knopf').forEach(function (k) {
