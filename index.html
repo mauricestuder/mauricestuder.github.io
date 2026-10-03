@@ -376,6 +376,13 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .ich-fakten li { padding: 10px 6px; border-radius: 10px; background: var(--grund); font-size: 13px; color: var(--text-leise); text-align: center; }
 .ich-fakten b { display: block; margin-bottom: 4px; font: 700 22px/1 var(--kopf); color: var(--akzent-text); }
 
+.ich-kann { max-width: 380px; margin-top: 32px; }
+.ich-kann > span { display: block; margin-bottom: 12px; font-size: 13px; color: var(--text-leise); }
+.ich-kann ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.ich-kann li { padding: 8px 14px; border-radius: 999px; background: var(--flaeche); border: 1px solid var(--linie); font: 600 14px/1 var(--kopf); color: var(--text); animation: wippen 3.2s ease-in-out infinite; animation-delay: calc(var(--i) * -.45s); transition: background .2s, color .2s; }
+.ich-kann li:nth-child(3n+1) { background: var(--akzent); border-color: var(--akzent); color: var(--auf-akzent); }
+@keyframes wippen { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+
 .ich-plus { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; list-style: none; margin: 36px 0 0; padding: 0; }
 .ich-plus li { padding: 20px 18px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); box-shadow: var(--schatten); font-size: 14px; line-height: 1.45; color: var(--text-leise); transition: translate .3s ease; }
 @media (hover: hover) { .ich-plus li:hover { translate: 0 -4px; } }
@@ -765,6 +772,19 @@ footer a:hover { color: var(--text); }
             <li><b>15</b>Jahre alt</li>
             <li><b>9.</b>Klasse</li>
             <li><b>BL</b>Liestal</li>
+          </ul>
+        </div>
+        <div class="ich-kann">
+          <span>Damit helfe ich Ihnen</span>
+          <ul>
+            <li style="--i:0">Websites</li>
+            <li style="--i:1">Onlineshops</li>
+            <li style="--i:2">Google-Profil</li>
+            <li style="--i:3">Instagram</li>
+            <li style="--i:4">Logos</li>
+            <li style="--i:5">Visitenkarten</li>
+            <li style="--i:6">Flyer</li>
+            <li style="--i:7">Speisekarten</li>
           </ul>
         </div>
       </div>
