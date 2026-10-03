@@ -377,6 +377,19 @@ a[href], button, summary, label, select, [role="button"], .fenster { cursor: poi
 .ich-fakten li { padding: 10px 6px; border-radius: 10px; background: var(--grund); font-size: 13px; color: var(--text-leise); text-align: center; }
 .ich-fakten b { display: block; margin-bottom: 4px; font: 700 22px/1 var(--kopf); color: var(--akzent-text); }
 
+.ich-plus { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; list-style: none; margin: 36px 0 0; padding: 0; }
+.ich-plus li { padding: 20px 18px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--radius); box-shadow: var(--schatten); font-size: 14px; line-height: 1.45; color: var(--text-leise); transition: translate .3s ease; }
+@media (hover: hover) { .ich-plus li:hover { translate: 0 -4px; } }
+.ich-plus b { display: block; margin: 14px 0 4px; font: 700 17px/1.2 var(--kopf); color: var(--text); }
+.plus-icon { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--akzent); }
+.plus-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--auf-akzent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.plus-uhr::before { content: ""; position: absolute; inset: 11px; border: 2.2px solid var(--auf-akzent); border-radius: 50%; }
+.plus-uhr i { position: absolute; left: 50%; top: 50%; width: 2.2px; height: 8px; margin-left: -1.1px; margin-top: -8px; background: var(--auf-akzent); border-radius: 2px; transform-origin: 50% 100%; animation: drehen 3s linear infinite; }
+.haken path { stroke-dasharray: 24; animation: haken 2.6s ease-in-out infinite; }
+@keyframes haken { 0% { stroke-dashoffset: 24; } 35%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -24; } }
+.flieger svg { animation: fliegen 2.4s ease-in-out infinite; }
+@keyframes fliegen { 0%, 100% { transform: translate(-1px, 1px); } 50% { transform: translate(2px, -3px) rotate(-6deg); } }
+
 .frage-bild { position: relative; max-width: 380px; height: 210px; margin-top: clamp(32px, 4vw, 48px); }
 .frage-zeichen { position: absolute; right: 8px; top: 0; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: var(--akzent); color: var(--auf-akzent); font: 700 48px/1 var(--kopf); animation: wackeln 3s ease-in-out infinite; }
 @keyframes wackeln { 0%, 100% { rotate: -8deg; } 50% { rotate: 8deg; } }
@@ -656,7 +669,7 @@ footer a:hover { color: var(--text); }
         <li>
           <h3>Instagram setup</h3>
           <p>Your business profile set up properly: bio, highlight covers and your first posts, designed and published.</p>
-          <div class="preis">79.–</div>
+          <div class="preis">49.–</div>
         </li>
         <li>
           <h3>Instagram management</h3>
@@ -759,6 +772,11 @@ footer a:hover { color: var(--text); }
       <div>
         <p class="einleitung">My name is <strong>Maurice Studer</strong> and I'm in 9th grade in Liestal. Alongside school I build websites and design how small businesses show up — with real work for real customers.</p>
         <p>Many small businesses are hard to find online: no website, an empty Instagram, a logo from 2005. That's where I help: <strong>a clear presence with what your customers are actually looking for</strong> — website, shop, Google profile, Instagram, logo and print, all from one person. No frills or subscription.</p>
+        <ul class="ich-plus">
+          <li><span class="plus-icon plus-uhr" aria-hidden="true"><i></i></span><b>Reply in 2 days</b>To every enquiry, promised.</li>
+          <li><span class="plus-icon haken" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Free draft</b>If you don't like it, it costs nothing.</li>
+          <li><span class="plus-icon flieger" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7L21 3zM10 13l5-5"/></svg></span><b>Online in one week</b>From the first email to done.</li>
+        </ul>
       </div>
     </div>
   </section>
