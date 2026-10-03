@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maurice Studer · Websites, Design und Social Media für kleine Betriebe</title>
-<meta name="description" content="Websites, Onlineshops, Logos, Flyer und Instagram für kleine Betriebe in der Schweiz. Fertige Website ab 250 Franken, Design und Social Media zu festen Preisen.">
+<meta name="description" content="Websites, Onlineshops, Logos, Flyer und Instagram für kleine Betriebe in der Schweiz. Fertige Website ab 249 Franken, Design und Social Media zu festen Preisen.">
 <meta name="theme-color" content="#0e0f0b">
 <meta name="color-scheme" content="dark only">
 <meta property="og:title" content="Maurice Studer · Websites, Design und Social Media für kleine Betriebe">
@@ -484,7 +484,7 @@ footer a:hover { color: var(--text); }
         </div>
       </div>
       <ul class="fakten" aria-label="Das Wichtigste">
-        <li><strong>250.–</strong>für die fertige Website, einmalig</li>
+        <li><strong>249.–</strong>für die fertige Website, einmalig</li>
         <li>Fertig in spätestens einer Woche</li>
         <li>Entwurf gratis und unverbindlich</li>
         <li>Alles gehört Ihnen</li>
@@ -594,7 +594,7 @@ footer a:hover { color: var(--text); }
         <li class="haupt">
           <h3>Website</h3>
           <p>Eine Seite für Ihren Betrieb, gebaut für das Handy: Angebot, Preise, Öffnungszeiten, Karte, Anruf- und Mail-Knopf. Den Entwurf sehen Sie, bevor Sie etwas zahlen.</p>
-          <div class="preis">250.– <small>einmalig</small><small class="fein">(+ ca. 15.– pro Jahr für die Domain)</small></div>
+          <div class="preis">249.– <small>einmalig</small><small class="fein">(+ ca. 15.– pro Jahr für die Domain)</small></div>
         </li>
         <li>
           <h3>Alte Website erneuern</h3>
@@ -841,7 +841,7 @@ footer a:hover { color: var(--text); }
   }, { threshold: .35 });
   karten.forEach(function (k) { beobachter.observe(k); });
 })();
-// Einblenden beim Scrollen, Lichtfleck unter der Maus, 250 zählt hoch
+// Einblenden beim Scrollen, Lichtfleck unter der Maus, 249 zählt hoch
 (function () {
   var bewegung = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var abschnitte = document.querySelectorAll('.abschnitt');
@@ -870,7 +870,7 @@ footer a:hover { color: var(--text); }
   });
   var zahl = document.querySelector('.fakten strong');
   if (zahl && bewegung) {
-    var start = null, ziel = 250;
+    var start = null, ziel = 249;
     zahl.textContent = '0.–';
     setTimeout(function () {
       requestAnimationFrame(function schritt(t) {
@@ -887,7 +887,7 @@ document.querySelectorAll('.kopier-knopf').forEach(function (k) {
   var text = k.textContent;
   k.addEventListener('click', function () {
     var adresse = 'maurice.studer.contact@gmail.com';
-    var fertig = function () { k.textContent = k.dataset.fertig; setTimeout(function () { k.textContent = text; }, 2500); };
+    var fertig = function () { k.textContent = k.dataset.fertig; setTimeout(function () { k.textContent = text; }, 2490); };
     if (navigator.clipboard) navigator.clipboard.writeText(adresse).then(fertig);
     else { var t = document.createElement('textarea'); t.value = adresse; document.body.append(t); t.select(); document.execCommand('copy'); t.remove(); fertig(); }
   });
