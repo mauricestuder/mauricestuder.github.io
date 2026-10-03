@@ -70,6 +70,8 @@ p { margin: 0 0 1em; }
 /* Übergang: statt harter Linie zieht sich ein leuchtender Strich von der Mitte nach aussen, wenn der Abschnitt ins Bild kommt */
 .abschnitt::after { content: ""; position: absolute; top: 0; left: 50%; width: min(var(--breite), 100% - 2 * var(--rand)); height: 2px; translate: -50% 0; background: linear-gradient(90deg, transparent, var(--akzent) 50%, transparent); box-shadow: 0 0 22px rgba(201,138,61,.5); opacity: .85; transition: transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s; }
 .js .abschnitt:not(.da)::after { transform: scaleX(0); opacity: 0; }
+/* Direkt unter dem Band braucht es keinen Strich */
+#arbeiten::after { display: none; }
 /* Abschnitt-Inhalt rückt beim Hereinkommen leicht nach */
 .abschnitt > .wrap { transition: scale 1s cubic-bezier(.2,.8,.2,1); }
 .js .abschnitt:not(.da) > .wrap { scale: .97; }
