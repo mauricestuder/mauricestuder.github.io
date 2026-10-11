@@ -102,7 +102,9 @@ p { margin: 0 0 1em; }
 .nav-links { display: flex; align-items: center; gap: clamp(6px, 2vw, 28px); list-style: none; margin: 0; padding: 0; font-size: 15px; }
 .nav-links a:not(.knopf) { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; text-decoration: none; color: var(--text-leise); transition: color .2s; }
 .nav-links a:not(.knopf):hover { color: var(--text); }
-.nav-links .sprache { min-width: 44px; justify-content: center; font: 600 13px/1 var(--kopf); }
+.nav-links a.sprache { justify-content: center; width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--akzent-rand); border-radius: 50%; color: var(--akzent-text); transition: background .2s, color .2s; }
+.nav-links a.sprache:hover { background: var(--akzent); color: var(--auf-akzent); }
+.sprache svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .nav-links .knopf { min-height: 44px; padding: 0 20px; font-size: 15px; }
 @media (max-width: 800px) { .nav-links li.breit { display: none; } .marke .name { display: none; } }
 
@@ -486,6 +488,7 @@ footer a:hover { color: var(--text); }
   <!-- Logo: kleines m mit Schreibmarke dahinter — «hier wird gebaut» -->
   <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#46281a"/><path d="M8 23V12.5a3.5 3.5 0 0 1 7 0V23M15 12.5a3.5 3.5 0 0 1 7 0V23" fill="none" stroke="#f8f1e4" stroke-width="3" stroke-linecap="round"/><rect x="23.5" y="20.5" width="3.5" height="3" fill="#f8f1e4"/></symbol>
   <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-globus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></symbol>
   <symbol id="i-extern" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
 </svg>
 
@@ -498,7 +501,7 @@ footer a:hover { color: var(--text); }
       <li class="breit"><a href="#arbeiten">Work</a></li>
       <li class="breit"><a href="#angebot">Services</a></li>
       <li class="breit"><a href="#ueber">About</a></li>
-      <li><a class="sprache" href="../" hreflang="de" lang="de" aria-label="Deutsch">DE</a></li>
+      <li><a class="sprache" href="../" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><svg aria-hidden="true"><use href="#i-globus"/></svg></a></li>
       <li><a class="knopf knopf-akzent" href="#kontakt">Enquire</a></li>
     </ul>
   </div>
