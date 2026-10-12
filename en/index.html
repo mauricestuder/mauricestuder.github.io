@@ -513,7 +513,7 @@ footer a:hover { color: var(--text); }
 .chat-schnell .chat-andere { background: var(--akzent); color: var(--auf-akzent); border-color: var(--akzent); }
 .chat-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .chat-m .chat-link { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 600 13px var(--sans); text-decoration: none; white-space: nowrap; }
-.chat-m .chat-link + .chat-link { background: var(--flaeche); color: var(--akzent-text); border: 1px solid var(--akzent-rand); }
+.chat-m .chat-link + .chat-link { cursor: pointer; background: var(--flaeche); color: var(--akzent-text); border: 1px solid var(--akzent-rand); }
 @media (prefers-reduced-motion: reduce) { .chat-panel, .chat-m, .chat-punkte i { animation: none; } }
 </style>
 </head>
@@ -1051,26 +1051,26 @@ document.querySelectorAll('.kopieren').forEach(function (k) {
     oeffnen: 'Open questions', zu: 'Close', titel: 'Questions?', status: 'Pick a question',
     hallo: 'Hi! Pick a question, and you’ll get the answer right away.',
     andere: 'Another question', andereText: 'Just write to me, I’ll answer within two days.',
-    anfrage: 'Go to enquiry', mail: 'Write an email',
+    anfrage: 'Go to enquiry', mail: 'Copy email address', kopiert: 'Copied!',
     fragen: [
       ['What does a website cost?', '249 francs, one-off, for the finished website. On top comes about 15 francs a year for the domain, directly in your name. You see the draft before you pay anything.'],
       ['What do the other services cost?', 'Google profile 49.–\nLogo + business card 49.–\nInstagram setup 49.–\nOnline shop setup 49.–\nMenu / price list 49.–\nFlyer 39.–\nEmail on your own domain 29.–\nRenew an old website from 99.–\nUpkeep 29.– per hour\n\nEverything can be ordered on its own.'],
       ['How long does it take?', 'A website is usually online within a week at most. Logo, flyer or Instagram often after just a few days.'],
       ['How does it work?', 'You email me what you need. I make a draft: if you don’t like it, it costs nothing. Then I adjust it until it’s right, and it goes online on your own address.'],
-      ['Is there a subscription?', 'No. You pay once and everything belongs to you. Later changes I do by the hour, 29 francs.'],
+      ['Is there a subscription?', 'No. You pay once and everything belongs to you. I charge for later changes by the hour.'],
       ['What is the free online check?', 'Send me the link to your website, Instagram or Google listing. You get three concrete things to improve, free and with no obligation.']
     ]
   } : {
     oeffnen: 'Fragen öffnen', zu: 'Schliessen', titel: 'Fragen?', status: 'Frage auswählen',
     hallo: 'Hallo! Wählen Sie eine Frage, die Antwort kommt sofort.',
     andere: 'Andere Frage', andereText: 'Schreiben Sie mir einfach, ich antworte innert zwei Tagen.',
-    anfrage: 'Zur Anfrage', mail: 'Mail schreiben',
+    anfrage: 'Zur Anfrage', mail: 'Mail-Adresse kopieren', kopiert: 'Kopiert!',
     fragen: [
       ['Was kostet eine Website?', '249 Franken, einmalig, für die fertige Website. Dazu kommen rund 15 Franken pro Jahr für die Domain, direkt auf Ihren Namen. Den Entwurf sehen Sie, bevor Sie etwas zahlen.'],
       ['Was kostet der Rest?', 'Google-Profil 49.–\nLogo + Visitenkarte 49.–\nInstagram einrichten 49.–\nOnlineshop einrichten 49.–\nSpeisekarte / Preisliste 49.–\nFlyer 39.–\nE-Mail auf eigener Domain 29.–\nAlte Website erneuern ab 99.–\nPflege 29.– pro Stunde\n\nAlles auch einzeln.'],
       ['Wie lange dauert es?', 'Eine Website ist meist in spätestens einer Woche online. Logo, Flyer oder Instagram oft schon nach ein paar Tagen.'],
       ['Wie läuft es ab?', 'Sie schicken mir per Mail, was Sie brauchen. Ich mache einen Entwurf: Gefällt er nicht, kostet er nichts. Dann passe ich an, bis es stimmt, und es geht auf Ihrer eigenen Adresse online.'],
-      ['Gibt es ein Abo?', 'Nein. Sie zahlen einmal, und alles gehört Ihnen. Spätere Änderungen mache ich nach Stunde, 29 Franken.'],
+      ['Gibt es ein Abo?', 'Nein. Sie zahlen einmal, und alles gehört Ihnen. Spätere Änderungen verrechne ich nach Stunden.'],
       ['Was ist der Gratis-Check?', 'Schicken Sie mir den Link zu Ihrer Website, Ihrem Instagram oder Google-Eintrag. Sie bekommen drei konkrete Verbesserungen, kostenlos und ohne Verpflichtung.']
     ]
   };
@@ -1099,6 +1099,11 @@ document.querySelectorAll('.kopieren').forEach(function (k) {
     });
     var a = el('button', 'chat-andere', T.andere); a.type = 'button'; a.dataset.i = 'andere'; schnell.appendChild(a);
   }
+  function kopieren(t) {
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).catch(function () {}); return; }
+    var f = el('textarea'); f.value = t; f.style.position = 'fixed'; f.style.opacity = '0'; document.body.appendChild(f); f.select();
+    try { document.execCommand('copy'); } catch (e) {} f.remove();
+  }
   function antwort(text, links) {
     schnell.textContent = '';
     var p = el('div', 'chat-m bot chat-punkte'); p.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(p); log.scrollTop = log.scrollHeight;
@@ -1108,7 +1113,8 @@ document.querySelectorAll('.kopieren').forEach(function (k) {
       if (links) {
         var z = el('div', 'chat-links');
         var a1 = el('a', 'chat-link', T.anfrage); a1.href = '#kontakt'; a1.addEventListener('click', zu);
-        var a2 = el('a', 'chat-link', T.mail); a2.href = 'mailto:' + MAIL;
+        var a2 = el('button', 'chat-link', T.mail); a2.type = 'button'; a2.title = MAIL;
+        a2.addEventListener('click', function () { kopieren(MAIL); a2.textContent = T.kopiert; setTimeout(function () { a2.textContent = T.mail; }, 2000); });
         z.appendChild(a1); z.appendChild(a2); d.appendChild(z);
       }
       auswahl();
