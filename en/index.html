@@ -481,6 +481,40 @@ footer a:hover { color: var(--text); }
 .nav-links a:not(.knopf):not(.sprache):hover::after { transform: scaleX(1); transform-origin: left; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; animation: none !important; } .js .zeigen { opacity: 1; translate: none; } }
+/* ---------- Fragen-Chat (unten rechts, feste Fragen, keine KI) ---------- */
+.chat-knopf { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 60; width: 60px; height: 60px; border: 0; border-radius: 50%; background: var(--akzent); color: var(--auf-akzent); box-shadow: var(--schatten); cursor: pointer; display: grid; place-items: center; transition: transform .2s; }
+.chat-knopf:hover { transform: translateY(-2px); }
+.chat-knopf svg, .chat-x svg, .chat-knopf svg { width: 28px; height: 28px; }
+.chat-panel { position: fixed; right: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); z-index: 70; width: 370px; height: min(540px, calc(100dvh - 120px)); display: flex; flex-direction: column; overflow: hidden; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 18px; box-shadow: var(--schatten); font: 15px/1.45 var(--sans); color: var(--text); transform-origin: bottom right; animation: chat-auf .18s ease-out; }
+.chat-panel[hidden] { display: none; }
+@keyframes chat-auf { from { opacity: 0; transform: scale(.96) translateY(8px); } }
+@media (max-width: 480px) { .chat-panel { inset: 0; width: auto; height: auto; border: 0; border-radius: 0; padding-top: env(safe-area-inset-top, 0px); } }
+.chat-kopf { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--akzent); color: var(--auf-akzent); }
+.chat-kopf svg.chat-av { width: 36px; height: 36px; flex: none; border-radius: 9px; box-shadow: 0 0 0 1.5px var(--auf-akzent); }
+.chat-kopf .chat-t { flex: 1; min-width: 0; line-height: 1.25; }
+.chat-kopf b { display: block; font: 700 15px var(--kopf); }
+.chat-kopf span { font-size: 12px; opacity: .9; }
+.chat-x { background: none; border: 0; color: inherit; cursor: pointer; padding: 8px; border-radius: 8px; }
+.chat-x svg { width: 20px; height: 20px; display: block; }
+.chat-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.chat-m { max-width: 85%; padding: 9px 13px; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; animation: chat-rein .2s ease-out; }
+@keyframes chat-rein { from { opacity: 0; transform: translateY(6px); } }
+.chat-m.bot { align-self: flex-start; background: var(--flaeche-hell); border-bottom-left-radius: 4px; }
+.chat-m.ich { align-self: flex-end; background: var(--akzent); color: var(--auf-akzent); border-bottom-right-radius: 4px; }
+.chat-m a { color: inherit; }
+.chat-punkte { display: flex; gap: 4px; padding: 13px 14px; }
+.chat-punkte i { width: 7px; height: 7px; border-radius: 50%; background: var(--text-leise); animation: chat-hupf 1s infinite; }
+.chat-punkte i:nth-child(2) { animation-delay: .15s; } .chat-punkte i:nth-child(3) { animation-delay: .3s; }
+@keyframes chat-hupf { 0%, 60%, 100% { opacity: .3; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+.chat-schnell { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 14px; border-top: 1px solid var(--linie); }
+.chat-schnell:empty { display: none; }
+.chat-schnell button { background: var(--grund); color: var(--akzent-text); border: 1px solid var(--linie); border-radius: 999px; padding: 7px 12px; font: 600 13px var(--sans); cursor: pointer; }
+.chat-schnell button:hover { border-color: var(--akzent-rand); }
+.chat-schnell .chat-andere { background: var(--akzent); color: var(--auf-akzent); border-color: var(--akzent); }
+.chat-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chat-m .chat-link { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--akzent); color: var(--auf-akzent); font: 600 13px var(--sans); text-decoration: none; white-space: nowrap; }
+.chat-m .chat-link + .chat-link { background: var(--flaeche); color: var(--akzent-text); border: 1px solid var(--akzent-rand); }
+@media (prefers-reduced-motion: reduce) { .chat-panel, .chat-m, .chat-punkte i { animation: none; } }
 </style>
 </head>
 <body>
@@ -1006,6 +1040,99 @@ document.querySelectorAll('.kopieren').forEach(function (k) {
     navigator.clipboard.writeText(adresse).then(function () { k.querySelector('span').textContent = '· ' + k.dataset.fertig; });
   });
 });
+</script>
+<script>
+// Fragen-Chat unten rechts: feste Fragen mit festen Antworten, keine KI, nichts wird verschickt.
+// Andere Frage → Anfrage-Abschnitt oder Mail. Preise hier gleich halten wie im Abschnitt Angebot.
+(function () {
+  var en = document.documentElement.lang === 'en';
+  var MAIL = 'maurice.studer.contact@gmail.com';
+  var T = en ? {
+    oeffnen: 'Open questions', zu: 'Close', titel: 'Questions?', status: 'Pick a question',
+    hallo: 'Hi! Pick a question, and you’ll get the answer right away.',
+    andere: 'Another question', andereText: 'Just write to me, I’ll answer within two days.',
+    anfrage: 'Go to enquiry', mail: 'Write an email',
+    fragen: [
+      ['What does a website cost?', '249 francs, one-off, for the finished website. On top comes about 15 francs a year for the domain, directly in your name. You see the draft before you pay anything.'],
+      ['What do the other services cost?', 'Google profile 49.–\nLogo + business card 49.–\nInstagram setup 49.–\nOnline shop setup 49.–\nMenu / price list 49.–\nFlyer 39.–\nEmail on your own domain 29.–\nRenew an old website from 99.–\nUpkeep 29.– per hour\n\nEverything can be ordered on its own.'],
+      ['How long does it take?', 'A website is usually online within a week at most. Logo, flyer or Instagram often after just a few days.'],
+      ['How does it work?', 'You email me what you need. I make a draft: if you don’t like it, it costs nothing. Then I adjust it until it’s right, and it goes online on your own address.'],
+      ['Is there a subscription?', 'No. You pay once and everything belongs to you. Later changes I do by the hour, 29 francs.'],
+      ['What is the free online check?', 'Send me the link to your website, Instagram or Google listing. You get three concrete things to improve, free and with no obligation.']
+    ]
+  } : {
+    oeffnen: 'Fragen öffnen', zu: 'Schliessen', titel: 'Fragen?', status: 'Frage auswählen',
+    hallo: 'Hallo! Wählen Sie eine Frage, die Antwort kommt sofort.',
+    andere: 'Andere Frage', andereText: 'Schreiben Sie mir einfach, ich antworte innert zwei Tagen.',
+    anfrage: 'Zur Anfrage', mail: 'Mail schreiben',
+    fragen: [
+      ['Was kostet eine Website?', '249 Franken, einmalig, für die fertige Website. Dazu kommen rund 15 Franken pro Jahr für die Domain, direkt auf Ihren Namen. Den Entwurf sehen Sie, bevor Sie etwas zahlen.'],
+      ['Was kostet der Rest?', 'Google-Profil 49.–\nLogo + Visitenkarte 49.–\nInstagram einrichten 49.–\nOnlineshop einrichten 49.–\nSpeisekarte / Preisliste 49.–\nFlyer 39.–\nE-Mail auf eigener Domain 29.–\nAlte Website erneuern ab 99.–\nPflege 29.– pro Stunde\n\nAlles auch einzeln.'],
+      ['Wie lange dauert es?', 'Eine Website ist meist in spätestens einer Woche online. Logo, Flyer oder Instagram oft schon nach ein paar Tagen.'],
+      ['Wie läuft es ab?', 'Sie schicken mir per Mail, was Sie brauchen. Ich mache einen Entwurf: Gefällt er nicht, kostet er nichts. Dann passe ich an, bis es stimmt, und es geht auf Ihrer eigenen Adresse online.'],
+      ['Gibt es ein Abo?', 'Nein. Sie zahlen einmal, und alles gehört Ihnen. Spätere Änderungen mache ich nach Stunde, 29 Franken.'],
+      ['Was ist der Gratis-Check?', 'Schicken Sie mir den Link zu Ihrer Website, Ihrem Instagram oder Google-Eintrag. Sie bekommen drei konkrete Verbesserungen, kostenlos und ohne Verpflichtung.']
+    ]
+  };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+
+  var knopf = el('button', 'chat-knopf'); knopf.type = 'button'; knopf.setAttribute('aria-label', T.oeffnen); knopf.setAttribute('aria-expanded', 'false');
+  knopf.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>';
+  var panel = el('div', 'chat-panel'); panel.hidden = true; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', T.titel);
+  panel.innerHTML =
+    '<div class="chat-kopf"><svg class="chat-av" aria-hidden="true"><use href="#logo"/></svg><div class="chat-t"><b></b><span></span></div>' +
+    '<button type="button" class="chat-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+    '<div class="chat-log" aria-live="polite"></div><div class="chat-schnell"></div>';
+  panel.querySelector('.chat-t b').textContent = T.titel;
+  panel.querySelector('.chat-t span').textContent = T.status;
+  panel.querySelector('.chat-x').setAttribute('aria-label', T.zu);
+  var log = panel.querySelector('.chat-log'), schnell = panel.querySelector('.chat-schnell');
+  document.body.appendChild(panel); document.body.appendChild(knopf);
+
+  var offen = false, begruesst = false, gefragt = {};
+  function nachricht(text, wer) { var d = el('div', 'chat-m ' + wer, text); log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+  function auswahl() {
+    schnell.textContent = '';
+    T.fragen.forEach(function (f, i) {
+      if (gefragt[i]) return;
+      var b = el('button', '', f[0]); b.type = 'button'; b.dataset.i = i; schnell.appendChild(b);
+    });
+    var a = el('button', 'chat-andere', T.andere); a.type = 'button'; a.dataset.i = 'andere'; schnell.appendChild(a);
+  }
+  function antwort(text, links) {
+    schnell.textContent = '';
+    var p = el('div', 'chat-m bot chat-punkte'); p.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(p); log.scrollTop = log.scrollHeight;
+    setTimeout(function () {
+      p.remove();
+      var d = nachricht(text, 'bot');
+      if (links) {
+        var z = el('div', 'chat-links');
+        var a1 = el('a', 'chat-link', T.anfrage); a1.href = '#kontakt'; a1.addEventListener('click', zu);
+        var a2 = el('a', 'chat-link', T.mail); a2.href = 'mailto:' + MAIL;
+        z.appendChild(a1); z.appendChild(a2); d.appendChild(z);
+      }
+      auswahl();
+      log.scrollTop = d.offsetTop - log.offsetTop - 8; // Antwort von oben lesbar
+    }, 450);
+  }
+  schnell.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    nachricht(b.textContent, 'ich');
+    if (b.dataset.i === 'andere') { antwort(T.andereText, true); return; }
+    gefragt[b.dataset.i] = true;
+    antwort(T.fragen[b.dataset.i][1]);
+  });
+  function auf() {
+    offen = true; panel.hidden = false; knopf.setAttribute('aria-expanded', 'true');
+    if (innerWidth <= 480) knopf.hidden = true;
+    if (!begruesst) { begruesst = true; nachricht(T.hallo, 'bot'); auswahl(); }
+    panel.querySelector('.chat-x').focus();
+  }
+  function zu() { offen = false; panel.hidden = true; knopf.hidden = false; knopf.setAttribute('aria-expanded', 'false'); }
+  knopf.addEventListener('click', function () { offen ? zu() : auf(); });
+  panel.querySelector('.chat-x').addEventListener('click', function () { zu(); knopf.focus(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && offen) { zu(); knopf.focus(); } });
+})();
 </script>
 </body>
 </html>
